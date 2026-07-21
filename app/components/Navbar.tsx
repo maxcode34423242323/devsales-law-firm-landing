@@ -5,10 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 const groups = [
-  { label: "Services", links: [["Custom Websites", "/#services"], ["Website Redesign", "/#services"], ["Landing Pages", "/#services"], ["Development", "/#services"]] },
+  { label: "Services", links: [["Custom Websites", "/agency#services"], ["Website Redesign", "/agency#services"], ["Landing Pages", "/agency#services"], ["Development", "/agency#services"]] },
   { label: "Work", links: [["All Portfolio", "/work"], ["Automotive Case Study", "/work/devilsales-auto"]] },
-  { label: "Process", links: [["Discovery", "/#process"], ["Strategy", "/#process"], ["Design", "/#process"], ["Development", "/#process"]] },
-  { label: "All Pages", links: [["Home", "/"], ["Portfolio", "/work"], ["FAQ", "/faq"], ["Contact Us", "/contact"], ["Privacy", "/privacy"], ["Terms", "/terms"]] },
+  { label: "Process", links: [["Discovery", "/agency#process"], ["Strategy", "/agency#process"], ["Design", "/agency#process"], ["Development", "/agency#process"]] },
+  { label: "All Pages", links: [["Home", "/agency"], ["Portfolio", "/work"], ["FAQ", "/faq"], ["Contact Us", "/contact"], ["Privacy", "/privacy"], ["Terms", "/terms"]] },
 ];
 
 export default function Navbar() {
@@ -28,7 +28,7 @@ export default function Navbar() {
           </div>)}
         </nav>
 
-        <Link href="/" className="nav-brand"><i>DS</i><span><b>DEVILSALES</b><small>WEB STUDIO · USA</small></span></Link>
+        <Link href="/agency" className="nav-brand"><i>DS</i><span><b>DEVILSALES</b><small>WEB STUDIO · USA</small></span></Link>
         <Link href="/contact" className="hidden border-b border-white text-[16px] md:block">LET&apos;S TALK</Link>
         <button onClick={() => setOpen(true)} aria-label="Open menu" className="mobile-menu-button md:hidden"><span /><span /><span /></button>
       </div>
@@ -36,7 +36,7 @@ export default function Navbar() {
 
     <AnimatePresence>{open && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="mobile-overlay" onClick={() => setOpen(false)}>
       <motion.aside initial={{ x: "-100%" }} animate={{ x: 0 }} exit={{ x: "-100%" }} transition={{ duration: .42, ease: [.22, 1, .36, 1] }} className="mobile-drawer" onClick={event => event.stopPropagation()}>
-        <div className="drawer-top"><Link href="/" className="drawer-logo">DS</Link><button onClick={() => setOpen(false)}>×</button></div>
+        <div className="drawer-top"><Link href="/agency" className="drawer-logo">DS</Link><button onClick={() => setOpen(false)}>×</button></div>
         <div className="drawer-groups">{groups.map(group => <div key={group.label} className={`drawer-group ${active === group.label ? "open" : ""}`}>
           <button onClick={() => setActive(active === group.label ? null : group.label)}><span>{group.label}</span><i aria-hidden="true" /></button>
           <AnimatePresence>{active === group.label && <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>

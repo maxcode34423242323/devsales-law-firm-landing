@@ -4,12 +4,12 @@ export const metadata: Metadata = {
   title: "Law Firm Web Design Agency | Custom Websites from $10K",
   description:
     "Conversion-focused custom websites for personal injury law firms. Strategy, UX, development and lead tracking from one accountable team. Projects start at $10,000.",
-  alternates: { canonical: "/law-firm-web-design" },
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Law Firm Web Design Agency | DevilSales Web",
     description:
       "Premium custom websites for personal injury law firms, built to create trust and generate qualified consultations.",
-    url: "/law-firm-web-design",
+    url: "/",
     type: "website",
     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },

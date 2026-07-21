@@ -14,15 +14,15 @@ export const metadata: Metadata = {
   category: "Web Design and Development",
   referrer: "origin-when-cross-origin",
   title: {
-    default: "Custom Web Design & Development USA | DevilSales Web",
+    default: "Law Firm Web Design Agency | Custom Websites from $10K",
     template: "%s | DevilSales Web",
   },
   description:
-    "Custom web design and development for US service businesses. Strategy, conversion-focused UX, fast development and growth systems from one accountable team.",
+    "Conversion-focused custom websites for personal injury law firms. Strategy, UX, development and lead tracking from one accountable team. Projects start at $10,000.",
   keywords: [
-    "custom web design USA",
-    "website development company",
-    "web design agency for service businesses",
+    "law firm web design",
+    "personal injury law firm website",
+    "custom website for lawyers",
     "conversion focused web design",
     "Next.js development agency",
     "professional website redesign",
@@ -33,15 +33,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "DevilSales Web",
-    title: "Custom Web Design & Development USA | DevilSales Web",
+    title: "Law Firm Web Design Agency | DevilSales Web",
     description:
-      "Premium, conversion-focused websites for ambitious service businesses across the United States.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DevilSales Web — Digital experiences for serious growth" }],
+      "Premium custom websites for personal injury law firms, built to create trust and generate qualified consultations.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DevilSales Web — Custom law firm website design" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Web Design & Development USA | DevilSales Web",
-    description: "Premium, conversion-focused websites for ambitious US service businesses.",
+    title: "Law Firm Web Design Agency | DevilSales Web",
+    description: "Premium custom websites for personal injury law firms, built to create trust and generate qualified consultations.",
     images: ["/opengraph-image"],
   },
   robots: {
@@ -95,6 +95,20 @@ const structuredData = {
       name: "DevilSales Web",
       inLanguage: "en-US",
       publisher: { "@id": "https://www.devilsales.dev/#organization" },
+    },
+    {
+      "@type": "Service",
+      name: "Law Firm Web Design",
+      serviceType: "Custom website design and development for personal injury law firms",
+      provider: { "@id": "https://www.devilsales.dev/#organization" },
+      areaServed: { "@type": "Country", name: "United States" },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "USD",
+        price: "10000",
+        description: "Custom law firm website projects start at $10,000.",
+      },
+      url: "https://www.devilsales.dev/",
     },
   ],
 };

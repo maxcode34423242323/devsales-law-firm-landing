@@ -10,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: "https://www.devilsales.dev/agency",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
       url: "https://www.devilsales.dev/contact",
       lastModified,
       changeFrequency: "monthly",
