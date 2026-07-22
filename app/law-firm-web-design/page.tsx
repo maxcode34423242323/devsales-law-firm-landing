@@ -140,6 +140,20 @@ export default function LawFirmWebDesignPage() {
         </div>
       </section>
 
+      <section className="law-section">
+        <div className="law-container">
+          <motion.div {...reveal} className="law-section-head"><div><p className="section-kicker">[ Our commitment ]</p><h2>What working with us actually looks like.</h2></div><p>No client testimonials yet — we&apos;d rather earn them honestly than fake them. Here&apos;s what you can count on in the meantime.</p></motion.div>
+          <div className="law-benefit-grid">
+            {[
+              ["01", "Direct access, no account managers", "You work directly with the person building your site from the first call to launch — not a rotating team."],
+              ["02", "Fixed scope before work begins", "Your investment and deliverables are locked in writing before development starts. No surprise invoices."],
+              ["03", "Built only for personal injury firms", "Every layout, form and tracking decision on this page is made for how injury clients actually search and choose counsel."],
+              ["04", "Your project becomes our next reference", "The first firms we build for get featured in the portfolio section above — real work, real credit, real case study."],
+            ].map(([number, title, copy]) => <motion.article {...reveal} key={number} className="bento-card law-benefit" onMouseMove={handleSpotlightMove}><span>{number}</span><h3>{title}</h3><p>{copy}</p></motion.article>)}
+          </div>
+        </div>
+      </section>
+
       <section id="process" className="law-section">
         <div className="law-container law-process-shell">
           <motion.div {...reveal} className="law-process-title"><p className="section-kicker">[ Our process ]</p><h2>Clear thinking.<br />Fast movement.</h2><p>One accountable team from positioning through launch.</p></motion.div>
