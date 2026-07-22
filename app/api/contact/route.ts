@@ -39,6 +39,112 @@ function escapeTelegramHtml(value: unknown) {
     .replace(/>/g, "&gt;");
 }
 
+async function upsertHubSpotContact(token: string, body: ContactRequestBody) {
+  const [firstname, ...rest] = String(body.fullName).trim().split(/\s+/);
+  const properties = {
+    email: body.businessEmail,
+    firstname: firstname || "",
+    lastname: rest.join(" "),
+    phone: body.phone,
+    company: body.companyName,
+  };
+
+  const createRes = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ properties }),
+  });
+
+  if (createRes.ok) {
+    const created = await createRes.json();
+    return created.id as string;
+  }
+
+  if (createRes.status === 409) {
+    const existingRes = await fetch(
+      `https://api.hubapi.com/crm/v3/objects/contacts/${encodeURIComponent(String(body.businessEmail))}?idProperty=email`,
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+    if (existingRes.ok) {
+      const existing = await existingRes.json();
+      await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${existing.id}`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ properties }),
+      });
+      return existing.id as string;
+    }
+  }
+
+  throw new Error(`HubSpot contact upsert failed: ${createRes.status} ${await createRes.text()}`);
+}
+
+// HubSpot's budget_tier/service_needed Deal properties are fixed-option
+// dropdowns with exact allowed strings, different from what the site's
+// forms display to visitors — map to the closest allowed option instead
+// of sending the raw value (HubSpot rejects the whole Deal otherwise).
+const HUBSPOT_BUDGET_TIER: Record<string, string> = {
+  "Below $10,000": "Below $10,000",
+  "$10,000 - $20,000": "$10,000–$20,000",
+  "$20,000 - $50,000": "$20,000–$50,000",
+  "$10,000 - $25,000": "$10,000–$20,000",
+  "$25,000 - $50,000": "$20,000–$50,000",
+  "$50,000+": "$50,000+",
+};
+
+const HUBSPOT_SERVICE_NEEDED: Record<string, string> = {
+  "New custom law firm website": "New Website",
+  "Law firm website redesign": "Website Redesign",
+  "Website Redesign": "Website Redesign",
+};
+
+function mapToHubSpotOption(map: Record<string, string>, value?: string) {
+  return value ? map[value] : undefined;
+}
+
+async function createHubSpotDeal(token: string, contactId: string, body: ContactRequestBody) {
+  const properties: Record<string, string> = {
+    dealname: `${body.companyName} — ${body.leadSource || "Web form"}`,
+    gclid: body.gclid || "",
+    utm_source: body.utm_source || "",
+    utm_medium: body.utm_medium || "",
+    utm_campaign: body.utm_campaign || "",
+    utm_term: body.utm_term || "",
+  };
+  const budgetTier = mapToHubSpotOption(HUBSPOT_BUDGET_TIER, body.budget);
+  const serviceNeeded = mapToHubSpotOption(HUBSPOT_SERVICE_NEEDED, body.serviceNeeded);
+  if (budgetTier) properties.budget_tier = budgetTier;
+  if (serviceNeeded) properties.service_needed = serviceNeeded;
+
+  const dealRes = await fetch("https://api.hubapi.com/crm/v3/objects/deals", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      properties,
+      associations: [
+        {
+          to: { id: contactId },
+          types: [{ associationCategory: "HUBSPOT_DEFINED", associationTypeId: 3 }],
+        },
+      ],
+    }),
+  });
+
+  if (!dealRes.ok) {
+    throw new Error(`HubSpot deal creation failed: ${dealRes.status} ${await dealRes.text()}`);
+  }
+}
+
+async function syncToHubSpot(body: ContactRequestBody) {
+  const token = process.env.HUBSPOT_ACCESS_TOKEN?.trim();
+  if (!token) {
+    console.error("HUBSPOT_ACCESS_TOKEN is missing — skipping HubSpot sync.");
+    return;
+  }
+  const contactId = await upsertHubSpotContact(token, body);
+  await createHubSpotDeal(token, contactId, body);
+}
+
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as ContactRequestBody;
@@ -157,6 +263,12 @@ export async function POST(req: Request) {
         { success: false, error: "Telegram delivery failed." },
         { status: 502 },
       );
+    }
+
+    try {
+      await syncToHubSpot(body);
+    } catch (hubspotError) {
+      console.error("HubSpot sync failed:", hubspotError);
     }
 
     return NextResponse.json({ success: true });
