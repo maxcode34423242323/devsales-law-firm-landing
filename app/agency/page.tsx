@@ -78,6 +78,25 @@ export default function Home(){
       </motion.article>)}</div>
     </div></section>
 
+    <section className="px-5 py-28 md:px-10 md:py-40"><div className="mx-auto max-w-[1450px]">
+      <motion.div {...reveal} className="mb-16"><p className="section-kicker">[ Client feedback ]</p><h2 className="mt-6 max-w-4xl text-6xl font-medium leading-none tracking-[-.055em] text-white md:text-7xl">Dealerships across the country trust us to build their site.</h2></motion.div>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {[
+          ["Motocenter Srl", "DevilSales delivered exactly what we needed — a clean, professional website that makes it easier for customers to browse our inventory and reach us. Great communication from start to finish."],
+          ["Eurocar Viadana", "The whole process was smooth and fast. Our new site looks premium and works great on mobile — exactly what we were hoping for."],
+          ["Autosalone Mia Car", "Very happy with the final result. The website is fast, easy to navigate, and gives our dealership a much stronger online presence."],
+          ["Castello Car Volkswagen Service", "Professional from the first call to launch. The new website reflects the quality of our service and has made things easier for our customers."],
+          ["Cisauto Group", "DevilSales understood exactly what our dealership needed. The site is polished, loads fast, and customers have already commented on how much easier it is to use."],
+        ].map(([name, quote]) => (
+          <motion.div {...reveal} key={name} className="rounded-3xl bg-white p-8 text-[#11052f]">
+            <h3 className="text-lg font-semibold">{name}</h3>
+            <p className="mt-2 tracking-widest text-amber-400">★★★★★</p>
+            <p className="mt-4 text-sm leading-6 text-[#11052f]/70">&ldquo;{quote}&rdquo;</p>
+          </motion.div>
+        ))}
+      </div>
+    </div></section>
+
     <section id="process" className="px-5 py-28 md:px-10 md:py-40"><div className="mx-auto max-w-[1450px] rounded-[42px] bg-[#f0edff] p-7 text-[#11052f] md:p-16">
       <motion.div {...reveal} className="grid gap-12 md:grid-cols-2"><div><p className="section-kicker !text-[#6d35dc]">[ Our process ]</p><h2 className="mt-6 text-6xl font-medium leading-none tracking-[-.055em] md:text-8xl">Clear thinking.<br/>Fast movement.</h2></div><div>{[["01","Discover"],["02","Position"],["03","Design"],["04","Develop"],["05","Launch & grow"]].map(([n,t])=><div key={n} className="flex items-center justify-between border-b border-[#11052f]/15 py-5"><span className="text-xs opacity-50">{n}</span><span className="text-2xl font-medium md:text-3xl">{t}</span><span>↗</span></div>)}</div></motion.div>
     </div></section>
