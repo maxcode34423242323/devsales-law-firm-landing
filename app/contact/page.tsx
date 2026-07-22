@@ -158,6 +158,8 @@ export default function ContactPage() {
       }
 
       setSuccess(true);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "form_submit_success" });
       window.gtag?.("event", "conversion", { send_to: "AW-18337463652/K6KZCNrF_tMcEOT6_adE" });
 
       setForm({

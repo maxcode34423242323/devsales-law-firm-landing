@@ -106,6 +106,7 @@ export default function LeadForm() {
 
       const qualified = form.budget !== "Below $10,000";
       window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "form_submit_success" });
       window.dataLayer.push({
         event: qualified ? "law_firm_qualified_lead" : "law_firm_below_budget_lead",
         budget_tier: form.budget,
