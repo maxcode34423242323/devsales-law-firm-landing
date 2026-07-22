@@ -149,7 +149,7 @@ export default function LeadForm() {
               <Field label="Business email *"><input type="email" value={form.businessEmail} onChange={e => update("businessEmail", e.target.value)} placeholder="you@lawfirm.com" autoComplete="email" /></Field>
               <Field label="US phone number *"><input type="tel" value={form.phone} onChange={e => update("phone", e.target.value)} placeholder="+1 315 547 8952" autoComplete="tel" /></Field>
             </div>
-            <button type="button" className="law-form-primary" onClick={continueToStepTwo}><span>Submit</span><b>↗</b></button>
+            <button type="button" className="law-form-primary" onClick={continueToStepTwo}><span>Submit</span><b>↗︎</b></button>
           </div>
         ) : (
           <div className="law-form-step">
@@ -180,7 +180,7 @@ export default function LeadForm() {
             </label>
             <div className="law-form-actions">
               <button type="button" className="law-form-back" onClick={() => { setStep(1); setMessage(""); setStatus("idle"); }}>← Back</button>
-              <button type="submit" className="law-form-primary" disabled={status === "submitting"}><span>{status === "submitting" ? "Submitting..." : "Submit"}</span><b>↗</b></button>
+              <button type="submit" className="law-form-primary" disabled={status === "submitting"}><span>{status === "submitting" ? "Submitting..." : "Submit"}</span><b>↗︎</b></button>
             </div>
           </div>
         )}
