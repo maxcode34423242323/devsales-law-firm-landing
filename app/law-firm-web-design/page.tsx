@@ -162,11 +162,11 @@ export default function LawFirmWebDesignPage() {
           <motion.div {...reveal} className="law-section-head law-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What clients say after launch.</h2></div><p>Real feedback from clients we&apos;ve built websites for.</p></motion.div>
           <div className="law-testimonial-grid">
             {[
-              ["Motocenter Srl", "DevilSales delivered exactly what we needed — a clean, professional website that makes it easier for customers to browse our inventory and reach us. Great communication from start to finish."],
-              ["Eurocar Viadana", "The whole process was smooth and fast. Our new site looks premium and works great on mobile — exactly what we were hoping for."],
-              ["Autosalone Mia Car", "Very happy with the final result. The website is fast, easy to navigate, and gives our dealership a much stronger online presence."],
-              ["Castello Car Volkswagen Service", "Professional from the first call to launch. The new website reflects the quality of our service and has made things easier for our customers."],
-              ["Cisauto Group", "DevilSales understood exactly what our dealership needed. The site is polished, loads fast, and customers have already commented on how much easier it is to use."],
+              ["Motocenter Srl", "Clear communication from start to finish, and the site was delivered exactly on schedule. Exactly what we needed."],
+              ["Eurocar Viadana", "The whole process was smooth and fast, with great communication throughout. The final result looks premium and works great on mobile."],
+              ["Autosalone Mia Car", "Very happy with the final result. Responsive team, clear communication throughout, and a website that's fast and easy to navigate."],
+              ["Castello Car Volkswagen Service", "Professional from the first call to launch. Great communication throughout, and the final website was exactly the quality we were looking for."],
+              ["Cisauto Group", "DevilSales understood exactly what we needed. Responsive and easy to work with — the final site is polished and loads fast."],
             ].map(([name, quote]) => (
               <motion.div {...reveal} key={name} className="law-testimonial-card">
                 <h3>{name}</h3>
