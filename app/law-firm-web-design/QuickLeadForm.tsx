@@ -86,7 +86,7 @@ export default function QuickLeadForm({ onClose }: { onClose: () => void }) {
           </div>
         ) : (
           <form onSubmit={submit} noValidate>
-            <h3>Start a project</h3>
+            <h3>Book a Meeting</h3>
             <p className="law-quick-sub">Get a callback from our team — takes 30 seconds.</p>
             <label><span>Full name</span><input value={form.fullName} onChange={e => setForm(f => ({ ...f, fullName: e.target.value }))} placeholder="Your name" autoComplete="name" /></label>
             <label><span>Law firm name</span><input value={form.companyName} onChange={e => setForm(f => ({ ...f, companyName: e.target.value }))} placeholder="Firm name" autoComplete="organization" /></label>

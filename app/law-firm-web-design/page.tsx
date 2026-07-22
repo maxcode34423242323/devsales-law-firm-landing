@@ -191,7 +191,7 @@ export default function LawFirmWebDesignPage() {
 
       <footer className="law-footer"><div className="law-container"><span className="nav-brand"><i>DS</i><span><b>DEVILSALES</b><small>WEB STUDIO · USA</small></span></span><p>© {new Date().getFullYear()} DEVILSALES</p><div><Link href="/privacy" target="_blank">Privacy</Link><Link href="/terms" target="_blank">Terms</Link><Link href="/sms-policy" target="_blank">SMS Terms</Link></div></div></footer>
 
-      <button type="button" className="law-sticky-call" onClick={() => setQuickFormOpen(true)}><ContactIcon type="phone" /><span>Start a project</span></button>
+      <button type="button" className="law-sticky-call" onClick={() => setQuickFormOpen(true)}><ContactIcon type="phone" /><span>Book a Meeting</span></button>
 
       <AnimatePresence>
         {quickFormOpen && <QuickLeadForm onClose={() => setQuickFormOpen(false)} />}
