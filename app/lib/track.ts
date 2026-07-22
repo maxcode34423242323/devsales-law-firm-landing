@@ -9,3 +9,8 @@ export function trackEvent(event: string) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event });
 }
+
+export function splitName(fullName: string) {
+  const [firstName, ...rest] = fullName.trim().split(/\s+/);
+  return { firstName: firstName || "", lastName: rest.join(" ") };
+}

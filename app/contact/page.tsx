@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { trackEvent } from "../lib/track";
+import { trackEvent, splitName } from "../lib/track";
 
 type FormData = {
   fullName: string;
@@ -159,8 +159,15 @@ export default function ContactPage() {
       }
 
       setSuccess(true);
+      const { firstName, lastName } = splitName(form.fullName);
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "form_submit_success" });
+      window.dataLayer.push({
+        event: "form_submit_success",
+        email: form.businessEmail,
+        phone_number: form.phone,
+        first_name: firstName,
+        last_name: lastName,
+      });
 
       setForm({
         fullName: "",

@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { splitName } from "../lib/track";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -102,8 +103,15 @@ export default function LeadForm() {
       if (!response.ok || result.success === false) throw new Error(result.error || "Submission failed.");
 
       const qualified = form.budget !== "Below $10,000";
+      const { firstName, lastName } = splitName(form.fullName);
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "form_submit_success" });
+      window.dataLayer.push({
+        event: "form_submit_success",
+        email: form.businessEmail,
+        phone_number: form.phone,
+        first_name: firstName,
+        last_name: lastName,
+      });
       window.dataLayer.push({
         event: qualified ? "law_firm_qualified_lead" : "law_firm_below_budget_lead",
         budget_tier: form.budget,
