@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -39,9 +39,8 @@ export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [form, setForm] = useState<FormState>(initialForm);
-  const [tracking, setTracking] = useState<Record<string, string>>({});
-
-  useEffect(() => {
+  const [tracking] = useState<Record<string, string>>(() => {
+    if (typeof window === "undefined") return {};
     const params = new URLSearchParams(window.location.search);
     const keys = ["gclid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
     const captured: Record<string, string> = {
@@ -53,8 +52,8 @@ export default function LeadForm() {
       if (value) sessionStorage.setItem(`ds_${key}`, value);
       captured[key] = value;
     }
-    setTracking(captured);
-  }, []);
+    return captured;
+  });
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm(current => ({ ...current, [key]: value }));

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import StyledJsxRegistry from "./registry";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500"] });
@@ -145,7 +146,7 @@ export default function RootLayout({
             gtag('config', 'G-MDZ35EQRC5');
           `}
         </Script>
-        {children}
+        <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>
     </html>
   );

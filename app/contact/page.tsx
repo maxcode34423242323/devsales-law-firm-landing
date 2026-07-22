@@ -491,7 +491,7 @@ export default function ContactPage() {
         <section className="contact-resources">
           <div className="contact-resources-heading"><p className="section-kicker">[ Resources ]</p><h2>Everything you need to make the right next move.</h2><p>Explore our capabilities, understand project investment and review visual references for your industry.</p></div>
           <div className="contact-resource-grid">
-            <Link href="/#services" className="contact-resource-card"><ResourceIcon type="services"/><h3>Services</h3><p>Explore strategy, UI/UX design, custom development and connected growth systems.</p><span>Explore services ↗</span></Link>
+            <Link href="/agency#services" className="contact-resource-card"><ResourceIcon type="services"/><h3>Services</h3><p>Explore strategy, UI/UX design, custom development and connected growth systems.</p><span>Explore services ↗</span></Link>
             <Link href="/contact#project-brief" className="contact-resource-card"><ResourceIcon type="investment"/><h3>Project Investment</h3><p>Choose the budget range, timeline and scope that best matches your business goals.</p><span>Plan your project ↗</span></Link>
             <Link href="/work" className="contact-resource-card"><ResourceIcon type="portfolio"/><h3>Portfolio</h3><p>Review real US-market website references across ten high-value service industries.</p><span>View portfolio ↗</span></Link>
           </div>
