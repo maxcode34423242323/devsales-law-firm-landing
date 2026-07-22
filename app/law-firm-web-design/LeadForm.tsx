@@ -30,7 +30,6 @@ const initialForm: FormState = {
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
-    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -75,7 +74,6 @@ export default function LeadForm() {
     setStep(2);
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "law_firm_form_step_1_complete" });
-    window.gtag?.("event", "law_firm_form_step_1_complete");
   }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -111,11 +109,6 @@ export default function LeadForm() {
         budget_tier: form.budget,
         service_needed: form.serviceNeeded,
       });
-      window.gtag?.("event", qualified ? "law_firm_qualified_lead" : "law_firm_below_budget_lead", {
-        budget_tier: form.budget,
-        service_needed: form.serviceNeeded,
-      });
-      window.gtag?.("event", "conversion", { send_to: "AW-18337463652/K6KZCNrF_tMcEOT6_adE" });
       setForm(initialForm);
       setStep(1);
       setStatus("success");

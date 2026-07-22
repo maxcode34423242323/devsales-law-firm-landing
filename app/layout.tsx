@@ -136,16 +136,6 @@ export default function RootLayout({
           `}
         </Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-18337463652" strategy="afterInteractive" />
-        <Script id="google-ads-gtag" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-18337463652');
-            gtag('config', 'G-MDZ35EQRC5');
-          `}
-        </Script>
         <StyledJsxRegistry>{children}</StyledJsxRegistry>
       </body>
     </html>
