@@ -122,12 +122,12 @@ export default function LawFirmWebDesignPage() {
 
       <section id="portfolio" className="law-section">
         <div className="law-container">
-          <motion.div {...reveal} className="law-section-head"><div><p className="section-kicker">[ Selected work ]</p><h2>Proof, not promises.</h2></div><p>Real personal injury firm websites we study for design quality and conversion structure. More case studies are added as projects launch.</p></motion.div>
+          <motion.div {...reveal} className="law-section-head"><div><p className="section-kicker">[ Industry references — not our clients ]</p><h2>What we study, before we build.</h2></div><p>These are real personal injury firm websites we analyze for design quality and conversion structure — not projects we built or firms we&apos;ve worked with. Our own case studies will replace these as projects launch.</p></motion.div>
           <div className="law-portfolio-grid">
             {portfolioCases.map((item, i) => item.image && item.url ? (
               <motion.a {...reveal} key={item.title} href={item.url} target="_blank" rel="noreferrer" aria-label={`Visit ${item.title} website`} className="law-portfolio-card has-image">
                 <div className="law-portfolio-image"><Image src={item.image} alt={`${item.title} website design`} fill sizes="(max-width: 767px) 100vw, 460px" quality={70} className="object-cover object-top" /></div>
-                <span className="law-portfolio-tag">REFERENCE 0{i + 1}</span>
+                <span className="law-portfolio-tag">NOT OUR CLIENT — REFERENCE 0{i + 1}</span>
                 <div className="law-portfolio-meta"><p>{item.category}</p><h3>{item.title}</h3><i>Visit real website ↗︎</i></div>
               </motion.a>
             ) : (
