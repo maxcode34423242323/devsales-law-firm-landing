@@ -6,6 +6,8 @@ declare global {
 
 export function trackEvent(event: string) {
   if (typeof window === "undefined") return;
+  // TEMPORARY DEBUG — remove once the phone/email double-fire is diagnosed.
+  console.trace(`[trackEvent] "${event}" fired at ${new Date().toISOString()}`);
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event });
 }
