@@ -104,3 +104,14 @@ body{overflow-x:hidden}
   .compact-footer .footer-main{gap:27px;padding:38px 0}
   .compact-footer .footer-bottom{gap:18px;padding-top:20px}
 }
+
+.ds-consent-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:200;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;max-width:900px;margin:0 auto;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:#150a3b;padding:18px 22px;box-shadow:0 25px 70px rgba(0,0,0,.45)}
+.ds-consent-banner p{flex:1 1 260px;margin:0;color:rgba(255,255,255,.75);font-size:13px;line-height:1.6}
+.ds-consent-banner p a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+.ds-consent-actions{display:flex;flex:0 0 auto;gap:10px}
+.ds-consent-actions button{min-height:44px;border-radius:999px;padding:0 22px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.25s}
+.ds-consent-reject{border:1px solid rgba(255,255,255,.25);background:transparent;color:rgba(255,255,255,.8)}
+.ds-consent-reject:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.ds-consent-accept{border:none;background:#7628ff;color:#fff}
+.ds-consent-accept:hover{background:#8b4dff}
+@media(max-width:600px){.ds-consent-banner{flex-direction:column;align-items:stretch;padding:18px}.ds-consent-actions{justify-content:stretch}.ds-consent-actions button{flex:1}}
