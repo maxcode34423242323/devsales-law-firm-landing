@@ -212,7 +212,7 @@ export default function ContactPage() {
             <p className="section-kicker">[ Get in touch ]</p>
             <h2>Let&apos;s build the website your business deserves.</h2>
             <p>Share your goals, current website and timeline. We review every qualified request personally and respond with the most useful next step.</p>
-            <div className="contact-direct-card featured"><h3>DevilSales Web</h3><a href="tel:+13155478952" onClick={() => trackEvent("phone_click")}><ContactIcon type="phone"/><span><small>Call us</small>315-547-8952</span></a><a href="mailto:info@devilsales.dev" onClick={() => trackEvent("email_click")}><ContactIcon type="mail"/><span><small>Email us</small>info@devilsales.dev</span></a><div><ContactIcon type="location"/><span><small>Service area</small>United States · Nationwide</span></div></div>
+            <div className="contact-direct-card featured"><h3>DevilSales Web</h3><a href="tel:+13155478952" data-track="phone_click" onClick={() => trackEvent("phone_click")}><ContactIcon type="phone"/><span><small>Call us</small>315-547-8952</span></a><a href="mailto:info@devilsales.dev" data-track="email_click" onClick={() => trackEvent("email_click")}><ContactIcon type="mail"/><span><small>Email us</small>info@devilsales.dev</span></a><div><ContactIcon type="location"/><span><small>Service area</small>United States · Nationwide</span></div></div>
           </div>
 
           <form
