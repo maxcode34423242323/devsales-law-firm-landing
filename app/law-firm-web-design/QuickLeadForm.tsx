@@ -66,6 +66,7 @@ export default function QuickLeadForm({ onClose }: { onClose: () => void }) {
         phone_number: form.phone,
         first_name: firstName,
         last_name: lastName,
+        budget_tier: form.budget,
       });
       window.dataLayer.push({
         event: qualified ? "law_firm_qualified_lead" : "law_firm_below_budget_lead",

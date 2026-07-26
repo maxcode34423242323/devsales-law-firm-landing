@@ -167,6 +167,7 @@ export default function ContactPage() {
         phone_number: form.phone,
         first_name: firstName,
         last_name: lastName,
+        budget_tier: form.budget,
       });
 
       setForm({
