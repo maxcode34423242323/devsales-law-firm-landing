@@ -93,6 +93,7 @@ export default function LeadForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          projectDetails: form.projectDetails.trim() || "Not provided.",
           country: "United States",
           industry: "Personal Injury Law Firm",
           leadSource: "Law firm Google Ads landing page",

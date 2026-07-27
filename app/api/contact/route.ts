@@ -85,6 +85,7 @@ async function upsertHubSpotContact(token: string, body: ContactRequestBody) {
 // of sending the raw value (HubSpot rejects the whole Deal otherwise).
 const HUBSPOT_BUDGET_TIER: Record<string, string> = {
   "Below $10,000": "Below $10,000",
+  "$3,000 - $10,000": "Below $10,000",
   "$10,000 - $20,000": "$10,000–$20,000",
   "$20,000 - $50,000": "$20,000–$50,000",
   "$10,000 - $25,000": "$10,000–$20,000",
@@ -95,6 +96,8 @@ const HUBSPOT_BUDGET_TIER: Record<string, string> = {
 const HUBSPOT_SERVICE_NEEDED: Record<string, string> = {
   "New custom law firm website": "New Website",
   "Law firm website redesign": "Website Redesign",
+  "New custom website": "New Website",
+  "Website redesign": "Website Redesign",
   "Website Redesign": "Website Redesign",
 };
 

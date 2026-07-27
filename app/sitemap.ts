@@ -28,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://www.devilsales.dev/pricing",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: "https://www.devilsales.dev/faq",
       lastModified,
       changeFrequency: "monthly",
