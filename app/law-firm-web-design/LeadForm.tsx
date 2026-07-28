@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { splitName } from "../lib/track";
+import { isValidUsPhone, normalizeUsPhone, splitName } from "../lib/track";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -67,7 +67,12 @@ export default function LeadForm() {
     }
     if (!/^\S+@\S+\.\S+$/.test(form.businessEmail)) {
       setStatus("error");
-      setMessage("Enter a valid business email address.");
+      setMessage("Enter a valid email address.");
+      return;
+    }
+    if (!isValidUsPhone(form.phone)) {
+      setStatus("error");
+      setMessage("Enter a valid 10-digit US phone number.");
       return;
     }
     setStatus("idle");
@@ -93,6 +98,7 @@ export default function LeadForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          phone: normalizeUsPhone(form.phone),
           projectDetails: form.projectDetails.trim() || "Not provided.",
           country: "United States",
           industry: "Personal Injury Law Firm",
@@ -109,7 +115,7 @@ export default function LeadForm() {
       window.dataLayer.push({
         event: "form_submit_success",
         email: form.businessEmail,
-        phone_number: form.phone,
+        phone_number: normalizeUsPhone(form.phone),
         first_name: firstName,
         last_name: lastName,
         budget_tier: form.budget,
@@ -149,8 +155,8 @@ export default function LeadForm() {
             <div className="law-form-grid">
               <Field label="Full name *"><input value={form.fullName} onChange={e => update("fullName", e.target.value)} placeholder="Your name" autoComplete="name" /></Field>
               <Field label="Law firm name *"><input value={form.companyName} onChange={e => update("companyName", e.target.value)} placeholder="Firm name" autoComplete="organization" /></Field>
-              <Field label="Business email *"><input type="email" value={form.businessEmail} onChange={e => update("businessEmail", e.target.value)} placeholder="you@lawfirm.com" autoComplete="email" /></Field>
-              <Field label="US phone number *"><input type="tel" value={form.phone} onChange={e => update("phone", e.target.value)} placeholder="+1 315 547 8952" autoComplete="tel" /></Field>
+              <Field label="Email *"><input type="email" value={form.businessEmail} onChange={e => update("businessEmail", e.target.value)} placeholder="you@lawfirm.com" autoComplete="email" required /></Field>
+              <Field label="Phone *"><input type="tel" value={form.phone} onChange={e => update("phone", e.target.value)} placeholder="(315) 547-8952" autoComplete="tel" required /></Field>
             </div>
             <button type="button" className="law-form-primary" onClick={continueToStepTwo}><span>Submit</span><b>↗︎</b></button>
           </div>

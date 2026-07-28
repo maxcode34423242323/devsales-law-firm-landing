@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
-import { trackEvent, splitName } from "../lib/track";
+import { trackEvent, splitName, isValidUsPhone, normalizeUsPhone } from "../lib/track";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -26,7 +26,12 @@ export default function QuickLeadForm({ onClose }: { onClose: () => void }) {
     }
     if (!/^\S+@\S+\.\S+$/.test(form.businessEmail)) {
       setStatus("error");
-      setMessage("Enter a valid business email address.");
+      setMessage("Enter a valid email address.");
+      return;
+    }
+    if (!isValidUsPhone(form.phone)) {
+      setStatus("error");
+      setMessage("Enter a valid 10-digit US phone number.");
       return;
     }
 
@@ -45,6 +50,7 @@ export default function QuickLeadForm({ onClose }: { onClose: () => void }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          phone: normalizeUsPhone(form.phone),
           country: "United States",
           industry: "Personal Injury Law Firm",
           serviceNeeded: "To be discussed",
@@ -63,7 +69,7 @@ export default function QuickLeadForm({ onClose }: { onClose: () => void }) {
       window.dataLayer.push({
         event: "form_submit_success",
         email: form.businessEmail,
-        phone_number: form.phone,
+        phone_number: normalizeUsPhone(form.phone),
         first_name: firstName,
         last_name: lastName,
         budget_tier: form.budget,
@@ -98,8 +104,8 @@ export default function QuickLeadForm({ onClose }: { onClose: () => void }) {
             <p className="law-quick-sub">Get a callback from our team — takes 30 seconds.</p>
             <label><span>Full name</span><input value={form.fullName} onChange={e => setForm(f => ({ ...f, fullName: e.target.value }))} placeholder="Your name" autoComplete="name" /></label>
             <label><span>Law firm name</span><input value={form.companyName} onChange={e => setForm(f => ({ ...f, companyName: e.target.value }))} placeholder="Firm name" autoComplete="organization" /></label>
-            <label><span>Business email</span><input type="email" value={form.businessEmail} onChange={e => setForm(f => ({ ...f, businessEmail: e.target.value }))} placeholder="you@lawfirm.com" autoComplete="email" /></label>
-            <label><span>Phone</span><input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="+1 315 547 8952" autoComplete="tel" /></label>
+            <label><span>Email</span><input type="email" value={form.businessEmail} onChange={e => setForm(f => ({ ...f, businessEmail: e.target.value }))} placeholder="you@lawfirm.com" autoComplete="email" required /></label>
+            <label><span>Phone</span><input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="(315) 547-8952" autoComplete="tel" required /></label>
             <label><span>Project budget</span>
               <select value={form.budget} onChange={e => setForm(f => ({ ...f, budget: e.target.value }))}>
                 <option value="">Select budget</option>
