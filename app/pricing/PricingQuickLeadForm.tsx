@@ -98,7 +98,7 @@ export default function PricingQuickLeadForm({ onClose }: { onClose: () => void 
             <p className="pr-quick-sub">Get a callback from our team — takes 30 seconds.</p>
             <label><span>Full name</span><input value={form.fullName} onChange={e => setForm(f => ({ ...f, fullName: e.target.value }))} placeholder="Your name" autoComplete="name" /></label>
             <label><span>Company name</span><input value={form.companyName} onChange={e => setForm(f => ({ ...f, companyName: e.target.value }))} placeholder="Company name" autoComplete="organization" /></label>
-            <label><span>Business email</span><input type="email" value={form.businessEmail} onChange={e => setForm(f => ({ ...f, businessEmail: e.target.value }))} placeholder="you@company.com" autoComplete="email" /></label>
+            <label><span>Email</span><input type="email" value={form.businessEmail} onChange={e => setForm(f => ({ ...f, businessEmail: e.target.value }))} placeholder="you@email.com" autoComplete="email" required /></label>
             <label><span>Phone</span><input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="+1 315 547 8952" autoComplete="tel" /></label>
             <label><span>Industry</span><input value={form.industry} onChange={e => setForm(f => ({ ...f, industry: e.target.value }))} placeholder="e.g. Auto dealership, HVAC, Law firm" /></label>
             <label><span>Project budget</span>

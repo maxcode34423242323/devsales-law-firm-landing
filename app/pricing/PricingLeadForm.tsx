@@ -139,7 +139,7 @@ export default function PricingLeadForm() {
         <div className="pr-form-grid">
           <Field label="Full name *"><input value={form.fullName} onChange={e => update("fullName", e.target.value)} placeholder="Your name" autoComplete="name" /></Field>
           <Field label="Company name *"><input value={form.companyName} onChange={e => update("companyName", e.target.value)} placeholder="Company name" autoComplete="organization" /></Field>
-          <Field label="Business email *"><input type="email" value={form.businessEmail} onChange={e => update("businessEmail", e.target.value)} placeholder="you@company.com" autoComplete="email" /></Field>
+          <Field label="Email *"><input type="email" value={form.businessEmail} onChange={e => update("businessEmail", e.target.value)} placeholder="you@email.com" autoComplete="email" required /></Field>
           <Field label="US phone number *"><input type="tel" value={form.phone} onChange={e => update("phone", e.target.value)} placeholder="+1 315 547 8952" autoComplete="tel" /></Field>
           <Field label="Industry *"><input value={form.industry} onChange={e => update("industry", e.target.value)} placeholder="e.g. Auto dealership, HVAC, Law firm" /></Field>
           <Field label="Project budget *">
