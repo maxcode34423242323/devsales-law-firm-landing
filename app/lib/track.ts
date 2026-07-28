@@ -15,7 +15,15 @@ export function splitName(fullName: string) {
   return { firstName: firstName || "", lastName: rest.join(" ") };
 }
 
+function extractUsPhoneDigits(rawPhone: string) {
+  const digits = rawPhone.replace(/\D/g, "");
+  return digits.length === 11 && digits.startsWith("1") ? digits.slice(1) : digits;
+}
+
+export function isValidUsPhone(rawPhone: string) {
+  return extractUsPhoneDigits(rawPhone).length === 10;
+}
+
 export function normalizeUsPhone(rawPhone: string) {
-  const trimmed = rawPhone.trim();
-  return trimmed.startsWith("+1") ? trimmed : `+1 ${trimmed}`;
+  return `+1 ${extractUsPhoneDigits(rawPhone)}`;
 }

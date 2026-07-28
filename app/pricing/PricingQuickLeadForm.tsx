@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
-import { trackEvent, splitName, normalizeUsPhone } from "../lib/track";
+import { trackEvent, splitName, normalizeUsPhone, isValidUsPhone } from "../lib/track";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -27,7 +27,12 @@ export default function PricingQuickLeadForm({ onClose }: { onClose: () => void 
     }
     if (!/^\S+@\S+\.\S+$/.test(form.businessEmail)) {
       setStatus("error");
-      setMessage("Enter a valid business email address.");
+      setMessage("Enter a valid email address.");
+      return;
+    }
+    if (!isValidUsPhone(form.phone)) {
+      setStatus("error");
+      setMessage("Enter a valid 10-digit US phone number.");
       return;
     }
 
