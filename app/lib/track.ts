@@ -14,3 +14,8 @@ export function splitName(fullName: string) {
   const [firstName, ...rest] = fullName.trim().split(/\s+/);
   return { firstName: firstName || "", lastName: rest.join(" ") };
 }
+
+export function normalizeUsPhone(rawPhone: string) {
+  const trimmed = rawPhone.trim();
+  return trimmed.startsWith("+1") ? trimmed : `+1 ${trimmed}`;
+}

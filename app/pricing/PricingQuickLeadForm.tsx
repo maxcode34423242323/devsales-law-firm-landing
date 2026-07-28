@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
-import { trackEvent, splitName } from "../lib/track";
+import { trackEvent, splitName, normalizeUsPhone } from "../lib/track";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -46,6 +46,7 @@ export default function PricingQuickLeadForm({ onClose }: { onClose: () => void 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          phone: normalizeUsPhone(form.phone),
           country: "United States",
           serviceNeeded: "To be discussed",
           projectDetails: "Submitted via the quick contact popup.",
@@ -62,7 +63,7 @@ export default function PricingQuickLeadForm({ onClose }: { onClose: () => void 
       window.dataLayer.push({
         event: "form_submit_success",
         email: form.businessEmail,
-        phone_number: form.phone,
+        phone_number: normalizeUsPhone(form.phone),
         first_name: firstName,
         last_name: lastName,
         budget_tier: form.budget,
@@ -99,7 +100,7 @@ export default function PricingQuickLeadForm({ onClose }: { onClose: () => void 
             <label><span>Full name</span><input value={form.fullName} onChange={e => setForm(f => ({ ...f, fullName: e.target.value }))} placeholder="Your name" autoComplete="name" /></label>
             <label><span>Company name</span><input value={form.companyName} onChange={e => setForm(f => ({ ...f, companyName: e.target.value }))} placeholder="Company name" autoComplete="organization" /></label>
             <label><span>Email</span><input type="email" value={form.businessEmail} onChange={e => setForm(f => ({ ...f, businessEmail: e.target.value }))} placeholder="you@email.com" autoComplete="email" required /></label>
-            <label><span>Phone</span><input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="+1 315 547 8952" autoComplete="tel" /></label>
+            <label><span>Phone</span><input type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="(315) 547-8952" autoComplete="tel" required /></label>
             <label><span>Industry</span><input value={form.industry} onChange={e => setForm(f => ({ ...f, industry: e.target.value }))} placeholder="e.g. Auto dealership, HVAC, Law firm" /></label>
             <label><span>Project budget</span>
               <select value={form.budget} onChange={e => setForm(f => ({ ...f, budget: e.target.value }))}>

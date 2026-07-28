@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { splitName } from "../lib/track";
+import { normalizeUsPhone, splitName } from "../lib/track";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -90,6 +90,7 @@ export default function PricingLeadForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          phone: normalizeUsPhone(form.phone),
           projectDetails: form.projectDetails.trim() || "Not provided.",
           country: "United States",
           leadSource: "Pricing page (Premium/Growth)",
@@ -104,7 +105,7 @@ export default function PricingLeadForm() {
       window.dataLayer.push({
         event: "form_submit_success",
         email: form.businessEmail,
-        phone_number: form.phone,
+        phone_number: normalizeUsPhone(form.phone),
         first_name: firstName,
         last_name: lastName,
         budget_tier: form.budget,
@@ -140,7 +141,7 @@ export default function PricingLeadForm() {
           <Field label="Full name *"><input value={form.fullName} onChange={e => update("fullName", e.target.value)} placeholder="Your name" autoComplete="name" /></Field>
           <Field label="Company name *"><input value={form.companyName} onChange={e => update("companyName", e.target.value)} placeholder="Company name" autoComplete="organization" /></Field>
           <Field label="Email *"><input type="email" value={form.businessEmail} onChange={e => update("businessEmail", e.target.value)} placeholder="you@email.com" autoComplete="email" required /></Field>
-          <Field label="US phone number *"><input type="tel" value={form.phone} onChange={e => update("phone", e.target.value)} placeholder="+1 315 547 8952" autoComplete="tel" /></Field>
+          <Field label="Phone *"><input type="tel" value={form.phone} onChange={e => update("phone", e.target.value)} placeholder="(315) 547-8952" autoComplete="tel" required /></Field>
           <Field label="Industry *"><input value={form.industry} onChange={e => update("industry", e.target.value)} placeholder="e.g. Auto dealership, HVAC, Law firm" /></Field>
           <Field label="Project budget *">
             <select value={form.budget} onChange={e => update("budget", e.target.value)}>
