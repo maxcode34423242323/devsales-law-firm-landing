@@ -338,7 +338,7 @@ export default function PricingPage() {
         .pr-testimonial-head h2{color:#11052f}
         .pr-testimonial-head>p{color:rgba(17,5,47,.55)}
         .pr-testimonial-marquee{margin-top:60px;overflow:hidden}
-        .pr-testimonial-track{display:flex;width:max-content;animation:pr-testimonial-scroll 42s linear infinite}
+        .pr-testimonial-track{display:flex;width:max-content;animation:pr-testimonial-scroll 42s linear infinite;will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
         .pr-testimonial-track:hover{animation-play-state:paused}
         .pr-testimonial-set{display:flex;gap:24px;padding:0 12px}
         .pr-testimonial-card{flex:0 0 360px;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
@@ -469,7 +469,7 @@ export default function PricingPage() {
           .pr-benefit{min-height:220px}
           .pr-testimonial-marquee{margin-top:40px}
           .pr-testimonial-card{flex:0 0 280px;padding:28px 24px}
-          .pr-testimonial-track{animation-duration:30s}
+          .pr-testimonial-track{animation:pr-testimonial-scroll 55s linear infinite}
           .pr-investment{border-radius:26px;padding:34px 24px;margin-top:45px}
           .pr-investment h2{font-size:38px}
           .pr-process-shell{width:calc(100% - 30px);border-radius:26px;padding:32px 22px}
