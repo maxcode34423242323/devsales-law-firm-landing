@@ -145,7 +145,7 @@ export default function PricingPage() {
               <h3>Louwman Exclusive</h3>
               <p>A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.</p>
               <span className="agency-button">Visit real website ↗</span>
-              <span className="pr-flagship-note"></span>
+              <span className="pr-flagship-note">Shown as an industry reference</span>
             </div>
           </motion.a>
 
@@ -164,7 +164,7 @@ export default function PricingPage() {
 
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
             <div><p className="section-kicker !text-white/65">[ Premium investment ]</p><h2>Custom platforms start at <span>$10,000.</span></h2></div>
-            <div><p>For businesses that need more than a template: content management, integrations, custom development and a measurement foundation built for serious paid traffic.</p><a href="#get-started" className="mixar-button fill">Book a Strategy Call ↗︎</a></div>
+            <div><p>Book a short strategy call — we&apos;ll confirm scope, timeline and whether Premium is the right fit for what you need.</p><a href="#get-started" className="mixar-button fill">Book a Strategy Call ↗︎</a></div>
           </motion.div>
         </div>
       </section>
@@ -178,7 +178,7 @@ export default function PricingPage() {
 
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
             <div><p className="section-kicker !text-white/65">[ Growth investment ]</p><h2>Professional websites start at <span>$3,000.</span></h2></div>
-            <div><p>For businesses that need a clean, credible site live quickly — clear information, a fast mobile experience and a real path to contact.</p><a href="#get-started" className="mixar-button fill">Get Your Free Quote ↗︎</a></div>
+            <div><p>Send us a few details and we&apos;ll come back with a clear scope, timeline and quote — no long sales process.</p><a href="#get-started" className="mixar-button fill">Get Your Free Quote ↗︎</a></div>
           </motion.div>
         </div>
       </section>
