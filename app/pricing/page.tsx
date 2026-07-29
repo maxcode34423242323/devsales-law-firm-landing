@@ -176,22 +176,33 @@ export default function PricingPage() {
             <p>For businesses that need a clean, credible site live quickly — clear information, a fast mobile experience, technical SEO foundations included, and a real path to contact. Projects start at $3,000.</p>
           </motion.div>
 
-          <div className="pr-client-grid">
-            {growthClients.map(([name, industry, quote]) => (
-              <motion.div {...reveal} key={name} className="pr-client-card">
-                <span className="pr-tag real small">REAL CLIENT</span>
-                <h3>{name}</h3>
-                <p className="pr-client-industry">{industry}</p>
-                <p className="pr-client-stars">★★★★★</p>
-                <p className="pr-client-quote">&ldquo;{quote}&rdquo;</p>
-              </motion.div>
-            ))}
-          </div>
-
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
             <div><p className="section-kicker !text-white/65">[ Growth investment ]</p><h2>Professional websites start at <span>$3,000.</span></h2></div>
             <div><p>For businesses that need a clean, credible site live quickly — clear information, a fast mobile experience and a real path to contact.</p><a href="#get-started" className="mixar-button fill">Get Your Free Quote ↗︎</a></div>
           </motion.div>
+        </div>
+      </section>
+
+      <section className="pr-section pr-testimonials-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
+        </div>
+        <div className="pr-testimonial-marquee">
+          <div className="pr-testimonial-track">
+            {[0, 1].map(rep => (
+              <div className="pr-testimonial-set" key={rep} aria-hidden={rep === 1}>
+                {growthClients.map(([name, industry, quote]) => (
+                  <div key={name} className="pr-testimonial-card">
+                    <span className="pr-testimonial-tag">REAL CLIENT</span>
+                    <h3>{name}</h3>
+                    <p className="pr-testimonial-industry">{industry}</p>
+                    <p className="pr-testimonial-stars">★★★★★</p>
+                    <p className="pr-testimonial-quote">&ldquo;{quote}&rdquo;</p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -315,9 +326,6 @@ export default function PricingPage() {
         .pr-flagship-copy h3{margin-top:10px;font-size:40px;font-weight:500;letter-spacing:-.04em}
         .pr-flagship-copy>p:not(.section-kicker){margin-top:18px;color:rgba(255,255,255,.55);line-height:1.65}
         .pr-flagship-note{display:block;margin-top:12px;color:rgba(255,255,255,.28);font-size:10.5px;letter-spacing:.04em}
-        .pr-tag{display:inline-flex;width:fit-content;border-radius:999px;padding:6px 14px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-        .pr-tag.real{background:rgba(120,255,180,.14);color:#7dffb4;margin-bottom:12px}
-        .pr-tag.real.small{margin-bottom:14px}
         .pr-portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
         .pr-portfolio-card{position:relative;display:block;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#17063e;color:inherit;text-decoration:none;transition:.3s}
         .pr-portfolio-card:hover{border-color:rgba(156,99,255,.55)}
@@ -326,12 +334,20 @@ export default function PricingPage() {
         .pr-portfolio-meta p{color:#a982ff;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
         .pr-portfolio-meta h3{margin-top:8px;font-size:19px;font-weight:500;letter-spacing:-.02em}
         .pr-portfolio-meta i{display:block;margin-top:12px;color:rgba(255,255,255,.55);font-size:12px;font-style:normal;text-decoration:underline;text-underline-offset:3px}
-        .pr-client-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:60px}
-        .pr-client-card{border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#17063e;padding:28px 26px}
-        .pr-client-card h3{margin-top:2px;font-size:19px;font-weight:600;letter-spacing:-.01em}
-        .pr-client-industry{margin-top:4px;color:#a982ff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-        .pr-client-stars{margin-top:14px;font-size:17px;letter-spacing:.15em;color:#f5b400}
-        .pr-client-quote{margin-top:14px;color:rgba(255,255,255,.62);font-size:14px;line-height:1.6}
+        .pr-testimonials-section{background:#fff;color:#11052f;overflow:hidden}
+        .pr-testimonial-head h2{color:#11052f}
+        .pr-testimonial-head>p{color:rgba(17,5,47,.55)}
+        .pr-testimonial-marquee{margin-top:60px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+        .pr-testimonial-track{display:flex;width:max-content;animation:pr-testimonial-scroll 42s linear infinite}
+        .pr-testimonial-track:hover{animation-play-state:paused}
+        .pr-testimonial-set{display:flex;gap:24px;padding:0 12px}
+        .pr-testimonial-card{flex:0 0 360px;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
+        .pr-testimonial-tag{display:inline-flex;border-radius:999px;padding:6px 13px;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(16,150,90,.1);color:#0a8a52}
+        .pr-testimonial-card h3{margin-top:14px;font-size:18px;font-weight:600;letter-spacing:-.01em}
+        .pr-testimonial-industry{margin-top:4px;color:#7628ff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+        .pr-testimonial-stars{margin-top:14px;font-size:19px;letter-spacing:.15em;color:#f5b400}
+        .pr-testimonial-quote{margin-top:16px;color:rgba(17,5,47,.72);font-size:14.5px;line-height:1.65}
+        @keyframes pr-testimonial-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
         .pr-faq-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:16px;margin-top:60px}
         .pr-faq{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#160045;transition:.35s}
         .pr-faq[open],.pr-faq:hover{border-color:rgba(156,99,255,.5);background:radial-gradient(circle at 0 0,rgba(119,62,255,.16),transparent 55%),#1a0752}
@@ -430,7 +446,6 @@ export default function PricingPage() {
           .pr-flagship{grid-template-columns:1fr}
           .pr-flagship-image{min-height:340px}
           .pr-portfolio-grid{grid-template-columns:1fr 1fr}
-          .pr-client-grid{grid-template-columns:1fr 1fr}
           .pr-benefit-grid{grid-template-columns:1fr 1fr}
           .pr-faq-grid{grid-template-columns:1fr}
           .pr-contact-copy{position:static}
@@ -450,8 +465,11 @@ export default function PricingPage() {
           .pr-section{padding:80px 0}
           .pr-section-head,.pr-intro-grid{gap:24px}
           .pr-section-head h2,.pr-intro-grid h2{font-size:38px}
-          .pr-portfolio-grid,.pr-client-grid,.pr-benefit-grid{grid-template-columns:1fr;margin-top:40px}
+          .pr-portfolio-grid,.pr-benefit-grid{grid-template-columns:1fr;margin-top:40px}
           .pr-benefit{min-height:220px}
+          .pr-testimonial-marquee{margin-top:40px}
+          .pr-testimonial-card{flex:0 0 280px;padding:28px 24px}
+          .pr-testimonial-track{animation-duration:30s}
           .pr-investment{border-radius:26px;padding:34px 24px;margin-top:45px}
           .pr-investment h2{font-size:38px}
           .pr-process-shell{width:calc(100% - 30px);border-radius:26px;padding:32px 22px}
