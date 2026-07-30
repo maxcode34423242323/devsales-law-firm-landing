@@ -34,7 +34,7 @@ const growthClients = [
 
 const approachBenefits = [
   ["01", "A site that matches your growth stage", "Whether you need to launch fast or build a real platform, the project is scoped to where your business actually is — not a generic package."],
-  ["02", "Built around how customers decide", "Clear structure, focused messaging and calls to action designed around how people actually choose who to work with."],
+  ["02", "Built around how customers decide", "Clear structure, focused messaging and calls to action — backed by an optional AI assistant that qualifies leads even when you're offline."],
   ["03", "Fast where it matters", "Responsive development and technical SEO foundations, on either track."],
   ["04", "Tracking you can trust", "GCLID, UTM capture and conversion events prepared for Google Ads, GA4 and lead qualification."],
 ];
@@ -43,7 +43,7 @@ const commitmentBenefits = [
   ["01", "Direct access, no account managers", "You work directly with the person building your site from the first call to launch — not a rotating team."],
   ["02", "Fixed scope before work begins", "Your investment and deliverables are locked in writing before development starts. No surprise invoices."],
   ["03", "Real work becomes your reference", "Every project we complete becomes part of the portfolio above — real work, real credit, real case study."],
-  ["04", "One accountable team", "Strategy, design, development and tracking from a single team, not handed off between departments."],
+  ["04", "One accountable team", "Strategy, design, development, tracking — and AI automation where it helps — from a single team, not handed off between departments."],
 ];
 
 const processSteps = [
@@ -154,7 +154,7 @@ export default function PricingPage() {
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head">
             <div><p className="section-kicker">[ Premium ]</p><h2>Custom-built platforms for ambitious brands.</h2></div>
-            <p>For businesses that need more than a website: content management, integrations, lead automation and a visual system built around how customers actually decide.</p>
+            <p>For businesses that need more than a website: content management, integrations, AI-powered lead automation and a visual system built around how customers actually decide.</p>
           </motion.div>
 
           <motion.a {...reveal} href="https://www.louwmanexclusive.nl/en/" target="_blank" rel="noreferrer" aria-label="Visit Louwman Exclusive website" className="pr-flagship">
@@ -192,7 +192,7 @@ export default function PricingPage() {
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head">
             <div><p className="section-kicker">[ Growth ]</p><h2>A fast, professional website for a growing business.</h2></div>
-            <p>For businesses that need a clean, credible site live quickly — clear information, a fast mobile experience, technical SEO foundations included, and a real path to contact.</p>
+            <p>For businesses that need a clean, credible site live quickly — clear information, a fast mobile experience, technical SEO foundations included, and an optional AI intake assistant to catch leads around the clock.</p>
           </motion.div>
 
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
@@ -249,7 +249,7 @@ export default function PricingPage() {
           <motion.div {...reveal} className="pr-contact-copy">
             <p className="section-kicker">[ Start a project ]</p>
             <h2>Tell us where you&apos;re starting from.</h2>
-            <p>Whether you need a fast Growth site or a full Premium platform, tell us about the project and we&apos;ll recommend the right track.</p>
+            <p>Whether you need a fast Growth site or a full Premium platform — with or without an AI intake assistant — tell us about the project and we&apos;ll recommend the right fit.</p>
             <div className="pr-contact-card">
               <h3>DevilSales Web</h3>
               <a href="tel:+13155478952" data-track="phone_click" onClick={() => trackEvent("phone_click")}><ContactIcon type="phone" /><span><small>Call us</small>315-547-8952</span></a>
