@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "../lib/track";
 import PricingLeadForm from "./PricingLeadForm";
 import PricingQuickLeadForm from "./PricingQuickLeadForm";
@@ -68,6 +68,20 @@ export default function PricingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [quickFormOpen, setQuickFormOpen] = useState(false);
+  const testimonialTrackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = testimonialTrackRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        el.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   function handleSpotlightMove(event: React.MouseEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -188,7 +202,7 @@ export default function PricingPage() {
           <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
         </div>
         <div className="pr-testimonial-marquee">
-          <div className="pr-testimonial-track">
+          <div className="pr-testimonial-track" ref={testimonialTrackRef}>
             {[0, 1].map(rep => (
               <div className="pr-testimonial-set" key={rep} aria-hidden={rep === 1}>
                 {growthClients.map(([name, industry, quote]) => (
@@ -338,7 +352,7 @@ export default function PricingPage() {
         .pr-testimonial-head h2{color:#11052f}
         .pr-testimonial-head>p{color:rgba(17,5,47,.55)}
         .pr-testimonial-marquee{margin-top:60px;overflow:hidden}
-        .pr-testimonial-track{display:flex;width:max-content;animation:pr-testimonial-scroll 42s linear infinite;will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+        .pr-testimonial-track{display:flex;width:max-content;animation:pr-testimonial-scroll 42s linear infinite}
         .pr-testimonial-track:hover{animation-play-state:paused}
         .pr-testimonial-set{display:flex;gap:24px;padding:0 12px}
         .pr-testimonial-card{flex:0 0 360px;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
