@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { trackEvent } from "../lib/track";
 import PricingLeadForm from "./PricingLeadForm";
 import PricingQuickLeadForm from "./PricingQuickLeadForm";
@@ -68,34 +68,6 @@ export default function PricingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [quickFormOpen, setQuickFormOpen] = useState(false);
-  const testimonialTrackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = testimonialTrackRef.current;
-    if (!el) return;
-
-    function measure() {
-      if (!el) return;
-      const firstSet = el.querySelector<HTMLElement>(".pr-testimonial-set");
-      if (firstSet) {
-        el.style.setProperty("--marquee-shift", `-${firstSet.offsetWidth}px`);
-      }
-    }
-    measure();
-    window.addEventListener("resize", measure);
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        el.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
-      },
-      { threshold: 0.01 }
-    );
-    observer.observe(el);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, []);
 
   function handleSpotlightMove(event: React.MouseEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -215,22 +187,16 @@ export default function PricingPage() {
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
         </div>
-        <div className="pr-testimonial-marquee">
-          <div className="pr-testimonial-track" ref={testimonialTrackRef}>
-            {[0, 1].map(rep => (
-              <div className="pr-testimonial-set" key={rep} aria-hidden={rep === 1}>
-                {growthClients.map(([name, industry, quote]) => (
-                  <div key={name} className="pr-testimonial-card">
-                    <span className="pr-testimonial-tag">REAL CLIENT</span>
-                    <h3>{name}</h3>
-                    <p className="pr-testimonial-industry">{industry}</p>
-                    <p className="pr-testimonial-stars">★★★★★</p>
-                    <p className="pr-testimonial-quote">&ldquo;{quote}&rdquo;</p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+        <div className="pr-testimonial-scroll">
+          {growthClients.map(([name, industry, quote]) => (
+            <div key={name} className="pr-testimonial-card">
+              <span className="pr-testimonial-tag">REAL CLIENT</span>
+              <h3>{name}</h3>
+              <p className="pr-testimonial-industry">{industry}</p>
+              <p className="pr-testimonial-stars">★★★★★</p>
+              <p className="pr-testimonial-quote">&ldquo;{quote}&rdquo;</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -365,17 +331,15 @@ export default function PricingPage() {
         .pr-testimonials-section{background:#fff;color:#11052f;overflow:hidden}
         .pr-testimonial-head h2{color:#11052f}
         .pr-testimonial-head>p{color:rgba(17,5,47,.55)}
-        .pr-testimonial-marquee{margin-top:60px;overflow:hidden}
-        .pr-testimonial-track{display:flex;width:max-content;animation:pr-testimonial-scroll 42s linear infinite}
-        .pr-testimonial-track:hover{animation-play-state:paused}
-        .pr-testimonial-set{display:flex;gap:24px;padding:0 12px}
-        .pr-testimonial-card{flex:0 0 360px;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
+        .pr-testimonial-scroll{display:flex;gap:20px;margin-top:60px;overflow-x:auto;padding:4px 4px 20px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+        .pr-testimonial-scroll::-webkit-scrollbar{height:6px}
+        .pr-testimonial-scroll::-webkit-scrollbar-thumb{background:#e4defb;border-radius:99px}
+        .pr-testimonial-card{flex:0 0 320px;scroll-snap-align:start;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
         .pr-testimonial-tag{display:inline-flex;border-radius:999px;padding:6px 13px;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(16,150,90,.1);color:#0a8a52}
         .pr-testimonial-card h3{margin-top:14px;font-size:18px;font-weight:600;letter-spacing:-.01em}
         .pr-testimonial-industry{margin-top:4px;color:#7628ff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
         .pr-testimonial-stars{margin-top:14px;font-size:19px;letter-spacing:.15em;color:#f5b400}
         .pr-testimonial-quote{margin-top:16px;color:rgba(17,5,47,.72);font-size:14.5px;line-height:1.65}
-        @keyframes pr-testimonial-scroll{from{transform:translateX(0)}to{transform:translateX(var(--marquee-shift,-50%))}}
         .pr-faq-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:16px;margin-top:60px}
         .pr-faq{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#160045;transition:.35s}
         .pr-faq[open],.pr-faq:hover{border-color:rgba(156,99,255,.5);background:radial-gradient(circle at 0 0,rgba(119,62,255,.16),transparent 55%),#1a0752}
@@ -495,9 +459,8 @@ export default function PricingPage() {
           .pr-section-head h2,.pr-intro-grid h2{font-size:38px}
           .pr-portfolio-grid,.pr-benefit-grid{grid-template-columns:1fr;margin-top:40px}
           .pr-benefit{min-height:220px}
-          .pr-testimonial-marquee{margin-top:40px}
-          .pr-testimonial-card{flex:0 0 280px;padding:28px 24px}
-          .pr-testimonial-track{animation:pr-testimonial-scroll 55s linear infinite}
+          .pr-testimonial-scroll{margin-top:40px}
+          .pr-testimonial-card{flex:0 0 260px;padding:28px 24px}
           .pr-investment{border-radius:26px;padding:34px 24px;margin-top:45px}
           .pr-investment h2{font-size:38px}
           .pr-process-shell{width:calc(100% - 30px);border-radius:26px;padding:32px 22px}
