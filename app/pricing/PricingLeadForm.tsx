@@ -1,6 +1,25 @@
+"use client";
+
+import { useEffect } from "react";
 import Script from "next/script";
+import { trackEvent } from "../lib/track";
 
 export default function PricingLeadForm() {
+  useEffect(() => {
+    function handleCalendlyMessage(event: MessageEvent) {
+      if (event.origin !== "https://calendly.com") return;
+      if (event.data?.event !== "calendly.event_scheduled") return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "form_submit_success", service_needed: "Calendly booking" });
+      window.dataLayer.push({ event: "pricing_lead", service_needed: "Calendly booking" });
+      trackEvent("calendly_booking_confirmed");
+    }
+
+    window.addEventListener("message", handleCalendlyMessage);
+    return () => window.removeEventListener("message", handleCalendlyMessage);
+  }, []);
+
   return (
     <div className="pr-form-wrap" id="get-started">
       <div className="pr-form-offset" aria-hidden="true" />
