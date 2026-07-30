@@ -24,7 +24,7 @@ const premiumReferences = [
 ];
 
 const growthClients = [
-  ["Motocenter Srl", "Auto Dealership", "Clear communication from start to finish, and the site was delivered exactly on schedule. Exactly what we needed."],
+  ["Motocenter", "Auto Dealership", "Clear communication from start to finish, and the site was delivered exactly on schedule. Exactly what we needed."],
   ["Eurocar Viadana", "Auto Dealership", "The whole process was smooth and fast, with great communication throughout. The final result looks premium and works great on mobile."],
   ["Autosalone Mia Car", "Auto Dealership", "Very happy with the final result. Responsive team, clear communication throughout, and a website that's fast and easy to navigate."],
   ["Castello Car Volkswagen Service", "Service Center", "Professional from the first call to launch. Great communication throughout, and the final website was exactly the quality we were looking for."],
