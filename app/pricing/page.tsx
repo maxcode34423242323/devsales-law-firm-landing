@@ -438,7 +438,7 @@ export default function PricingPage() {
         .pr-testimonial-scroll::-webkit-scrollbar-thumb{background:#e4defb;border-radius:99px}
         .pr-testimonial-card{flex:0 0 320px;scroll-snap-align:start;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
         .pr-testimonial-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-        .pr-testimonial-logo{position:relative;height:26px;width:110px}
+        .pr-testimonial-logo{position:relative;height:44px;width:130px}
         .pr-testimonial-monogram{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#f0ecff;color:#6100ff;font-size:13px;font-weight:700}
         .pr-testimonial-tag{display:inline-flex;flex:0 0 auto;border-radius:999px;padding:6px 13px;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(16,150,90,.1);color:#0a8a52}
         .pr-testimonial-card h3{margin-top:14px;font-size:18px;font-weight:600;letter-spacing:-.01em}
