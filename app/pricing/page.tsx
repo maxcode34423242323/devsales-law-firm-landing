@@ -400,38 +400,13 @@ export default function PricingPage() {
         .pr-form-wrap{position:relative;padding:0 17px 18px 0}
         .pr-form-offset{position:absolute;z-index:0;inset:17px 0 0 17px;border-radius:26px;background:linear-gradient(145deg,#793cff,#5522f1);box-shadow:0 30px 80px rgba(89,38,245,.28)}
         .pr-form{position:relative;z-index:1;border:1px solid rgba(186,153,255,.24);border-radius:26px;background:radial-gradient(circle at 90% 0,rgba(119,62,255,.15),transparent 30%),#17063f;padding:42px}
-        .pr-form-head h2{margin-top:16px;font-size:38px;font-weight:400;letter-spacing:-.04em}
-        .pr-form-head>div>p:last-child{margin-top:10px;color:rgba(255,255,255,.4);font-size:11px}
-        .pr-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 17px;margin-top:28px}
-        .pr-form-grid label{display:flex;flex-direction:column;gap:9px}
-        .pr-form-grid label.wide{grid-column:1/-1}
-        .pr-form-grid label>span{color:rgba(232,222,255,.72);font-size:11px}
-        .pr-form input,.pr-form select,.pr-form textarea{width:100%;border:1px solid rgba(201,180,255,.22);border-radius:8px;outline:none;background:rgba(255,255,255,.055);color:#fff;font:inherit;font-size:13px;transition:.2s}
-        .pr-form input,.pr-form select{height:53px;padding:0 15px}
-        .pr-form textarea{resize:vertical;padding:15px;line-height:1.6}
-        .pr-form input:focus,.pr-form select:focus,.pr-form textarea:focus{border-color:#9c6aff;box-shadow:0 0 0 3px rgba(145,87,255,.14)}
-        .pr-form select{color-scheme:dark}
-        .pr-form-primary{display:flex;width:100%;min-height:57px;align-items:center;justify-content:space-between;margin-top:22px;border-radius:999px;padding:0 23px;background:linear-gradient(90deg,#a79fbc,#d0c9df);color:#32127a;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:.25s}
-        .pr-form-primary:hover{transform:translateY(-2px);background:#fff}
-        .pr-form-primary:disabled{opacity:.6}
-        .pr-form-primary b{font-size:16px}
-        .pr-consent{display:grid;grid-template-columns:24px 1fr;gap:13px;margin-top:24px;border:1px solid rgba(203,181,255,.2);border-radius:10px;background:rgba(4,0,18,.23);padding:16px;transition:.35s}
-        .pr-consent.checked{border-color:#a06bff;background:linear-gradient(135deg,rgba(97,0,255,.22),rgba(255,255,255,.04));box-shadow:0 0 35px rgba(97,0,255,.15)}
-        .pr-consent input{appearance:none;width:24px;height:24px;margin-top:1px;border:1px solid rgba(255,255,255,.3);border-radius:6px;background:#0b0132;display:grid;place-content:center}
-        .pr-consent input:checked{background:#6100ff;border-color:#9c6aff}
-        .pr-consent input:checked:after{content:'✓';color:#fff;font-size:15px}
-        .pr-consent span{color:rgba(229,218,253,.65);font-size:10px;line-height:1.65}
-        .pr-consent a{color:#fff;text-decoration:underline;text-underline-offset:3px}
-        .pr-form-message{margin-top:18px;border-radius:9px;padding:12px 14px;font-size:11px;line-height:1.55}
-        .pr-form-message.error{background:rgba(214,48,82,.13);color:#ffb0be}
-        .pr-success-overlay{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(5,0,20,.82)}
-        .pr-success-modal{width:min(420px,100%);border:1px solid rgba(186,153,255,.3);border-radius:26px;background:radial-gradient(circle at 90% 0,rgba(119,62,255,.25),transparent 40%),#17063f;padding:44px 36px;text-align:center;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+        .pr-calendly-card{display:flex;flex-direction:column}
+        .pr-calendly-card h2{margin-top:12px;font-size:32px;font-weight:400;letter-spacing:-.03em;color:#fff}
+        .pr-calendly-sub{margin-top:14px;color:rgba(255,255,255,.6);font-size:14.5px;line-height:1.6;max-width:44ch}
+        .pr-calendly-embed{margin-top:32px;min-height:480px;border:1px dashed rgba(201,180,255,.35);border-radius:16px;background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+        .pr-calendly-embed span{color:rgba(255,255,255,.35);font-size:13px;letter-spacing:.02em}
         .pr-success-check{display:grid;width:64px;height:64px;margin:0 auto;place-items:center;border-radius:50%;background:linear-gradient(145deg,#7928ff,#3e149f)}
         .pr-success-check svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-        .pr-success-modal h3{margin-top:24px;font-size:26px;font-weight:500;letter-spacing:-.03em}
-        .pr-success-modal p{margin-top:12px;color:rgba(255,255,255,.6);font-size:14px;line-height:1.6}
-        .pr-success-modal button{display:inline-flex;min-height:50px;align-items:center;justify-content:center;margin-top:26px;padding:0 32px;border-radius:999px;background:linear-gradient(90deg,#a79fbc,#d0c9df);color:#32127a;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:.25s}
-        .pr-success-modal button:hover{background:#fff;transform:translateY(-2px)}
         .pr-quick-overlay{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(5,0,20,.82)}
         .pr-quick-modal{position:relative;width:min(440px,100%);max-height:90vh;overflow-y:auto;border:1px solid rgba(186,153,255,.3);border-radius:26px;background:radial-gradient(circle at 90% 0,rgba(119,62,255,.2),transparent 40%),#17063f;padding:40px 34px}
         .pr-quick-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border:none;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:20px;cursor:pointer}
@@ -498,8 +473,6 @@ export default function PricingPage() {
           .pr-process-row{grid-template-columns:38px 1fr 20px;gap:12px}
           .pr-process-row p{grid-column:2/4}
           .pr-process-row h3{font-size:22px}
-          .pr-form-grid{grid-template-columns:1fr}
-          .pr-form-grid label.wide{grid-column:auto}
           .pr-footer>.pr-container{flex-direction:column;align-items:flex-start}
           .pr-page{padding-bottom:96px}
           .pr-sticky-call{left:0;right:0;bottom:0;justify-content:center;gap:10px;height:58px;padding:0;border-radius:0;box-shadow:none}
