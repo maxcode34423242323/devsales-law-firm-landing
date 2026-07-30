@@ -73,6 +73,17 @@ export default function PricingPage() {
   useEffect(() => {
     const el = testimonialTrackRef.current;
     if (!el) return;
+
+    function measure() {
+      if (!el) return;
+      const firstSet = el.querySelector<HTMLElement>(".pr-testimonial-set");
+      if (firstSet) {
+        el.style.setProperty("--marquee-shift", `-${firstSet.offsetWidth}px`);
+      }
+    }
+    measure();
+    window.addEventListener("resize", measure);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         el.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
@@ -80,7 +91,10 @@ export default function PricingPage() {
       { threshold: 0.01 }
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   function handleSpotlightMove(event: React.MouseEvent<HTMLDivElement>) {
@@ -361,7 +375,7 @@ export default function PricingPage() {
         .pr-testimonial-industry{margin-top:4px;color:#7628ff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
         .pr-testimonial-stars{margin-top:14px;font-size:19px;letter-spacing:.15em;color:#f5b400}
         .pr-testimonial-quote{margin-top:16px;color:rgba(17,5,47,.72);font-size:14.5px;line-height:1.65}
-        @keyframes pr-testimonial-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        @keyframes pr-testimonial-scroll{from{transform:translateX(0)}to{transform:translateX(var(--marquee-shift,-50%))}}
         .pr-faq-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:16px;margin-top:60px}
         .pr-faq{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#160045;transition:.35s}
         .pr-faq[open],.pr-faq:hover{border-color:rgba(156,99,255,.5);background:radial-gradient(circle at 0 0,rgba(119,62,255,.16),transparent 55%),#1a0752}
