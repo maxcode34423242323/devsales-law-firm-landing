@@ -307,7 +307,19 @@ export default function PricingPage() {
                 <p className="section-kicker">{activeReference.category}</p>
                 <h3>{activeReference.title}</h3>
                 {activeReference.description && <p className="pr-ref-desc">{activeReference.description}</p>}
-                <a href={activeReference.url} target="_blank" rel="noreferrer" className="agency-button">Visit real website ↗</a>
+                <div className="pr-ref-actions">
+                  <a href={activeReference.url} target="_blank" rel="noreferrer" className="agency-button">Visit real website ↗</a>
+                  <button
+                    type="button"
+                    className="mixar-button fill"
+                    onClick={() => {
+                      setActiveReference(null);
+                      document.getElementById("get-started")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    Want a similar high-converting platform? Book a 15-min call
+                  </button>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -464,7 +476,8 @@ export default function PricingPage() {
         .pr-ref-body{padding:30px 32px 34px}
         .pr-ref-body h3{margin-top:10px;font-size:26px;font-weight:500;letter-spacing:-.03em}
         .pr-ref-desc{margin-top:12px;color:rgba(255,255,255,.6);font-size:14px;line-height:1.65}
-        .pr-ref-body .agency-button{margin-top:22px}
+        .pr-ref-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:22px}
+        .pr-ref-actions .mixar-button{white-space:normal;text-align:center}
         .pr-footer{border-top:1px solid rgba(255,255,255,.1);padding:36px 0 60px}
         .pr-footer>.pr-container{display:flex;align-items:center;justify-content:space-between;gap:30px}
         .pr-footer p,.pr-footer a{color:rgba(255,255,255,.45);font-size:12px}
