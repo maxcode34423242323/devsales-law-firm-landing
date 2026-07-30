@@ -64,9 +64,12 @@ const faqs = [
   ["Do you provide ongoing support after launch?", "Yes. Ongoing content updates, hosting and support can be scoped separately based on what the site needs after it goes live."],
 ];
 
+type ReferencePreview = { category: string; title: string; image: string; url: string; description?: string };
+
 export default function PricingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeReference, setActiveReference] = useState<ReferencePreview | null>(null);
 
   function handleSpotlightMove(event: React.MouseEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -155,15 +158,27 @@ export default function PricingPage() {
             <p>For businesses that need more than a website: content management, integrations, AI-powered lead automation and a visual system built around how customers actually decide.</p>
           </motion.div>
 
-          <motion.a {...reveal} href="https://www.louwmangroup.com/company/louwman-exclusive/" target="_blank" rel="noreferrer" aria-label="Visit Louwman Exclusive website" className="pr-flagship">
+          <motion.button
+            {...reveal}
+            type="button"
+            aria-label="Preview Louwman Exclusive website"
+            className="pr-flagship"
+            onClick={() => setActiveReference({
+              category: "Luxury Automotive Dealership",
+              title: "Louwman Exclusive",
+              image: "/images/reference-louwman-exclusive.jpg",
+              url: "https://www.louwmangroup.com/company/louwman-exclusive/",
+              description: "A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.",
+            })}
+          >
             <div className="pr-flagship-image"><Image src="/images/reference-louwman-exclusive.jpg" alt="Louwman Exclusive dealership" width={1200} height={772} sizes="(max-width: 767px) 100vw, 60vw" quality={72} className="object-cover" /></div>
             <div className="pr-flagship-copy">
               <p className="section-kicker">Luxury Automotive Dealership</p>
               <h3>Louwman Exclusive</h3>
               <p>A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.</p>
-              <span className="agency-button">Visit real website ↗</span>
+              <span className="agency-button">Preview ↗</span>
             </div>
-          </motion.a>
+          </motion.button>
 
           <motion.div {...reveal} className="pr-section-head" style={{ marginTop: 90 }}>
             <div><p className="section-kicker">[ portfolio]</p><h2>The caliber of work we study and build toward.</h2></div>
@@ -171,10 +186,10 @@ export default function PricingPage() {
           </motion.div>
           <div className="pr-portfolio-grid">
             {premiumReferences.map((item) => (
-              <motion.a {...reveal} key={item.title} href={item.url} target="_blank" rel="noreferrer" aria-label={`Visit ${item.title} website`} className="pr-portfolio-card">
+              <motion.button {...reveal} type="button" key={item.title} aria-label={`Preview ${item.title} website`} className="pr-portfolio-card" onClick={() => setActiveReference(item)}>
                 <div className="pr-portfolio-image"><Image src={item.image} alt={`${item.title} website design`} fill sizes="(max-width: 767px) 100vw, 340px" quality={68} className="object-cover object-top" /></div>
-                <div className="pr-portfolio-meta"><p>{item.category}</p><h3>{item.title}</h3><i>Visit real website ↗︎</i></div>
-              </motion.a>
+                <div className="pr-portfolio-meta"><p>{item.category}</p><h3>{item.title}</h3><i>Preview ↗︎</i></div>
+              </motion.button>
             ))}
           </div>
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
@@ -259,6 +274,35 @@ export default function PricingPage() {
 
       <a href="#get-started" className="pr-sticky-call"><ContactIcon type="phone" /><span>Book a Call</span></a>
 
+      <AnimatePresence>
+        {activeReference && (
+          <motion.div
+            className="pr-ref-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveReference(null)}
+          >
+            <motion.div
+              className="pr-ref-modal"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 24 }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button type="button" className="pr-ref-close" aria-label="Close preview" onClick={() => setActiveReference(null)}>✕</button>
+              <div className="pr-ref-image"><Image src={activeReference.image} alt={`${activeReference.title} website design`} fill sizes="(max-width: 767px) 100vw, 560px" quality={72} className="object-cover" /></div>
+              <div className="pr-ref-body">
+                <p className="section-kicker">{activeReference.category}</p>
+                <h3>{activeReference.title}</h3>
+                {activeReference.description && <p className="pr-ref-desc">{activeReference.description}</p>}
+                <a href={activeReference.url} target="_blank" rel="noreferrer" className="agency-button">Visit real website ↗</a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <footer className="pr-footer"><div className="pr-container"><span className="nav-brand"><i>DS</i><span><b>DEVILSALES</b><small>WEB STUDIO · USA</small></span></span><p>© {new Date().getFullYear()} DEVILSALES</p><div><Link href="/privacy" target="_blank">Privacy</Link><Link href="/terms" target="_blank">Terms</Link><Link href="/sms-policy" target="_blank">SMS Terms</Link></div></div></footer>
 
       <style jsx global>{`
@@ -334,7 +378,7 @@ export default function PricingPage() {
         .pr-sticky-call:hover{transform:translateY(-3px);box-shadow:0 25px 60px rgba(89,38,245,.55)}
         .pr-sticky-call .pr-contact-icon{width:34px;height:34px;background:rgba(255,255,255,.18)}
         .pr-sticky-call .pr-contact-icon svg{width:16px;height:16px}
-        .pr-flagship{display:grid;grid-template-columns:1.4fr .8fr;overflow:hidden;margin-top:70px;border:1px solid rgba(255,255,255,.1);border-radius:32px;background:#17063e;transition:border-color .4s}
+        .pr-flagship{display:grid;grid-template-columns:1.4fr .8fr;overflow:hidden;margin-top:70px;border:1px solid rgba(255,255,255,.1);border-radius:32px;background:#17063e;transition:border-color .4s;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer}
         .pr-flagship:hover{border-color:rgba(156,99,255,.4)}
         .pr-flagship-image{position:relative;display:block;min-height:420px;overflow:hidden}
         .pr-flagship-image img{transition:transform 1.4s cubic-bezier(.22,1,.36,1)}
@@ -344,7 +388,7 @@ export default function PricingPage() {
         .pr-flagship-copy>p:not(.section-kicker){margin-top:18px;color:rgba(255,255,255,.55);line-height:1.65}
         .pr-flagship-note{display:block;margin-top:12px;color:rgba(255,255,255,.28);font-size:10.5px;letter-spacing:.04em}
         .pr-portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
-        .pr-portfolio-card{position:relative;display:block;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#17063e;color:inherit;text-decoration:none;transition:.3s}
+        .pr-portfolio-card{position:relative;display:block;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#17063e;color:inherit;text-decoration:none;transition:.3s;width:100%;text-align:left;font:inherit;cursor:pointer;padding:0}
         .pr-portfolio-card:hover{border-color:rgba(156,99,255,.55)}
         .pr-portfolio-image{position:relative;aspect-ratio:4/3;background:#0b0132}
         .pr-portfolio-meta{padding:18px 20px 22px}
@@ -398,6 +442,14 @@ export default function PricingPage() {
         .pr-calendly-card h2{margin-top:12px;font-size:32px;font-weight:400;letter-spacing:-.03em;color:#fff}
         .pr-calendly-sub{margin-top:14px;color:rgba(255,255,255,.6);font-size:14.5px;line-height:1.6;max-width:44ch}
         .pr-calendly-widget{margin-top:32px;border-radius:16px;overflow:hidden}
+        .pr-ref-overlay{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(5,0,20,.82)}
+        .pr-ref-modal{position:relative;width:min(560px,100%);max-height:90vh;overflow-y:auto;border:1px solid rgba(186,153,255,.3);border-radius:26px;background:#17063f;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+        .pr-ref-close{position:absolute;top:16px;right:16px;z-index:2;width:36px;height:36px;border:none;border-radius:50%;background:rgba(5,0,20,.6);color:#fff;font-size:16px;cursor:pointer}
+        .pr-ref-image{position:relative;aspect-ratio:16/10;background:#0b0132}
+        .pr-ref-body{padding:30px 32px 34px}
+        .pr-ref-body h3{margin-top:10px;font-size:26px;font-weight:500;letter-spacing:-.03em}
+        .pr-ref-desc{margin-top:12px;color:rgba(255,255,255,.6);font-size:14px;line-height:1.65}
+        .pr-ref-body .agency-button{margin-top:22px}
         .pr-footer{border-top:1px solid rgba(255,255,255,.1);padding:36px 0 60px}
         .pr-footer>.pr-container{display:flex;align-items:center;justify-content:space-between;gap:30px}
         .pr-footer p,.pr-footer a{color:rgba(255,255,255,.45);font-size:12px}
