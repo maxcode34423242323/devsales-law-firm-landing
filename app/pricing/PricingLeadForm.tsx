@@ -1,10 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { trackEvent } from "../lib/track";
 
+const CALENDLY_BASE_URL = "https://calendly.com/jacobrds36/30min";
+
 export default function PricingLeadForm() {
+  const widgetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!widgetRef.current) return;
+    const params = new URLSearchParams(window.location.search);
+    const utmParams = new URLSearchParams();
+    for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"]) {
+      const value = params.get(key);
+      if (value) utmParams.set(key, value);
+    }
+    const query = utmParams.toString();
+    widgetRef.current.setAttribute("data-url", query ? `${CALENDLY_BASE_URL}?${query}` : CALENDLY_BASE_URL);
+  }, []);
+
   useEffect(() => {
     function handleCalendlyMessage(event: MessageEvent) {
       if (event.origin !== "https://calendly.com") return;
@@ -28,8 +44,9 @@ export default function PricingLeadForm() {
         <h2>Book a Free 30-Minute Strategy Call</h2>
         <p className="pr-calendly-sub">Pick a time below to confirm scope, timeline, and whether we&apos;re the right fit for your project.</p>
         <div
+          ref={widgetRef}
           className="calendly-inline-widget pr-calendly-widget"
-          data-url="https://calendly.com/jacobrds36/30min"
+          data-url={CALENDLY_BASE_URL}
           style={{ minWidth: 320, height: 700 }}
         />
         <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
