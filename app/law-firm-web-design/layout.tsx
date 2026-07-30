@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Law Firm Web Design Agency | Custom Websites from $10K",
+  title: "Law Firm Web Design Agency | Custom Websites for Personal Injury Firms",
   description:
-    "Conversion-focused custom websites for personal injury law firms. Strategy, UX, development and lead tracking from one accountable team. Projects start at $10,000.",
+    "Conversion-focused custom websites for personal injury law firms. Strategy, UX, development and lead tracking from one accountable team.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Law Firm Web Design Agency | DevilSales Web",
@@ -23,12 +23,6 @@ const schema = {
   serviceType: "Custom website design and development for personal injury law firms",
   provider: { "@id": "https://www.devilsales.dev/#organization" },
   areaServed: { "@type": "Country", name: "United States" },
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "USD",
-    price: "10000",
-    description: "Custom law firm website projects start at $10,000.",
-  },
   url: "https://www.devilsales.dev/law-firm-web-design",
 };
 

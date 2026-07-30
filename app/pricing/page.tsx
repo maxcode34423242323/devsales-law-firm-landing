@@ -56,7 +56,7 @@ const processSteps = [
 
 const faqs = [
   ["What's the difference between Premium and Growth?", "Growth projects are focused, single-purpose websites built fast on a proven foundation. Premium projects involve custom platform work — CMS-driven content, integrations, CRM automation, or multi-stage user flows — which takes more strategy and development time."],
-  ["How much does a website actually cost?", "Growth websites start at $3,000. Premium custom platforms start at $10,000. Your final investment depends on scope, integrations, content and timeline — we confirm the exact number before any work begins."],
+  ["How much does a website actually cost?", "Investment depends on scope, integrations, content and timeline. Tell us your budget range in the form and we'll confirm the exact number and the right track for you before any work begins."],
   ["How long does a project take?", "Growth websites typically launch in 2–4 weeks. Premium platforms usually take 6–10 weeks depending on scope and integrations."],
   ["Can you redesign our existing website?", "Yes, at either tier. We can preserve useful content and SEO equity while rebuilding the strategy, visual system and technical foundation."],
   ["Will the website be ready for paid ads?", "Yes. Every project ships with a clear conversion path and form, phone-click and lead tracking prepared for Google Ads and GA4."],
@@ -134,8 +134,8 @@ export default function PricingPage() {
       <section id="premium" className="pr-section pr-tier-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head">
-            <div><p className="section-kicker">[ Premium — $10,000+ ]</p><h2>Custom-built platforms for ambitious brands.</h2></div>
-            <p>For businesses that need more than a website: content management, integrations, lead automation and a visual system built around how customers actually decide. Projects start at $10,000.</p>
+            <div><p className="section-kicker">[ Premium ]</p><h2>Custom-built platforms for ambitious brands.</h2></div>
+            <p>For businesses that need more than a website: content management, integrations, lead automation and a visual system built around how customers actually decide.</p>
           </motion.div>
 
           <motion.a {...reveal} href="https://www.louwmanexclusive.nl/en/" target="_blank" rel="noreferrer" aria-label="Visit Louwman Exclusive website" className="pr-flagship">
@@ -163,7 +163,7 @@ export default function PricingPage() {
           </div>
 
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
-            <div><p className="section-kicker !text-white/65">[ Premium investment ]</p><h2>Custom platforms start at <span>$10,000.</span></h2></div>
+            <div><p className="section-kicker !text-white/65">[ Premium ]</p><h2>Built for brands that <span>don&apos;t do average.</span></h2></div>
             <div><p>Book a short strategy call — we&apos;ll confirm scope, timeline and whether Premium is the right fit for what you need.</p><a href="#get-started" className="mixar-button fill">Book a Strategy Call ↗︎</a></div>
           </motion.div>
         </div>
@@ -172,12 +172,12 @@ export default function PricingPage() {
       <section id="growth" className="pr-section pr-tier-section pr-growth-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head">
-            <div><p className="section-kicker">[ Growth — $3,000–$10,000 ]</p><h2>A fast, professional website for a growing business.</h2></div>
-            <p>For businesses that need a clean, credible site live quickly — clear information, a fast mobile experience, technical SEO foundations included, and a real path to contact. Projects start at $3,000.</p>
+            <div><p className="section-kicker">[ Growth ]</p><h2>A fast, professional website for a growing business.</h2></div>
+            <p>For businesses that need a clean, credible site live quickly — clear information, a fast mobile experience, technical SEO foundations included, and a real path to contact.</p>
           </motion.div>
 
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
-            <div><p className="section-kicker !text-white/65">[ Growth investment ]</p><h2>Professional websites start at <span>$3,000.</span></h2></div>
+            <div><p className="section-kicker !text-white/65">[ Growth ]</p><h2>Live fast. <span>Look like you&apos;ve arrived.</span></h2></div>
             <div><p>Send us a few details and we&apos;ll come back with a clear scope, timeline and quote — no long sales process.</p><a href="#get-started" className="mixar-button fill">Get Your Free Quote ↗︎</a></div>
           </motion.div>
         </div>

@@ -40,7 +40,7 @@ const testimonials = [
 ];
 
 const faqs = [
-  ["How much does a custom law firm website cost?", "Custom website projects start at $10,000. Final investment depends on scope, number of practice areas, content requirements, integrations and the complexity of the build."],
+  ["How much does a custom law firm website cost?", "Investment depends on scope, number of practice areas, content requirements, integrations and the complexity of the build. Tell us about your firm in the project brief and we'll confirm a plan that fits."],
   ["Do you work specifically with personal injury law firms?", "This landing page and its conversion system are focused on personal injury firms, where trust, urgency, local relevance and high-value lead quality matter most."],
   ["How long does a project take?", "A focused custom website typically takes 6–10 weeks. Larger content structures, custom integrations or extensive migration can require more time."],
   ["Can you redesign our existing website?", "Yes. We can preserve useful content and SEO equity while rebuilding the strategy, visual system, user experience and technical foundation."],
@@ -101,7 +101,7 @@ export default function LawFirmWebDesignPage() {
 
           <motion.div initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .22, duration: 1 }} className="law-browser-stage">
             <div className="browser-card law-browser-main"><BrowserTop /><Image src="/images/reference-omar-better.jpg" alt="Real personal injury law firm website design" width={1348} height={926} priority quality={72} /></div>
-            <div className="law-result-card"><span>[ Starting investment ]</span><strong>$10K+</strong><p>Strategy, UX, custom development and conversion tracking in one accountable project.</p></div>
+            <div className="law-result-card"><span>[ No two firms alike ]</span><strong>Built around you.</strong><p>Strategy, UX, custom development and conversion tracking in one accountable project.</p></div>
           </motion.div>
         </div>
       </section>
@@ -198,7 +198,7 @@ export default function LawFirmWebDesignPage() {
       <section id="investment" className="law-section">
         <div className="law-container">
           <motion.div {...reveal} className="law-investment" onMouseMove={handleSpotlightMove}>
-            <div><p className="section-kicker !text-white/65">[ Investment ]</p><h2>Custom law firm websites start at <span>$10,000.</span></h2></div>
+            <div><p className="section-kicker !text-white/65">[ Investment ]</p><h2>Because first impressions <span>don&apos;t get retried.</span></h2></div>
             <div><p>This is for firms that need more than a template: sharper positioning, premium UX, custom development and a measurement foundation built for serious paid traffic.</p><a href="#project-brief" className="mixar-button fill">Start a project ↗︎</a></div>
           </motion.div>
         </div>

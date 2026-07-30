@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   category: "Web Design and Development",
   referrer: "origin-when-cross-origin",
   title: {
-    default: "Law Firm Web Design Agency | Custom Websites from $10K",
+    default: "Law Firm Web Design Agency | Custom Websites for Personal Injury Firms",
     template: "%s | DevilSales Web",
   },
   description:
-    "Conversion-focused custom websites for personal injury law firms. Strategy, UX, development and lead tracking from one accountable team. Projects start at $10,000.",
+    "Conversion-focused custom websites for personal injury law firms. Strategy, UX, development and lead tracking from one accountable team.",
   keywords: [
     "law firm web design",
     "personal injury law firm website",
@@ -104,12 +104,6 @@ const structuredData = {
       serviceType: "Custom website design and development for personal injury law firms",
       provider: { "@id": "https://www.devilsales.dev/#organization" },
       areaServed: { "@type": "Country", name: "United States" },
-      offers: {
-        "@type": "Offer",
-        priceCurrency: "USD",
-        price: "10000",
-        description: "Custom law firm website projects start at $10,000.",
-      },
       url: "https://www.devilsales.dev/",
     },
   ],
