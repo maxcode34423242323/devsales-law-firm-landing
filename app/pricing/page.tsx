@@ -403,8 +403,7 @@ export default function PricingPage() {
         .pr-calendly-card{display:flex;flex-direction:column}
         .pr-calendly-card h2{margin-top:12px;font-size:32px;font-weight:400;letter-spacing:-.03em;color:#fff}
         .pr-calendly-sub{margin-top:14px;color:rgba(255,255,255,.6);font-size:14.5px;line-height:1.6;max-width:44ch}
-        .pr-calendly-embed{margin-top:32px;min-height:480px;border:1px dashed rgba(201,180,255,.35);border-radius:16px;background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
-        .pr-calendly-embed span{color:rgba(255,255,255,.35);font-size:13px;letter-spacing:.02em}
+        .pr-calendly-widget{margin-top:32px;border-radius:16px;overflow:hidden}
         .pr-success-check{display:grid;width:64px;height:64px;margin:0 auto;place-items:center;border-radius:50%;background:linear-gradient(145deg,#7928ff,#3e149f)}
         .pr-success-check svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
         .pr-quick-overlay{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(5,0,20,.82)}
