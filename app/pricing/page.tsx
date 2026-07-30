@@ -24,11 +24,11 @@ const premiumReferences = [
 ];
 
 const growthClients: { name: string; industry: string; quote: string; logo?: string }[] = [
-  { name: "Motocenter", industry: "Auto Dealership", quote: "Clear communication from start to finish, and the site was delivered exactly on schedule. Exactly what we needed." },
-  { name: "Eurocar Viadana", industry: "Auto Dealership", quote: "The whole process was smooth and fast, with great communication throughout. The final result looks premium and works great on mobile." },
+  { name: "Motocenter", industry: "Auto Dealership", quote: "Clear communication from start to finish, and the site was delivered exactly on schedule. Exactly what we needed.", logo: "/images/logo-motocenter.jpg" },
+  { name: "Eurocar Viadana", industry: "Auto Dealership", quote: "The whole process was smooth and fast, with great communication throughout. The final result looks premium and works great on mobile.", logo: "/images/logo-eurocar.png" },
   { name: "Autosalone Mia Car", industry: "Auto Dealership", quote: "Very happy with the final result. Responsive team, clear communication throughout, and a website that's fast and easy to navigate.", logo: "/images/logo-miacar.png" },
   { name: "Castello Car Volkswagen Service", industry: "Service Center", quote: "Professional from the first call to launch. Great communication throughout, and the final website was exactly the quality we were looking for.", logo: "/images/logo-castello.png" },
-  { name: "Cisauto Group", industry: "Auto Dealership", quote: "DevilSales understood exactly what we needed. Responsive and easy to work with — the final site is polished and loads fast." },
+  { name: "Cisauto Group", industry: "Auto Dealership", quote: "DevilSales understood exactly what we needed. Responsive and easy to work with — the final site is polished and loads fast.", logo: "/images/logo-cisauto.webp" },
 ];
 
 const approachBenefits = [
