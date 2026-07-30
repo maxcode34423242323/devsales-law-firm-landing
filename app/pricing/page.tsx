@@ -246,8 +246,8 @@ export default function PricingPage() {
         <div className="pr-container pr-contact-grid">
           <motion.div {...reveal} className="pr-contact-copy">
             <p className="section-kicker">[ Start a project ]</p>
-            <h2>Tell us where you&apos;re starting from.</h2>
-            <p>Whether you need a fast Growth site or a full Premium platform — with or without an AI intake assistant — tell us about the project and we&apos;ll recommend the right fit.</p>
+            <h2>Let&apos;s talk it through.</h2>
+            <p>Whether you need a fast Growth site or a full Premium platform — with or without an AI intake assistant — book a free call and we&apos;ll walk through scope, timeline, and the right fit for your project.</p>
             <div className="pr-contact-card">
               <h3>DevilSales Web</h3>
               <a href="tel:+13155478952" data-track="phone_click" onClick={() => trackEvent("phone_click")}><ContactIcon type="phone" /><span><small>Call us</small>315-547-8952</span></a>
