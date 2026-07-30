@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { trackEvent } from "../lib/track";
 import PricingLeadForm from "./PricingLeadForm";
-import PricingQuickLeadForm from "./PricingQuickLeadForm";
 
 const reveal = {
   initial: { opacity: 0, y: 42 },
@@ -68,7 +67,6 @@ const faqs = [
 export default function PricingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [quickFormOpen, setQuickFormOpen] = useState(false);
 
   function handleSpotlightMove(event: React.MouseEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -259,11 +257,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <button type="button" className="pr-sticky-call" onClick={() => setQuickFormOpen(true)}><ContactIcon type="phone" /><span>Book a Call</span></button>
-
-      <AnimatePresence>
-        {quickFormOpen && <PricingQuickLeadForm onClose={() => setQuickFormOpen(false)} />}
-      </AnimatePresence>
+      <a href="#get-started" className="pr-sticky-call"><ContactIcon type="phone" /><span>Book a Call</span></a>
 
       <footer className="pr-footer"><div className="pr-container"><span className="nav-brand"><i>DS</i><span><b>DEVILSALES</b><small>WEB STUDIO · USA</small></span></span><p>© {new Date().getFullYear()} DEVILSALES</p><div><Link href="/privacy" target="_blank">Privacy</Link><Link href="/terms" target="_blank">Terms</Link><Link href="/sms-policy" target="_blank">SMS Terms</Link></div></div></footer>
 
@@ -404,24 +398,6 @@ export default function PricingPage() {
         .pr-calendly-card h2{margin-top:12px;font-size:32px;font-weight:400;letter-spacing:-.03em;color:#fff}
         .pr-calendly-sub{margin-top:14px;color:rgba(255,255,255,.6);font-size:14.5px;line-height:1.6;max-width:44ch}
         .pr-calendly-widget{margin-top:32px;border-radius:16px;overflow:hidden}
-        .pr-success-check{display:grid;width:64px;height:64px;margin:0 auto;place-items:center;border-radius:50%;background:linear-gradient(145deg,#7928ff,#3e149f)}
-        .pr-success-check svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-        .pr-quick-overlay{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(5,0,20,.82)}
-        .pr-quick-modal{position:relative;width:min(440px,100%);max-height:90vh;overflow-y:auto;border:1px solid rgba(186,153,255,.3);border-radius:26px;background:radial-gradient(circle at 90% 0,rgba(119,62,255,.2),transparent 40%),#17063f;padding:40px 34px}
-        .pr-quick-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border:none;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:20px;cursor:pointer}
-        .pr-quick-modal h3{font-size:26px;font-weight:500;letter-spacing:-.03em}
-        .pr-quick-sub{margin-top:8px;color:rgba(255,255,255,.5);font-size:13px}
-        .pr-quick-modal form{margin-top:24px;display:flex;flex-direction:column;gap:16px}
-        .pr-quick-modal label{display:flex;flex-direction:column;gap:8px;font-size:12px;color:rgba(232,222,255,.72)}
-        .pr-quick-modal input,.pr-quick-modal select{height:50px;padding:0 14px;border:1px solid rgba(201,180,255,.22);border-radius:8px;outline:none;background:rgba(255,255,255,.055);color:#fff;font:inherit;font-size:13px}
-        .pr-quick-modal select{color-scheme:dark}
-        .pr-quick-error{border-radius:9px;background:rgba(214,48,82,.13);padding:10px 12px;color:#ffb0be;font-size:12px}
-        .pr-quick-submit{margin-top:6px;min-height:54px;border:none;border-radius:999px;background:linear-gradient(90deg,#a79fbc,#d0c9df);color:#32127a;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.25s}
-        .pr-quick-submit:hover{background:#fff}
-        .pr-quick-submit:disabled{opacity:.6;cursor:default}
-        .pr-quick-success{padding:20px 0;text-align:center}
-        .pr-quick-success h3{margin-top:22px}
-        .pr-quick-success p{margin-top:10px;color:rgba(255,255,255,.6);font-size:14px}
         .pr-footer{border-top:1px solid rgba(255,255,255,.1);padding:36px 0 60px}
         .pr-footer>.pr-container{display:flex;align-items:center;justify-content:space-between;gap:30px}
         .pr-footer p,.pr-footer a{color:rgba(255,255,255,.45);font-size:12px}
