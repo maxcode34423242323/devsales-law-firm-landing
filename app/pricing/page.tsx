@@ -213,6 +213,17 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="pr-section pr-about-section">
+        <div className="pr-container pr-about-grid">
+          <motion.div {...reveal} className="pr-about-photo" aria-hidden="true" />
+          <motion.div {...reveal} className="pr-about-copy">
+            <p className="section-kicker">[ Why work with us ]</p>
+            <h2>USA-Aligned Operations</h2>
+            <p>We operate directly within US business hours (EST/CST) to ensure seamless, real-time communication. No long wait times, no timezone friction — just direct access to your developer when you need it.</p>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="pr-section pr-testimonials-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
@@ -395,6 +406,10 @@ export default function PricingPage() {
         .pr-portfolio-meta p{color:#a982ff;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
         .pr-portfolio-meta h3{margin-top:8px;font-size:19px;font-weight:500;letter-spacing:-.02em}
         .pr-portfolio-meta i{display:block;margin-top:12px;color:rgba(255,255,255,.55);font-size:12px;font-style:normal;text-decoration:underline;text-underline-offset:3px}
+        .pr-about-grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:50px;align-items:center}
+        .pr-about-photo{aspect-ratio:1/1;width:100%;max-width:220px;border-radius:50%;background:linear-gradient(145deg,rgba(121,40,255,.35),rgba(62,20,159,.35));border:1px dashed rgba(201,180,255,.35)}
+        .pr-about-copy h2{margin-top:14px;font-size:clamp(30px,4vw,44px);font-weight:500;letter-spacing:-.03em}
+        .pr-about-copy>p:not(.section-kicker){margin-top:18px;max-width:60ch;color:rgba(255,255,255,.6);font-size:15.5px;line-height:1.7}
         .pr-testimonials-section{background:#fff;color:#11052f;overflow:hidden}
         .pr-testimonial-head h2{color:#11052f}
         .pr-testimonial-head>p{color:rgba(17,5,47,.55)}
@@ -465,7 +480,8 @@ export default function PricingPage() {
         .pr-drawer-cta{display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:auto;border-radius:999px;background:linear-gradient(90deg,#a79fbc,#d0c9df);color:#32127a;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
         @media(max-width:900px){
           .pr-hero{min-height:auto;padding-top:170px}
-          .pr-section-head,.pr-contact-grid,.pr-intro-grid,.pr-investment,.pr-ai-feature{grid-template-columns:1fr}
+          .pr-section-head,.pr-contact-grid,.pr-intro-grid,.pr-investment,.pr-ai-feature,.pr-about-grid{grid-template-columns:1fr}
+          .pr-about-photo{max-width:120px}
           .pr-ai-feature{padding:40px 32px;gap:36px}
           .pr-flagship{grid-template-columns:1fr}
           .pr-flagship-image{min-height:340px}
