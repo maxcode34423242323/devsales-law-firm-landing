@@ -157,7 +157,7 @@ export default function PricingPage() {
             <p>For businesses that need more than a website: content management, integrations, AI-powered lead automation and a visual system built around how customers actually decide.</p>
           </motion.div>
 
-          <motion.a {...reveal} href="https://www.louwmanexclusive.nl/en/" target="_blank" rel="noreferrer" aria-label="Visit Louwman Exclusive website" className="pr-flagship">
+          <motion.a {...reveal} href="https://www.louwmangroup.com/company/louwman-exclusive/" target="_blank" rel="noreferrer" aria-label="Visit Louwman Exclusive website" className="pr-flagship">
             <div className="pr-flagship-image"><Image src="/images/reference-louwman-exclusive.jpg" alt="Louwman Exclusive dealership" width={1200} height={772} sizes="(max-width: 767px) 100vw, 60vw" quality={72} className="object-cover" /></div>
             <div className="pr-flagship-copy">
               <p className="section-kicker">Luxury Automotive Dealership</p>
@@ -169,8 +169,8 @@ export default function PricingPage() {
           </motion.a>
 
           <motion.div {...reveal} className="pr-section-head" style={{ marginTop: 90 }}>
-            <div><p className="section-kicker">[ Industry references — not our clients ]</p><h2>The caliber of work we study and build toward.</h2></div>
-            <p>Real websites in high-value industries we analyze for design quality and conversion structure — not projects we built.</p>
+            <div><p className="section-kicker">[ Reference gallery ]</p><h2>The caliber of work we study and build toward.</h2></div>
+            <p>Real websites in high-value industries we analyze for design quality and conversion structure.</p>
           </motion.div>
           <div className="pr-portfolio-grid">
             {premiumReferences.map((item) => (
@@ -180,6 +180,7 @@ export default function PricingPage() {
               </motion.a>
             ))}
           </div>
+          <p className="pr-flagship-note" style={{ marginTop: 22 }}>Shown for reference, not as completed client work.</p>
 
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
             <div><p className="section-kicker !text-white/65">[ Premium ]</p><h2>Built for brands that <span>don&apos;t do average.</span></h2></div>

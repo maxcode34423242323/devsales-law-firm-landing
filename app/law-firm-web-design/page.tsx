@@ -133,7 +133,7 @@ export default function LawFirmWebDesignPage() {
 
       <section id="portfolio" className="law-section">
         <div className="law-container">
-          <motion.div {...reveal} className="law-section-head"><div><p className="section-kicker">[ Industry references — not our clients ]</p><h2>What we study, before we build.</h2></div><p>These are real personal injury firm websites we analyze for design quality and conversion structure — not projects we built or firms we&apos;ve worked with. Our own case studies will replace these as projects launch.</p></motion.div>
+          <motion.div {...reveal} className="law-section-head"><div><p className="section-kicker"></p><h2>What we study, before we build.</h2></div><p>These are real personal injury firm websites we analyze for design quality and conversion structure — not projects we built or firms we&apos;ve worked with. Our own case studies will replace these as projects launch.</p></motion.div>
           <div className="law-portfolio-grid">
             {portfolioCases.map((item, i) => item.image && item.url ? (
               <motion.a {...reveal} key={item.title} href={item.url} target="_blank" rel="noreferrer" aria-label={`Visit ${item.title} website`} className="law-portfolio-card has-image">
