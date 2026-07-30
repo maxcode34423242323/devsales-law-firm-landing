@@ -61,6 +61,7 @@ const faqs = [
   ["Can you redesign our existing website?", "Yes, at either tier. We can preserve useful content and SEO equity while rebuilding the strategy, visual system and technical foundation."],
   ["Will the website be ready for paid ads?", "Yes. Every project ships with a clear conversion path and form, phone-click and lead tracking prepared for Google Ads and GA4."],
   ["Do you provide SEO?", "Yes — every build, Growth or Premium, includes technical SEO foundations by default. Ongoing content and search growth can be scoped separately based on your market and goals."],
+  ["Do you offer AI automation?", "Yes — we can build an AI assistant directly into your site that answers visitor questions, qualifies leads and routes them straight to your CRM or phone. It's available as an add-on on either track."],
   ["Do you provide ongoing support after launch?", "Yes. Ongoing content updates, hosting and support can be scoped separately based on what the site needs after it goes live."],
 ];
 
@@ -128,6 +129,24 @@ export default function PricingPage() {
           <div className="pr-benefit-grid">
             {approachBenefits.map(([number, title, copy]) => <motion.article {...reveal} key={number} className="bento-card pr-benefit" onMouseMove={handleSpotlightMove}><span>{number}</span><h3>{title}</h3><p>{copy}</p></motion.article>)}
           </div>
+        </div>
+      </section>
+
+      <section className="pr-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-ai-feature" onMouseMove={handleSpotlightMove}>
+            <div className="pr-ai-feature-copy">
+              <span className="pr-ai-badge">New — AI Automation</span>
+              <h2>Your site can talk back — and qualify leads while you sleep.</h2>
+              <p>An AI assistant built directly into your site greets visitors, answers common questions and asks the right qualifying questions — then sends a ready-to-call lead straight to your phone or CRM. Available as an add-on on either track.</p>
+              <a href="#get-started" className="mixar-button fill">Ask About AI Automation ↗︎</a>
+            </div>
+            <div className="pr-ai-feature-list">
+              <div className="pr-ai-point"><span>01</span><p>Answers visitor questions instantly, day or night</p></div>
+              <div className="pr-ai-point"><span>02</span><p>Qualifies every lead before it reaches you</p></div>
+              <div className="pr-ai-point"><span>03</span><p>Routes ready-to-call leads straight to your CRM or phone</p></div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -284,6 +303,18 @@ export default function PricingPage() {
         .pr-benefit:hover>span{color:#fff}
         .pr-benefit h3{max-width:460px;margin-top:auto;font-size:32px;font-weight:500;line-height:1.05;letter-spacing:-.03em}
         .pr-benefit p{max-width:480px;margin-top:18px;color:rgba(255,255,255,.48);line-height:1.6}
+        .pr-ai-feature{position:relative;display:grid;grid-template-columns:1.3fr .7fr;gap:60px;align-items:center;overflow:hidden;border-radius:42px;background:linear-gradient(135deg,#0d0630,#1b0c52 55%,#2a1470);border:1px solid rgba(169,130,255,.25);padding:64px}
+        .pr-ai-feature::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(169,130,255,.22),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}
+        .pr-ai-feature:hover::before{opacity:1}
+        .pr-ai-feature-copy{position:relative}
+        .pr-ai-badge{display:inline-flex;border-radius:999px;padding:7px 16px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(169,130,255,.16);color:#c4a7ff;margin-bottom:20px}
+        .pr-ai-feature h2{font-size:clamp(30px,3.6vw,44px);font-weight:500;line-height:1.08;letter-spacing:-.03em;max-width:16ch;color:#fff}
+        .pr-ai-feature-copy>p{margin-top:20px;color:rgba(255,255,255,.6);font-size:16px;line-height:1.65;max-width:52ch}
+        .pr-ai-feature-copy .mixar-button{margin-top:30px}
+        .pr-ai-feature-list{position:relative;display:flex;flex-direction:column;gap:18px}
+        .pr-ai-point{display:flex;gap:16px;align-items:flex-start;padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.03)}
+        .pr-ai-point span{color:#a982ff;font-size:12px;font-weight:700;flex-shrink:0}
+        .pr-ai-point p{color:rgba(255,255,255,.75);font-size:14px;line-height:1.5}
         .pr-investment{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end;overflow:hidden;border-radius:42px;background:linear-gradient(135deg,#7424ff,#3d169e);padding:60px;margin-top:70px;transition:box-shadow .4s}
         .pr-investment::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.16),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}
         .pr-investment:hover::before{opacity:1}
@@ -434,7 +465,8 @@ export default function PricingPage() {
         .pr-drawer-cta{display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:auto;border-radius:999px;background:linear-gradient(90deg,#a79fbc,#d0c9df);color:#32127a;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
         @media(max-width:900px){
           .pr-hero{min-height:auto;padding-top:170px}
-          .pr-section-head,.pr-contact-grid,.pr-intro-grid,.pr-investment{grid-template-columns:1fr}
+          .pr-section-head,.pr-contact-grid,.pr-intro-grid,.pr-investment,.pr-ai-feature{grid-template-columns:1fr}
+          .pr-ai-feature{padding:40px 32px;gap:36px}
           .pr-flagship{grid-template-columns:1fr}
           .pr-flagship-image{min-height:340px}
           .pr-portfolio-grid{grid-template-columns:1fr 1fr}
