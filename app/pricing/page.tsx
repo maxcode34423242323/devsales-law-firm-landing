@@ -164,12 +164,11 @@ export default function PricingPage() {
               <h3>Louwman Exclusive</h3>
               <p>A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.</p>
               <span className="agency-button">Visit real website ↗</span>
-              <span className="pr-flagship-note">Shown as an industry reference</span>
             </div>
           </motion.a>
 
           <motion.div {...reveal} className="pr-section-head" style={{ marginTop: 90 }}>
-            <div><p className="section-kicker">[ Reference gallery ]</p><h2>The caliber of work we study and build toward.</h2></div>
+            <div><p className="section-kicker">[ portfolio]</p><h2>The caliber of work we study and build toward.</h2></div>
             <p>Real websites in high-value industries we analyze for design quality and conversion structure.</p>
           </motion.div>
           <div className="pr-portfolio-grid">
@@ -180,8 +179,6 @@ export default function PricingPage() {
               </motion.a>
             ))}
           </div>
-          <p className="pr-flagship-note" style={{ marginTop: 22 }}>Shown for reference, not as completed client work.</p>
-
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
             <div><p className="section-kicker !text-white/65">[ Premium ]</p><h2>Built for brands that <span>don&apos;t do average.</span></h2></div>
             <div><p>Book a short strategy call — we&apos;ll confirm scope, timeline and whether Premium is the right fit for what you need.</p><a href="#get-started" className="mixar-button fill">Book a Strategy Call ↗︎</a></div>
