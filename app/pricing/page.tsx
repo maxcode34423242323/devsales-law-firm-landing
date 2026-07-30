@@ -23,12 +23,12 @@ const premiumReferences = [
   { category: "Commercial Landscaping", title: "BrightView", image: "/images/reference-brightview.png", url: "https://www.brightview.com" },
 ];
 
-const growthClients = [
-  ["Motocenter", "Auto Dealership", "Clear communication from start to finish, and the site was delivered exactly on schedule. Exactly what we needed."],
-  ["Eurocar Viadana", "Auto Dealership", "The whole process was smooth and fast, with great communication throughout. The final result looks premium and works great on mobile."],
-  ["Autosalone Mia Car", "Auto Dealership", "Very happy with the final result. Responsive team, clear communication throughout, and a website that's fast and easy to navigate."],
-  ["Castello Car Volkswagen Service", "Service Center", "Professional from the first call to launch. Great communication throughout, and the final website was exactly the quality we were looking for."],
-  ["Cisauto Group", "Auto Dealership", "DevilSales understood exactly what we needed. Responsive and easy to work with — the final site is polished and loads fast."],
+const growthClients: { name: string; industry: string; quote: string; logo?: string }[] = [
+  { name: "Motocenter", industry: "Auto Dealership", quote: "Clear communication from start to finish, and the site was delivered exactly on schedule. Exactly what we needed." },
+  { name: "Eurocar Viadana", industry: "Auto Dealership", quote: "The whole process was smooth and fast, with great communication throughout. The final result looks premium and works great on mobile." },
+  { name: "Autosalone Mia Car", industry: "Auto Dealership", quote: "Very happy with the final result. Responsive team, clear communication throughout, and a website that's fast and easy to navigate.", logo: "/images/logo-miacar.png" },
+  { name: "Castello Car Volkswagen Service", industry: "Service Center", quote: "Professional from the first call to launch. Great communication throughout, and the final website was exactly the quality we were looking for.", logo: "/images/logo-castello.png" },
+  { name: "Cisauto Group", industry: "Auto Dealership", quote: "DevilSales understood exactly what we needed. Responsive and easy to work with — the final site is polished and loads fast." },
 ];
 
 const approachBenefits = [
@@ -229,13 +229,20 @@ export default function PricingPage() {
           <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
         </div>
         <div className="pr-testimonial-scroll">
-          {growthClients.map(([name, industry, quote]) => (
-            <div key={name} className="pr-testimonial-card">
-              <span className="pr-testimonial-tag">REAL CLIENT</span>
-              <h3>{name}</h3>
-              <p className="pr-testimonial-industry">{industry}</p>
+          {growthClients.map((client) => (
+            <div key={client.name} className="pr-testimonial-card">
+              <div className="pr-testimonial-top">
+                {client.logo ? (
+                  <div className="pr-testimonial-logo"><Image src={client.logo} alt={`${client.name} logo`} fill sizes="130px" className="object-contain" /></div>
+                ) : (
+                  <span className="pr-testimonial-monogram" aria-hidden="true">{client.name.charAt(0)}</span>
+                )}
+                <span className="pr-testimonial-tag">REAL CLIENT</span>
+              </div>
+              <h3>{client.name}</h3>
+              <p className="pr-testimonial-industry">{client.industry}</p>
               <p className="pr-testimonial-stars">★★★★★</p>
-              <p className="pr-testimonial-quote">&ldquo;{quote}&rdquo;</p>
+              <p className="pr-testimonial-quote">&ldquo;{client.quote}&rdquo;</p>
             </div>
           ))}
         </div>
@@ -430,7 +437,10 @@ export default function PricingPage() {
         .pr-testimonial-scroll::-webkit-scrollbar{height:6px}
         .pr-testimonial-scroll::-webkit-scrollbar-thumb{background:#e4defb;border-radius:99px}
         .pr-testimonial-card{flex:0 0 320px;scroll-snap-align:start;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
-        .pr-testimonial-tag{display:inline-flex;border-radius:999px;padding:6px 13px;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(16,150,90,.1);color:#0a8a52}
+        .pr-testimonial-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+        .pr-testimonial-logo{position:relative;height:26px;width:110px}
+        .pr-testimonial-monogram{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#f0ecff;color:#6100ff;font-size:13px;font-weight:700}
+        .pr-testimonial-tag{display:inline-flex;flex:0 0 auto;border-radius:999px;padding:6px 13px;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(16,150,90,.1);color:#0a8a52}
         .pr-testimonial-card h3{margin-top:14px;font-size:18px;font-weight:600;letter-spacing:-.01em}
         .pr-testimonial-industry{margin-top:4px;color:#7628ff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
         .pr-testimonial-stars{margin-top:14px;font-size:19px;letter-spacing:.15em;color:#f5b400}
