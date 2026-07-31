@@ -365,7 +365,29 @@ export default function PricingPage() {
         )}
       </AnimatePresence>
 
-      <footer className="pr-footer"><div className="pr-container"><span className="nav-brand"><i>DS</i><span><b>DEVILSALES</b><small>WEB STUDIO · USA</small></span></span><p>© {new Date().getFullYear()} DEVILSALES</p><div><Link href="/privacy" target="_blank">Privacy</Link><Link href="/terms" target="_blank">Terms</Link><Link href="/sms-policy" target="_blank">SMS Terms</Link></div></div></footer>
+      <footer className="pr-footer">
+        <div className="pr-container pr-footer-grid">
+          <div className="pr-footer-brand">
+            <span className="nav-brand"><i>DS</i><span><b>DEVILSALES</b><small>WEB STUDIO · USA</small></span></span>
+            <p>Strategy, design and development for ambitious businesses across the United States.</p>
+            <h3>Follow us</h3>
+            <div className="footer-socials">
+              <a href="https://www.facebook.com/profile.php?id=61589616998618" target="_blank" rel="noopener noreferrer" aria-label="Follow DevilSales on Facebook"><span className="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v7h4v-7h3.2l.8-4h-4V9c0-.7.3-1 1-1Z" /></svg></span><span>Facebook</span></a>
+              <a href="https://www.instagram.com/devilsales_web?igsh=MnIyMXBjc284NTVw&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Follow DevilSales on Instagram"><span className="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4.2" /><circle cx="17.4" cy="6.7" r="1" className="social-dot" /></svg></span><span>Instagram</span></a>
+            </div>
+          </div>
+          <div className="pr-footer-contacts">
+            <h3>Contact</h3>
+            <a href="mailto:info@devilsales.dev" data-track="email_click" onClick={() => trackEvent("email_click")}>info@devilsales.dev</a>
+            <a href="tel:+13155478952" data-track="phone_click" onClick={() => trackEvent("phone_click")}>315-547-8952</a>
+            <p>United States · Nationwide</p>
+          </div>
+        </div>
+        <div className="pr-container pr-footer-bottom">
+          <span>© {new Date().getFullYear()} DevilSales Web</span>
+          <div><Link href="/privacy" target="_blank">Privacy</Link><Link href="/terms" target="_blank">Terms</Link><Link href="/sms-policy" target="_blank">SMS Terms</Link></div>
+        </div>
+      </footer>
 
       <style jsx global>{`
         .pr-page{min-height:100vh;background:#0b0132;color:#fff}
@@ -529,10 +551,17 @@ export default function PricingPage() {
         .pr-ref-desc{margin-top:12px;color:rgba(255,255,255,.6);font-size:14px;line-height:1.65}
         .pr-ref-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:22px}
         .pr-ref-actions .mixar-button{white-space:normal;text-align:center}
-        .pr-footer{border-top:1px solid rgba(255,255,255,.1);padding:36px 0 60px}
-        .pr-footer>.pr-container{display:flex;align-items:center;justify-content:space-between;gap:30px}
+        .pr-footer{border-top:1px solid rgba(255,255,255,.1);padding:60px 0 30px}
         .pr-footer p,.pr-footer a{color:rgba(255,255,255,.45);font-size:12px}
-        .pr-footer>div>div{display:flex;gap:20px}
+        .pr-footer-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:50px;padding-bottom:44px}
+        .pr-footer-brand p{margin-top:14px;max-width:340px;font-size:13px;line-height:1.6}
+        .pr-footer-brand h3,.pr-footer-contacts h3{margin-top:28px;margin-bottom:12px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a982ff}
+        .pr-footer-contacts{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+        .pr-footer-contacts a{font-size:13px;transition:color .3s}
+        .pr-footer-contacts a:hover{color:#fff}
+        .pr-footer-contacts p{margin-top:2px}
+        .pr-footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid rgba(255,255,255,.08);padding-top:26px}
+        .pr-footer-bottom div{display:flex;gap:20px}
         .pr-menu-button{display:none;position:relative;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;gap:5px}
         .pr-menu-button span{width:20px;height:2px;border-radius:2px;background:#fff}
         .pr-mobile-overlay{position:fixed;inset:0;z-index:60;background:rgba(5,0,20,.82)}
@@ -580,7 +609,8 @@ export default function PricingPage() {
           .pr-process-row{grid-template-columns:38px 1fr 20px;gap:12px}
           .pr-process-row p{grid-column:2/4}
           .pr-process-row h3{font-size:22px}
-          .pr-footer>.pr-container{flex-direction:column;align-items:flex-start}
+          .pr-footer-grid{grid-template-columns:1fr;gap:32px}
+          .pr-footer-bottom{flex-direction:column;align-items:flex-start;gap:16px}
           .pr-page{padding-bottom:96px}
           .pr-sticky-call{left:0;right:0;bottom:0;justify-content:center;gap:10px;height:58px;padding:0;border-radius:0;box-shadow:none}
           .pr-sticky-call:hover{transform:none}
