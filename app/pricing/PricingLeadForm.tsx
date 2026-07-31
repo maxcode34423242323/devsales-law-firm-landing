@@ -27,7 +27,7 @@ export default function PricingLeadForm() {
       if (event.data?.event !== "calendly.event_scheduled") return;
 
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "form_submit_success", service_needed: "Calendly booking" });
+      window.dataLayer.push({ event: "booking_success", service_needed: "Calendly booking" });
       window.dataLayer.push({ event: "pricing_lead", service_needed: "Calendly booking" });
       trackEvent("calendly_booking_confirmed");
     }
