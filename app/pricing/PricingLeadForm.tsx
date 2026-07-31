@@ -47,7 +47,7 @@ export default function PricingLeadForm() {
           ref={widgetRef}
           className="calendly-inline-widget pr-calendly-widget"
           data-url={CALENDLY_BASE_URL}
-          style={{ minWidth: 320, height: 700 }}
+          style={{ minWidth: 320, height: 1000 }}
         />
         <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
       </div>
