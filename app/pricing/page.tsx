@@ -31,6 +31,20 @@ const growthClients: { name: string; industry: string; quote: string; logo?: str
   { name: "Cisauto Group", industry: "Auto Dealership", quote: "DevilSales understood exactly what we needed. Responsive and easy to work with — the final site is polished and loads fast.", logo: "/images/logo-cisauto.webp" },
 ];
 
+const servicesList: { number: string; title: string; copy: string; icon: string }[] = [
+  { number: "01", title: "Custom Website Design & Development", copy: "Fully custom-built sites and platforms, not templates — designed and built around how your customers actually decide.", icon: "dev" },
+  { number: "02", title: "Website Redesign", copy: "Modernize an outdated site without losing your rankings — SEO-safe migration, faster load times, better conversion.", icon: "redesign" },
+  { number: "03", title: "AI Automation & Lead Qualification", copy: "An AI assistant built into your site that answers questions, qualifies leads and routes them straight to your CRM or phone.", icon: "ai" },
+  { number: "04", title: "Technical SEO", copy: "Structured, fast, crawlable foundations on every build — ready to rank and ready for ad traffic from day one.", icon: "seo" },
+  { number: "05", title: "Conversion Tracking & Analytics", copy: "GA4, GTM, GCLID and UTM tracking wired in from the start, so every lead is attributed correctly.", icon: "tracking" },
+  { number: "06", title: "Fast-Launch Growth Sites", copy: "A clean, credible site live in 2–4 weeks for businesses that need to launch fast.", icon: "launch" },
+  { number: "07", title: "WordPress Development", copy: "Custom-designed WordPress builds for teams who want an easy, familiar CMS to manage content themselves — without giving up speed or design quality.", icon: "cms" },
+  { number: "08", title: "Cross-Device Optimization", copy: "Every build is tested and tuned across desktop, tablet and mobile — consistent speed, layout and experience on any screen.", icon: "devices" },
+  { number: "09", title: "Hosting & Managed Cloud Services", copy: "Reliable, monitored hosting so your site stays fast and online — no need to manage servers or renewals yourself.", icon: "cloud" },
+  { number: "10", title: "Client Services", copy: "We work with you to maintain your site after it launches, with dedicated support to make sure your business goals are being met.", icon: "support" },
+  { number: "11", title: "UI/UX Design", copy: "User-centered design — wireframes, prototypes and pixel-perfect interfaces built to turn visitors into leads.", icon: "design" },
+];
+
 const approachBenefits = [
   ["01", "A site that matches your growth stage", "Whether you need to launch fast or build a real platform, the project is scoped to where your business actually is — not a generic package."],
   ["02", "Built around how customers decide", "Clear structure, focused messaging and calls to action — backed by an optional AI assistant that qualifies leads even when you're offline."],
@@ -119,6 +133,24 @@ export default function PricingPage() {
       </section>
 
       <div className="ticker"><div>CUSTOM-BUILT, NOT TEMPLATED&nbsp; ✦ &nbsp;TRACKING BUILT FOR GROWTH&nbsp; ✦ &nbsp;ONE ACCOUNTABLE TEAM&nbsp; ✦ &nbsp;CUSTOM-BUILT, NOT TEMPLATED&nbsp; ✦ &nbsp;TRACKING BUILT FOR GROWTH&nbsp; ✦ &nbsp;</div></div>
+
+      <section className="pr-section pr-services-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head">
+            <div><p className="section-kicker">[ Services ]</p><h2>What we offer.</h2></div>
+            <p>From a brand-new custom platform to a fast professional launch — here&apos;s exactly what we offer.</p>
+          </motion.div>
+          <div className="pr-benefit-grid pr-services-grid">
+            {servicesList.map((service) => (
+              <motion.article {...reveal} key={service.number} className="bento-card pr-benefit pr-service-card" onMouseMove={handleSpotlightMove}>
+                <div className="pr-service-top"><ServiceIcon type={service.icon} /><span>{service.number}</span></div>
+                <h3>{service.title}</h3>
+                <p>{service.copy}</p>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="pr-section pr-intro">
         <div className="pr-container">
@@ -227,24 +259,24 @@ export default function PricingPage() {
       <section className="pr-section pr-testimonials-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
-        </div>
-        <div className="pr-testimonial-scroll">
-          {growthClients.map((client) => (
-            <div key={client.name} className="pr-testimonial-card">
-              <div className="pr-testimonial-top">
-                {client.logo ? (
-                  <div className="pr-testimonial-logo"><Image src={client.logo} alt={`${client.name} logo`} fill sizes="130px" className="object-contain" /></div>
-                ) : (
-                  <span className="pr-testimonial-monogram" aria-hidden="true">{client.name.charAt(0)}</span>
-                )}
-                <span className="pr-testimonial-tag">REAL CLIENT</span>
+          <div className="pr-testimonial-scroll">
+            {growthClients.map((client) => (
+              <div key={client.name} className="pr-testimonial-card">
+                <div className="pr-testimonial-top">
+                  {client.logo ? (
+                    <div className="pr-testimonial-logo"><Image src={client.logo} alt={`${client.name} logo`} fill sizes="130px" className="object-contain" /></div>
+                  ) : (
+                    <span className="pr-testimonial-monogram" aria-hidden="true">{client.name.charAt(0)}</span>
+                  )}
+                  <span className="pr-testimonial-tag">REAL CLIENT</span>
+                </div>
+                <h3>{client.name}</h3>
+                <p className="pr-testimonial-industry">{client.industry}</p>
+                <p className="pr-testimonial-stars">★★★★★</p>
+                <p className="pr-testimonial-quote">&ldquo;{client.quote}&rdquo;</p>
               </div>
-              <h3>{client.name}</h3>
-              <p className="pr-testimonial-industry">{client.industry}</p>
-              <p className="pr-testimonial-stars">★★★★★</p>
-              <p className="pr-testimonial-quote">&ldquo;{client.quote}&rdquo;</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -360,6 +392,16 @@ export default function PricingPage() {
         .pr-intro-grid h2{max-width:900px;margin-top:22px;font-size:clamp(38px,5.4vw,72px);font-weight:500;line-height:1;letter-spacing:-.05em}
         .pr-intro-grid>div:last-child p{color:rgba(255,255,255,.5);font-size:17px;line-height:1.65}
         .pr-benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:80px}
+        .pr-services-grid{display:flex;flex-wrap:wrap}
+        .pr-services-grid .pr-benefit{flex:1 1 320px;min-height:300px;padding:34px}
+        .pr-services-grid .pr-benefit h3{margin-top:22px;font-size:34px;line-height:1.15}
+        .pr-services-grid .pr-benefit p{margin-top:20px;font-size:16.5px;line-height:1.65;color:rgba(255,255,255,.62)}
+        .pr-service-top{display:flex;align-items:center;justify-content:space-between}
+        .pr-service-top>span{color:#a982ff;font-size:13px;letter-spacing:.18em;transition:color .3s}
+        .pr-service-card:hover .pr-service-top>span{color:#fff}
+        .pr-service-icon{display:grid;width:54px;height:54px;place-items:center;border-radius:16px;background:linear-gradient(145deg,#a76cff,#6b20ff);box-shadow:0 10px 28px rgba(118,40,255,.4),inset 0 1px 0 rgba(255,255,255,.25);color:#fff;transition:.35s}
+        .pr-service-card:hover .pr-service-icon{transform:translateY(-3px) scale(1.05);box-shadow:0 16px 38px rgba(118,40,255,.55),inset 0 1px 0 rgba(255,255,255,.3)}
+        .pr-service-icon svg{width:25px;height:25px}
         .pr-benefit{min-height:280px;transition:transform .35s,border-color .35s,background .35s}
         .pr-benefit::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(154,99,255,.2),transparent 70%);opacity:0;transition:opacity .35s;pointer-events:none}
         .pr-benefit:hover{transform:translateY(-6px);border-color:rgba(156,99,255,.5)}
@@ -433,10 +475,8 @@ export default function PricingPage() {
         .pr-testimonials-section{background:#fff;color:#11052f;overflow:hidden}
         .pr-testimonial-head h2{color:#11052f}
         .pr-testimonial-head>p{color:rgba(17,5,47,.55)}
-        .pr-testimonial-scroll{display:flex;gap:20px;margin-top:60px;overflow-x:auto;padding:4px 4px 20px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
-        .pr-testimonial-scroll::-webkit-scrollbar{height:6px}
-        .pr-testimonial-scroll::-webkit-scrollbar-thumb{background:#e4defb;border-radius:99px}
-        .pr-testimonial-card{flex:0 0 320px;scroll-snap-align:start;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
+        .pr-testimonial-scroll{display:flex;flex-wrap:wrap;gap:20px;margin-top:60px}
+        .pr-testimonial-card{flex:1 1 300px;max-width:360px;border:1px solid #e4defb;border-radius:24px;background:#faf9ff;padding:36px 30px;color:#11052f}
         .pr-testimonial-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
         .pr-testimonial-logo{position:relative;height:44px;width:130px}
         .pr-testimonial-monogram{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#f0ecff;color:#6100ff;font-size:13px;font-weight:700}
@@ -532,7 +572,7 @@ export default function PricingPage() {
           .pr-portfolio-grid,.pr-benefit-grid{grid-template-columns:1fr;margin-top:40px}
           .pr-benefit{min-height:220px}
           .pr-testimonial-scroll{margin-top:40px}
-          .pr-testimonial-card{flex:0 0 260px;padding:28px 24px}
+          .pr-testimonial-card{flex:1 1 100%;max-width:100%;padding:28px 24px}
           .pr-investment{border-radius:26px;padding:34px 24px;margin-top:45px}
           .pr-investment h2{font-size:38px}
           .pr-process-shell{width:calc(100% - 30px);border-radius:26px;padding:32px 22px}
@@ -550,6 +590,23 @@ export default function PricingPage() {
       `}</style>
     </main>
   );
+}
+
+function ServiceIcon({ type }: { type: string }) {
+  const paths: Record<string, React.ReactNode> = {
+    dev: <path d="M8 6 3 12l5 6M16 6l5 6-5 6M14 4l-4 16" />,
+    redesign: <><path d="M4 12a8 8 0 0 1 14-5.2" /><path d="M20 12a8 8 0 0 1-14 5.2" /><path d="M18 3v4h-4" /><path d="M6 21v-4h4" /></>,
+    ai: <><rect x="5" y="7" width="14" height="11" rx="3" /><path d="M9 3v3M15 3v3M9 12h.01M15 12h.01" /><path d="M4 12H2M22 12h-2" /></>,
+    seo: <><circle cx="10" cy="10" r="6" /><path d="m20 20-5.2-5.2" /></>,
+    tracking: <><path d="M4 20V10M10 20V4M16 20v-7" /><path d="M2 20h20" /></>,
+    launch: <><path d="M12 2c3 2 5 6 5 10 0 2-1 4-2 5l-3 3-3-3c-1-1-2-3-2-5 0-4 2-8 5-10Z" /><circle cx="12" cy="10" r="1.6" /><path d="M9 17l-3 3M15 17l3 3" /></>,
+    cms: <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 8h18" /><path d="M7 12h10M7 16h6" /></>,
+    devices: <><rect x="2" y="4" width="14" height="10" rx="1.5" /><rect x="17" y="8" width="5" height="9" rx="1" /><path d="M9 14v2M6 18h6" /></>,
+    cloud: <path d="M7 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 16 8.1 4.5 4.5 0 0 1 17.5 17H7Z" />,
+    support: <><path d="M4 13a8 8 0 0 1 16 0" /><rect x="3" y="13" width="4" height="6" rx="1.5" /><rect x="17" y="13" width="4" height="6" rx="1.5" /><path d="M20 19a4 4 0 0 1-4 4h-2" /></>,
+    design: <><path d="m4 20 1-4L15 6l3 3L8 19l-4 1Z" /><path d="m13 8 3 3" /></>,
+  };
+  return <span className="pr-service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">{paths[type]}</svg></span>;
 }
 
 function ContactIcon({ type }: { type: "phone" | "mail" | "location" }) {
