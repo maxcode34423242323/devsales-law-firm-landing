@@ -388,6 +388,11 @@ export default function PricingPage() {
               </motion.div>
             ))}
           </div>
+
+          <div className="pr-pricing-cta">
+            <p>Mixing and matching services across tiers? We&apos;ll scope it with you.</p>
+            <a href="#get-started" className="mixar-button fill">Build a Custom Package ↗︎</a>
+          </div>
         </div>
       </section>
 
@@ -672,6 +677,8 @@ export default function PricingPage() {
         .pr-tier-card-featured .pr-tier-list li:before{color:#fff}
         .pr-tier-card .mixar-button,.pr-tier-card .mixar-button.fill{margin-top:28px;width:100%}
         .pr-pricing-detail{display:flex;flex-direction:column;gap:50px;margin-top:90px}
+        .pr-pricing-cta{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:60px;padding-top:50px;border-top:1px solid rgba(255,255,255,.1);text-align:center}
+        .pr-pricing-cta p{color:rgba(255,255,255,.55);font-size:14.5px}
         .pr-pricing-category h3{font-size:22px;font-weight:600;letter-spacing:-.01em;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
         .pr-pricing-rows{display:flex;flex-direction:column}
         .pr-pricing-row{display:grid;grid-template-columns:1fr auto 120px;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08)}
