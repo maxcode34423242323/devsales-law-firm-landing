@@ -247,7 +247,10 @@ export default function PricingPage() {
 
       <section className="pr-section pr-about-section">
         <div className="pr-container pr-about-grid">
-          <motion.div {...reveal} className="pr-about-photo"><Image src="/images/founder-photo.jpg" alt="DevilSales Web founder" width={220} height={220} className="object-cover" /></motion.div>
+          <motion.div {...reveal} className="pr-about-photo-wrap">
+            <div className="pr-about-photo"><Image src="/images/founder-photo.jpg" alt="Maxim Comerzan, CEO of DevilSales Web" width={220} height={220} className="object-cover" /></div>
+            <p className="pr-about-name">Maxim Comerzan<span>CEO, DevilSales Web</span></p>
+          </motion.div>
           <motion.div {...reveal} className="pr-about-copy">
             <p className="section-kicker">[ Why work with us ]</p>
             <h2>USA-Aligned Operations</h2>
@@ -512,8 +515,11 @@ export default function PricingPage() {
         .pr-portfolio-meta h3{margin-top:8px;font-size:19px;font-weight:500;letter-spacing:-.02em}
         .pr-portfolio-meta i{display:block;margin-top:12px;color:rgba(255,255,255,.55);font-size:12px;font-style:normal;text-decoration:underline;text-underline-offset:3px}
         .pr-about-grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:50px;align-items:center}
+        .pr-about-photo-wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
         .pr-about-photo{position:relative;aspect-ratio:1/1;width:100%;max-width:220px;border-radius:50%;overflow:hidden;background:linear-gradient(145deg,rgba(121,40,255,.35),rgba(62,20,159,.35));border:1px solid rgba(201,180,255,.35)}
         .pr-about-photo img{width:100%;height:100%}
+        .pr-about-name{margin-top:16px;font-size:15px;font-weight:600;color:#fff}
+        .pr-about-name span{display:block;margin-top:3px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#a982ff}
         .pr-about-copy h2{margin-top:14px;font-size:clamp(30px,4vw,44px);font-weight:500;letter-spacing:-.03em}
         .pr-about-copy>p:not(.section-kicker){margin-top:18px;max-width:60ch;color:rgba(255,255,255,.6);font-size:15.5px;line-height:1.7}
         .pr-testimonials-section{background:#fff;color:#11052f;overflow:hidden}
