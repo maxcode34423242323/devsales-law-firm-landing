@@ -216,7 +216,7 @@ export default function PricingPage() {
           </motion.h1>
           <motion.div {...reveal} className="pr-hero-bottom">
             <p>Some businesses need a fast, professional website that gets them online and converting. Others need a custom platform built around content, integrations and growth. We build both — pick the track that fits.</p>
-            <div className="pr-hero-actions"><a className="mixar-button fill" href="#premium">See Premium ↗︎</a><a className="mixar-button" href="#growth">See Growth ↗︎</a></div>
+            <div className="pr-hero-actions"><a className="mixar-button fill" href="#tier-premium">See Premium ↗︎</a><a className="mixar-button" href="#tier-growth">See Growth ↗︎</a></div>
           </motion.div>
         </div>
       </section>
@@ -290,7 +290,7 @@ export default function PricingPage() {
       <section className="pr-section pr-portfolio-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head">
-            <div><p className="section-kicker">[ Portfolio ]</p><h2>Our  Portfolio </h2></div>
+            <div><p className="section-kicker">[ Portfolio ]</p><h2>The caliber of work we study and build toward.</h2></div>
             <p>Real websites in high-value industries we analyze for design quality and conversion structure.</p>
           </motion.div>
 
@@ -350,7 +350,7 @@ export default function PricingPage() {
 
           <div className="pr-tier-grid">
             {pricingTiers.map((tier) => (
-              <motion.div {...reveal} key={tier.name} className={`pr-tier-card${tier.featured ? " pr-tier-card-featured" : ""}`}>
+              <motion.div {...reveal} key={tier.name} id={`tier-${tier.name.toLowerCase()}`} className={`pr-tier-card${tier.featured ? " pr-tier-card-featured" : ""}`}>
                 {tier.featured && <span className="pr-tier-badge">Most popular</span>}
                 <p className="pr-tier-name">{tier.name}</p>
                 <p className="pr-tier-tagline">{tier.tagline}</p>
