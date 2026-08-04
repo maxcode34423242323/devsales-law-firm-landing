@@ -285,14 +285,14 @@ export default function PricingPage() {
           <motion.div {...reveal} className="pr-section-head"><div><p className="section-kicker">[ Case studies ]</p><h2>Real projects, real outcomes.</h2></div><p>A closer look at two recent builds and what changed after launch.</p></motion.div>
           <div className="pr-case-grid">
             <motion.article {...reveal} className="bento-card pr-case-card">
-              <div className="pr-case-logo"><Image src="/images/logo-motocenter.jpg" alt="Motocenter logo" width={110} height={44} className="object-contain" /></div>
+              <div className="pr-case-logo"><Image src="/images/logo-motocenter.jpg" alt="Motocenter logo" fill sizes="130px" className="object-contain" /></div>
               <h3>Motocenter</h3>
               <p className="pr-testimonial-industry">Auto Dealership</p>
               <p className="pr-case-what"><b>What we did:</b> Full custom website rebuild, mobile-first redesign, and integrated lead tracking across every inventory page.</p>
               <p className="pr-case-result"><b>Result:</b> Motocenter had no website generating inquiries before this project — the new site gave them a real, working online lead channel for the first time, with fast load times and a smooth mobile browsing experience.</p>
             </motion.article>
             <motion.article {...reveal} className="bento-card pr-case-card">
-              <div className="pr-case-logo"><Image src="/images/logo-castello.png" alt="Castello Car Volkswagen Service logo" width={110} height={44} className="object-contain" /></div>
+              <div className="pr-case-logo"><Image src="/images/logo-castello.png" alt="Castello Car Volkswagen Service logo" fill sizes="130px" className="object-contain" /></div>
               <h3>Castello Car Volkswagen Service</h3>
               <p className="pr-testimonial-industry">Service Center</p>
               <p className="pr-case-what"><b>What we did:</b> Website redesign, technical SEO foundations, and a streamlined service-booking flow.</p>
