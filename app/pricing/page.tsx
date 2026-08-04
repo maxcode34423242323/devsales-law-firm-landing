@@ -45,6 +45,94 @@ const servicesList: { number: string; title: string; copy: string; icon: string 
   { number: "11", title: "UI/UX Design", copy: "User-centered design — wireframes, prototypes and pixel-perfect interfaces built to turn visitors into leads.", icon: "design" },
 ];
 
+const pricingTiers = [
+  {
+    name: "Starter",
+    tagline: "Quick launch",
+    oneTime: "$4,600",
+    monthly: "$189/mo",
+    highlights: [
+      "Template website (5–8 pages)",
+      "Cross-device optimization",
+      "Technical SEO audit",
+      "Hosting + managed cloud",
+      "Basic maintenance",
+    ],
+  },
+  {
+    name: "Growth",
+    tagline: "Built to grow",
+    oneTime: "$13,800",
+    monthly: "$2,229/mo",
+    highlights: [
+      "Custom-designed site (10–20 pages)",
+      "AI chatbot: setup + subscription",
+      "SEO retainer (single location)",
+      "Conversion tracking (GA4)",
+      "Standard maintenance",
+    ],
+    featured: true,
+  },
+  {
+    name: "Premium",
+    tagline: "Full-service solution",
+    oneTime: "$36,300",
+    monthly: "$5,429/mo",
+    highlights: [
+      "Custom site + full UI/UX design",
+      "Custom AI agent, built from scratch",
+      "SEO retainer (multi-location)",
+      "Full-service maintenance",
+      "Dedicated Client Services",
+    ],
+  },
+];
+
+type PricingLineItem = { name: string; price: string; billing: string; note: string; starter: boolean; growth: boolean; premium: boolean };
+
+const pricingCategories: { title: string; items: PricingLineItem[] }[] = [
+  {
+    title: "Website & Content",
+    items: [
+      { name: "Template website (WordPress, pre-built theme)", price: "$2,200", billing: "one-time", note: "5–8 pages", starter: true, growth: false, premium: false },
+      { name: "Custom website (unique design)", price: "$9,000", billing: "one-time", note: "10–20 pages", starter: false, growth: true, premium: true },
+      { name: "Website redesign", price: "$6,000", billing: "one-time", note: "On request, usually an add-on", starter: false, growth: false, premium: false },
+      { name: "UI/UX design (wireframes, prototype)", price: "$2,500", billing: "one-time", note: "Full research + prototype", starter: false, growth: true, premium: true },
+      { name: "Cross-device optimization", price: "$900", billing: "one-time", note: "Tested across all screen sizes", starter: true, growth: true, premium: true },
+      { name: "Launch copywriting (full site)", price: "$1,200", billing: "one-time", note: "Professional copywriting", starter: false, growth: true, premium: true },
+      { name: "Template copy / basic content fill", price: "$300", billing: "one-time", note: "Client edits further on their own", starter: true, growth: false, premium: false },
+      { name: "Content edit hours bank (10 hrs/mo)", price: "$850", billing: "monthly", note: "Edits + minor updates", starter: false, growth: false, premium: true },
+    ],
+  },
+  {
+    title: "AI Automation",
+    items: [
+      { name: "AI chatbot, SaaS setup", price: "$900", billing: "one-time", note: "Fast launch on an existing platform", starter: false, growth: true, premium: true },
+      { name: "AI chatbot, platform subscription", price: "$90", billing: "monthly", note: "Lead qualification, FAQ", starter: false, growth: true, premium: true },
+      { name: "Custom AI agent, built from scratch", price: "$20,000", billing: "one-time", note: "Qualifies, routes and books calls", starter: false, growth: false, premium: true },
+    ],
+  },
+  {
+    title: "SEO & Analytics",
+    items: [
+      { name: "Technical SEO audit", price: "$1,200", billing: "one-time", note: "Included in every tier", starter: true, growth: true, premium: true },
+      { name: "SEO retainer, basic", price: "$1,800", billing: "monthly", note: "Single location", starter: false, growth: true, premium: false },
+      { name: "SEO retainer, growth (multi-location)", price: "$3,500", billing: "monthly", note: "Multiple locations", starter: false, growth: false, premium: true },
+      { name: "Conversion tracking & analytics (GA4)", price: "$600", billing: "one-time", note: "Analytics and attribution setup", starter: false, growth: true, premium: true },
+    ],
+  },
+  {
+    title: "Hosting, Support & Client Services",
+    items: [
+      { name: "Hosting + managed cloud", price: "$90", billing: "monthly", note: "Included in every tier", starter: true, growth: true, premium: true },
+      { name: "Maintenance, basic", price: "$99", billing: "monthly", note: "Technical care only", starter: true, growth: false, premium: false },
+      { name: "Maintenance, standard", price: "$249", billing: "monthly", note: "+ up to 2 hrs of edits/month", starter: false, growth: true, premium: false },
+      { name: "Maintenance, full service", price: "$399", billing: "monthly", note: "Priority support", starter: false, growth: false, premium: true },
+      { name: "Client Services / dedicated support", price: "$500", billing: "monthly", note: "Dedicated account manager", starter: false, growth: false, premium: true },
+    ],
+  },
+];
+
 const approachBenefits = [
   ["01", "A site that matches your growth stage", "Whether you need to launch fast or build a real platform, the project is scoped to where your business actually is — not a generic package."],
   ["02", "Built around how customers decide", "Clear structure, focused messaging and calls to action — backed by an optional AI assistant that qualifies leads even when you're offline."],
@@ -108,6 +196,7 @@ export default function PricingPage() {
                 <button type="button" onClick={() => setMenuOpen(false)} aria-label="Close menu">×</button>
               </div>
               <nav className="pr-drawer-links">
+                <a onClick={() => setMenuOpen(false)} href="#pricing">Pricing</a>
                 <a onClick={() => setMenuOpen(false)} href="#premium">Premium</a>
                 <a onClick={() => setMenuOpen(false)} href="#growth">Growth</a>
                 <a onClick={() => setMenuOpen(false)} href="#faq">FAQ</a>
@@ -187,6 +276,55 @@ export default function PricingPage() {
                 <div className="pr-portfolio-image"><Image src={item.image} alt={`${item.title} website design`} fill sizes="(max-width: 767px) 100vw, 340px" quality={68} className="object-cover object-top" /></div>
                 <div className="pr-portfolio-meta"><p>{item.category}</p><h3>{item.title}</h3><i>Preview ↗︎</i></div>
               </motion.button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="pr-section pr-pricing-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head">
+            <div><p className="section-kicker">[ Pricing ]</p><h2>Choose your package.</h2></div>
+            <p>Clear, upfront pricing for every stage of growth — pick a package or mix services to fit your project.</p>
+          </motion.div>
+
+          <div className="pr-tier-grid">
+            {pricingTiers.map((tier) => (
+              <motion.div {...reveal} key={tier.name} className={`pr-tier-card${tier.featured ? " pr-tier-card-featured" : ""}`}>
+                {tier.featured && <span className="pr-tier-badge">Most popular</span>}
+                <p className="pr-tier-name">{tier.name}</p>
+                <p className="pr-tier-tagline">{tier.tagline}</p>
+                <p className="pr-tier-price">{tier.oneTime}<span>one-time</span></p>
+                <p className="pr-tier-monthly">{tier.monthly} after launch</p>
+                <ul className="pr-tier-list">
+                  {tier.highlights.map((h) => <li key={h}>{h}</li>)}
+                </ul>
+                <a href="#get-started" className={tier.featured ? "mixar-button fill" : "mixar-button"}>Get Started ↗︎</a>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="pr-pricing-detail">
+            {pricingCategories.map((category) => (
+              <motion.div {...reveal} key={category.title} className="pr-pricing-category">
+                <h3>{category.title}</h3>
+                <div className="pr-pricing-rows">
+                  {category.items.map((item) => (
+                    <div key={item.name} className="pr-pricing-row">
+                      <div className="pr-pricing-row-info">
+                        <p className="pr-pricing-row-name">{item.name}</p>
+                        <p className="pr-pricing-row-note">{item.note}</p>
+                      </div>
+                      <div className="pr-pricing-row-tiers">
+                        <span className={item.starter ? "pr-tier-pill on" : "pr-tier-pill"}>S</span>
+                        <span className={item.growth ? "pr-tier-pill on" : "pr-tier-pill"}>G</span>
+                        <span className={item.premium ? "pr-tier-pill on" : "pr-tier-pill"}>P</span>
+                      </div>
+                      <div className="pr-pricing-row-price">{item.price}<span>/{item.billing === "monthly" ? "mo" : "one-time"}</span></div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -514,6 +652,33 @@ export default function PricingPage() {
         .pr-flagship-note{display:block;margin-top:12px;color:rgba(255,255,255,.28);font-size:10.5px;letter-spacing:.04em}
         .pr-portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
         .pr-portfolio-card{position:relative;display:block;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#17063e;color:inherit;text-decoration:none;transition:.3s;width:100%;text-align:left;font:inherit;cursor:pointer;padding:0}
+        .pr-tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+        .pr-tier-card{position:relative;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.12);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));padding:36px 32px;transition:.35s}
+        .pr-tier-card:hover{transform:translateY(-6px);border-color:rgba(156,99,255,.5)}
+        .pr-tier-card-featured{border-color:#9c63ff;background:linear-gradient(160deg,#5522f1,#2c0f8f);box-shadow:0 30px 80px rgba(89,38,245,.35)}
+        .pr-tier-badge{position:absolute;top:-13px;left:32px;border-radius:999px;background:#fff;padding:5px 14px;color:#5522f1;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+        .pr-tier-name{font-size:22px;font-weight:600;letter-spacing:-.01em}
+        .pr-tier-tagline{margin-top:4px;color:rgba(255,255,255,.55);font-size:13px}
+        .pr-tier-card-featured .pr-tier-tagline{color:rgba(255,255,255,.75)}
+        .pr-tier-price{display:flex;align-items:baseline;gap:8px;margin-top:22px;font-size:38px;font-weight:600;letter-spacing:-.02em}
+        .pr-tier-price span{color:rgba(255,255,255,.5);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+        .pr-tier-monthly{margin-top:6px;color:rgba(255,255,255,.55);font-size:13px}
+        .pr-tier-list{display:flex;flex-direction:column;gap:11px;margin-top:26px;flex:1}
+        .pr-tier-list li{position:relative;padding-left:24px;color:rgba(255,255,255,.75);font-size:13.5px;line-height:1.5}
+        .pr-tier-list li:before{content:"✓";position:absolute;left:0;color:#a982ff;font-weight:700}
+        .pr-tier-card-featured .pr-tier-list li:before{color:#fff}
+        .pr-tier-card .mixar-button,.pr-tier-card .mixar-button.fill{margin-top:28px;width:100%}
+        .pr-pricing-detail{display:flex;flex-direction:column;gap:50px;margin-top:90px}
+        .pr-pricing-category h3{font-size:22px;font-weight:600;letter-spacing:-.01em;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+        .pr-pricing-rows{display:flex;flex-direction:column}
+        .pr-pricing-row{display:grid;grid-template-columns:1fr auto 120px;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+        .pr-pricing-row-name{font-size:14.5px;font-weight:500}
+        .pr-pricing-row-note{margin-top:3px;color:rgba(255,255,255,.45);font-size:12px}
+        .pr-pricing-row-tiers{display:flex;gap:6px}
+        .pr-tier-pill{display:grid;width:24px;height:24px;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:rgba(255,255,255,.3);font-size:10px;font-weight:700}
+        .pr-tier-pill.on{border-color:#9c63ff;background:#7628ff;color:#fff}
+        .pr-pricing-row-price{text-align:right;font-size:15px;font-weight:600;white-space:nowrap}
+        .pr-pricing-row-price span{color:rgba(255,255,255,.45);font-size:11px;font-weight:500;text-transform:uppercase}
         .pr-portfolio-card:hover{border-color:rgba(156,99,255,.55)}
         .pr-portfolio-image{position:relative;aspect-ratio:4/3;background:#0b0132}
         .pr-portfolio-meta{padding:18px 20px 22px}
@@ -614,6 +779,9 @@ export default function PricingPage() {
         @media(max-width:900px){
           .pr-hero{min-height:auto;padding-top:170px}
           .pr-section-head,.pr-contact-grid,.pr-intro-grid,.pr-investment,.pr-ai-feature,.pr-about-grid{grid-template-columns:1fr}
+          .pr-tier-grid{grid-template-columns:1fr;gap:24px}
+          .pr-pricing-row{grid-template-columns:1fr;gap:8px;text-align:left}
+          .pr-pricing-row-price{text-align:left}
           .pr-about-photo{max-width:120px}
           .pr-ai-feature{padding:40px 32px;gap:36px}
           .pr-flagship{grid-template-columns:1fr}
