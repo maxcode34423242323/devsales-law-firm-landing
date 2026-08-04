@@ -289,14 +289,14 @@ export default function PricingPage() {
               <h3>Motocenter</h3>
               <p className="pr-testimonial-industry">Auto Dealership</p>
               <p className="pr-case-what"><b>What we did:</b> Full custom website rebuild, mobile-first redesign, and integrated lead tracking across every inventory page.</p>
-              <p className="pr-case-result"><b>Result:</b> A clear increase in customer inquiries after launch, with faster load times and a smoother mobile browsing experience across their inventory.</p>
+              <p className="pr-case-result"><b>Result:</b> Motocenter had no website generating inquiries before this project — the new site gave them a real, working online lead channel for the first time, with fast load times and a smooth mobile browsing experience.</p>
             </motion.article>
             <motion.article {...reveal} className="bento-card pr-case-card">
               <div className="pr-case-logo"><Image src="/images/logo-castello.png" alt="Castello Car Volkswagen Service logo" width={110} height={44} className="object-contain" /></div>
               <h3>Castello Car Volkswagen Service</h3>
               <p className="pr-testimonial-industry">Service Center</p>
               <p className="pr-case-what"><b>What we did:</b> Website redesign, technical SEO foundations, and a streamlined service-booking flow.</p>
-              <p className="pr-case-result"><b>Result:</b> Stronger engagement with the service-booking pages and a more consistent flow of leads reaching the team after launch.</p>
+              <p className="pr-case-result"><b>Result:</b> Castello had no online booking or lead flow before this project — the new site and service-booking pages gave them a functioning digital channel that brings in inquiries the team didn&apos;t have access to before.</p>
             </motion.article>
           </div>
         </div>
