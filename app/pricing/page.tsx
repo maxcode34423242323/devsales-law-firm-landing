@@ -157,7 +157,7 @@ const processSteps = [
 
 const faqs = [
   ["What's the difference between Premium and Growth?", "Growth projects are focused, single-purpose websites built fast on a proven foundation. Premium projects involve custom platform work — CMS-driven content, integrations, CRM automation, or multi-stage user flows — which takes more strategy and development time."],
-  ["How much does a website actually cost?", "Investment depends on scope, integrations, content and timeline. Tell us your budget range in the form and we'll confirm the exact number and the right track for you before any work begins."],
+  ["How much does a website actually cost?", "It depends on the package: Starter starts at $4,600, Growth at $13,800, and Premium at $36,300 — see the full breakdown in the Pricing section above. Final cost can shift slightly based on scope, integrations and content, and we'll confirm the exact number before any work begins."],
   ["How long does a project take?", "Growth websites typically launch in 2–4 weeks. Premium platforms usually take 6–10 weeks depending on scope and integrations."],
   ["Can you redesign our existing website?", "Yes, at either tier. We can preserve useful content and SEO equity while rebuilding the strategy, visual system and technical foundation."],
   ["Will the website be ready for paid ads?", "Yes. Every project ships with a clear conversion path and form, phone-click and lead tracking prepared for Google Ads and GA4."],
