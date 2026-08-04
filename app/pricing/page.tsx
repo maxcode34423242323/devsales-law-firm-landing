@@ -152,6 +152,46 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="pr-section pr-portfolio-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head">
+            <div><p className="section-kicker">[ Portfolio ]</p><h2>The caliber of work we study and build toward.</h2></div>
+            <p>Real websites in high-value industries we analyze for design quality and conversion structure.</p>
+          </motion.div>
+
+          <motion.button
+            {...reveal}
+            type="button"
+            aria-label="Preview Louwman Exclusive website"
+            className="pr-flagship"
+            onClick={() => setActiveReference({
+              category: "Luxury Automotive Dealership",
+              title: "Louwman Exclusive",
+              image: "/images/reference-louwman-exclusive.jpg",
+              url: "https://www.louwmangroup.com/company/louwman-exclusive/",
+              description: "A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.",
+            })}
+          >
+            <div className="pr-flagship-image"><Image src="/images/reference-louwman-exclusive.jpg" alt="Louwman Exclusive dealership" width={1200} height={772} sizes="(max-width: 767px) 100vw, 60vw" quality={72} className="object-cover" /></div>
+            <div className="pr-flagship-copy">
+              <p className="section-kicker">Luxury Automotive Dealership</p>
+              <h3>Louwman Exclusive</h3>
+              <p>A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.</p>
+              <span className="agency-button">Preview ↗</span>
+            </div>
+          </motion.button>
+
+          <div className="pr-portfolio-grid" style={{ marginTop: 34 }}>
+            {premiumReferences.map((item) => (
+              <motion.button {...reveal} type="button" key={item.title} aria-label={`Preview ${item.title} website`} className="pr-portfolio-card" onClick={() => setActiveReference(item)}>
+                <div className="pr-portfolio-image"><Image src={item.image} alt={`${item.title} website design`} fill sizes="(max-width: 767px) 100vw, 340px" quality={68} className="object-cover object-top" /></div>
+                <div className="pr-portfolio-meta"><p>{item.category}</p><h3>{item.title}</h3><i>Preview ↗︎</i></div>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="pr-section pr-testimonials-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
@@ -194,46 +234,6 @@ export default function PricingPage() {
               <p className="pr-case-what"><b>What we did:</b> Website redesign, technical SEO foundations, and a streamlined service-booking flow.</p>
               <p className="pr-case-result"><b>Result:</b> Castello had no online booking or lead flow before this project — the new site and service-booking pages gave them a functioning digital channel that brings in inquiries the team didn&apos;t have access to before.</p>
             </motion.article>
-          </div>
-        </div>
-      </section>
-
-      <section className="pr-section pr-portfolio-section">
-        <div className="pr-container">
-          <motion.div {...reveal} className="pr-section-head">
-            <div><p className="section-kicker">[ Portfolio ]</p><h2>The caliber of work we study and build toward.</h2></div>
-            <p>Real websites in high-value industries we analyze for design quality and conversion structure.</p>
-          </motion.div>
-
-          <motion.button
-            {...reveal}
-            type="button"
-            aria-label="Preview Louwman Exclusive website"
-            className="pr-flagship"
-            onClick={() => setActiveReference({
-              category: "Luxury Automotive Dealership",
-              title: "Louwman Exclusive",
-              image: "/images/reference-louwman-exclusive.jpg",
-              url: "https://www.louwmangroup.com/company/louwman-exclusive/",
-              description: "A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.",
-            })}
-          >
-            <div className="pr-flagship-image"><Image src="/images/reference-louwman-exclusive.jpg" alt="Louwman Exclusive dealership" width={1200} height={772} sizes="(max-width: 767px) 100vw, 60vw" quality={72} className="object-cover" /></div>
-            <div className="pr-flagship-copy">
-              <p className="section-kicker">Luxury Automotive Dealership</p>
-              <h3>Louwman Exclusive</h3>
-              <p>A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.</p>
-              <span className="agency-button">Preview ↗</span>
-            </div>
-          </motion.button>
-
-          <div className="pr-portfolio-grid" style={{ marginTop: 34 }}>
-            {premiumReferences.map((item) => (
-              <motion.button {...reveal} type="button" key={item.title} aria-label={`Preview ${item.title} website`} className="pr-portfolio-card" onClick={() => setActiveReference(item)}>
-                <div className="pr-portfolio-image"><Image src={item.image} alt={`${item.title} website design`} fill sizes="(max-width: 767px) 100vw, 340px" quality={68} className="object-cover object-top" /></div>
-                <div className="pr-portfolio-meta"><p>{item.category}</p><h3>{item.title}</h3><i>Preview ↗︎</i></div>
-              </motion.button>
-            ))}
           </div>
         </div>
       </section>
