@@ -381,7 +381,7 @@ export default function PricingPage() {
                       document.getElementById("get-started")?.scrollIntoView({ behavior: "smooth" });
                     }}
                   >
-                    Want a similar high-converting platform? Book a 15-min call
+                    Want a similar high-converting platform? Book a 30-min call
                   </button>
                 </div>
               </div>
