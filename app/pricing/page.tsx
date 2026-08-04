@@ -281,6 +281,20 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="pr-section pr-about-section">
+        <div className="pr-container pr-about-grid">
+          <motion.div {...reveal} className="pr-about-photo-wrap">
+            <div className="pr-about-photo"><Image src="/images/founder-photo.jpg" alt="Maxim Comerzan, CEO of DevilSales Web" width={220} height={220} className="object-cover" /></div>
+            <p className="pr-about-name">Maxim Comerzan<span>CEO, DevilSales Web</span></p>
+          </motion.div>
+          <motion.div {...reveal} className="pr-about-copy">
+            <p className="section-kicker">[ Why work with us ]</p>
+            <h2>USA-Aligned Operations</h2>
+            <p>We operate directly within US business hours (EST/CST) to ensure seamless, real-time communication. No long wait times, no timezone friction — just direct access to your developer when you need it.</p>
+          </motion.div>
+        </div>
+      </section>
+
       <section id="pricing" className="pr-section pr-pricing-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head">
@@ -431,20 +445,6 @@ export default function PricingPage() {
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
             <div><p className="section-kicker !text-white/65">[ Growth ]</p><h2>Live fast. <span>Look like you&apos;ve arrived.</span></h2></div>
             <div><p>Send us a few details and we&apos;ll come back with a clear scope, timeline and quote — no long sales process.</p><a href="#get-started" className="mixar-button fill">Get Your Free Quote ↗︎</a></div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="pr-section pr-about-section">
-        <div className="pr-container pr-about-grid">
-          <motion.div {...reveal} className="pr-about-photo-wrap">
-            <div className="pr-about-photo"><Image src="/images/founder-photo.jpg" alt="Maxim Comerzan, CEO of DevilSales Web" width={220} height={220} className="object-cover" /></div>
-            <p className="pr-about-name">Maxim Comerzan<span>CEO, DevilSales Web</span></p>
-          </motion.div>
-          <motion.div {...reveal} className="pr-about-copy">
-            <p className="section-kicker">[ Why work with us ]</p>
-            <h2>USA-Aligned Operations</h2>
-            <p>We operate directly within US business hours (EST/CST) to ensure seamless, real-time communication. No long wait times, no timezone friction — just direct access to your developer when you need it.</p>
           </motion.div>
         </div>
       </section>
