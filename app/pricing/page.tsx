@@ -241,6 +241,52 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="pr-section pr-testimonials-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
+          <div className="pr-testimonial-scroll">
+            {growthClients.map((client) => (
+              <div key={client.name} className="pr-testimonial-card">
+                <div className="pr-testimonial-top">
+                  {client.logo ? (
+                    <div className="pr-testimonial-logo"><Image src={client.logo} alt={`${client.name} logo`} fill sizes="130px" className="object-contain" /></div>
+                  ) : (
+                    <span className="pr-testimonial-monogram" aria-hidden="true">{client.name.charAt(0)}</span>
+                  )}
+                  <span className="pr-testimonial-tag">REAL CLIENT</span>
+                </div>
+                <h3>{client.name}</h3>
+                <p className="pr-testimonial-industry">{client.industry}</p>
+                <p className="pr-testimonial-stars">★★★★★</p>
+                <p className="pr-testimonial-quote">&ldquo;{client.quote}&rdquo;</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pr-section pr-case-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head"><div><p className="section-kicker">[ Case studies ]</p><h2>Real projects, real outcomes.</h2></div><p>A closer look at two recent builds and what changed after launch.</p></motion.div>
+          <div className="pr-case-grid">
+            <motion.article {...reveal} className="bento-card pr-case-card">
+              <div className="pr-case-logo"><Image src="/images/logo-motocenter.jpg" alt="Motocenter logo" fill sizes="130px" className="object-contain" /></div>
+              <h3>Motocenter</h3>
+              <p className="pr-testimonial-industry">Auto Dealership</p>
+              <p className="pr-case-what"><b>What we did:</b> Full custom website rebuild, mobile-first redesign, and integrated lead tracking across every inventory page.</p>
+              <p className="pr-case-result"><b>Result:</b> Motocenter had no website generating inquiries before this project — the new site gave them a real, working online lead channel for the first time, with fast load times and a smooth mobile browsing experience.</p>
+            </motion.article>
+            <motion.article {...reveal} className="bento-card pr-case-card">
+              <div className="pr-case-logo"><Image src="/images/logo-castello.png" alt="Castello Car Volkswagen Service logo" fill sizes="130px" className="object-contain" /></div>
+              <h3>Castello Car Volkswagen Service</h3>
+              <p className="pr-testimonial-industry">Service Center</p>
+              <p className="pr-case-what"><b>What we did:</b> Website redesign, technical SEO foundations, and a streamlined service-booking flow.</p>
+              <p className="pr-case-result"><b>Result:</b> Castello had no online booking or lead flow before this project — the new site and service-booking pages gave them a functioning digital channel that brings in inquiries the team didn&apos;t have access to before.</p>
+            </motion.article>
+          </div>
+        </div>
+      </section>
+
       <section className="pr-section pr-portfolio-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head">
@@ -290,7 +336,7 @@ export default function PricingPage() {
           <motion.div {...reveal} className="pr-about-copy">
             <p className="section-kicker">[ Why work with us ]</p>
             <h2>USA-Aligned Operations</h2>
-            <p>We operate directly within US business hours (EST/CST) to ensure seamless, real-time communication. No long wait times, no timezone friction — just direct access to your developer when you need it.</p>
+            <p>Our core development team is based in Europe — which is exactly why we can offer this level of custom work at these prices. But we work strictly within US business hours (EST/CST), so you get real-time communication and direct access to your developer, not a delayed handoff through account managers.</p>
           </motion.div>
         </div>
       </section>
@@ -308,6 +354,7 @@ export default function PricingPage() {
                 {tier.featured && <span className="pr-tier-badge">Most popular</span>}
                 <p className="pr-tier-name">{tier.name}</p>
                 <p className="pr-tier-tagline">{tier.tagline}</p>
+                <p className="pr-tier-starting">Starting at</p>
                 <p className="pr-tier-price">{tier.oneTime}<span>one-time</span></p>
                 <p className="pr-tier-monthly">{tier.monthly} after launch</p>
                 <ul className="pr-tier-list">
@@ -340,52 +387,6 @@ export default function PricingPage() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pr-section pr-testimonials-section">
-        <div className="pr-container">
-          <motion.div {...reveal} className="pr-section-head pr-testimonial-head"><div><p className="section-kicker">[ Client feedback ]</p><h2>What real clients say.</h2></div><p>Real feedback from businesses we&apos;ve built websites for.</p></motion.div>
-          <div className="pr-testimonial-scroll">
-            {growthClients.map((client) => (
-              <div key={client.name} className="pr-testimonial-card">
-                <div className="pr-testimonial-top">
-                  {client.logo ? (
-                    <div className="pr-testimonial-logo"><Image src={client.logo} alt={`${client.name} logo`} fill sizes="130px" className="object-contain" /></div>
-                  ) : (
-                    <span className="pr-testimonial-monogram" aria-hidden="true">{client.name.charAt(0)}</span>
-                  )}
-                  <span className="pr-testimonial-tag">REAL CLIENT</span>
-                </div>
-                <h3>{client.name}</h3>
-                <p className="pr-testimonial-industry">{client.industry}</p>
-                <p className="pr-testimonial-stars">★★★★★</p>
-                <p className="pr-testimonial-quote">&ldquo;{client.quote}&rdquo;</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pr-section pr-case-section">
-        <div className="pr-container">
-          <motion.div {...reveal} className="pr-section-head"><div><p className="section-kicker">[ Case studies ]</p><h2>Real projects, real outcomes.</h2></div><p>A closer look at two recent builds and what changed after launch.</p></motion.div>
-          <div className="pr-case-grid">
-            <motion.article {...reveal} className="bento-card pr-case-card">
-              <div className="pr-case-logo"><Image src="/images/logo-motocenter.jpg" alt="Motocenter logo" fill sizes="130px" className="object-contain" /></div>
-              <h3>Motocenter</h3>
-              <p className="pr-testimonial-industry">Auto Dealership</p>
-              <p className="pr-case-what"><b>What we did:</b> Full custom website rebuild, mobile-first redesign, and integrated lead tracking across every inventory page.</p>
-              <p className="pr-case-result"><b>Result:</b> Motocenter had no website generating inquiries before this project — the new site gave them a real, working online lead channel for the first time, with fast load times and a smooth mobile browsing experience.</p>
-            </motion.article>
-            <motion.article {...reveal} className="bento-card pr-case-card">
-              <div className="pr-case-logo"><Image src="/images/logo-castello.png" alt="Castello Car Volkswagen Service logo" fill sizes="130px" className="object-contain" /></div>
-              <h3>Castello Car Volkswagen Service</h3>
-              <p className="pr-testimonial-industry">Service Center</p>
-              <p className="pr-case-what"><b>What we did:</b> Website redesign, technical SEO foundations, and a streamlined service-booking flow.</p>
-              <p className="pr-case-result"><b>Result:</b> Castello had no online booking or lead flow before this project — the new site and service-booking pages gave them a functioning digital channel that brings in inquiries the team didn&apos;t have access to before.</p>
-            </motion.article>
           </div>
         </div>
       </section>
@@ -660,7 +661,9 @@ export default function PricingPage() {
         .pr-tier-name{font-size:22px;font-weight:600;letter-spacing:-.01em}
         .pr-tier-tagline{margin-top:4px;color:rgba(255,255,255,.55);font-size:13px}
         .pr-tier-card-featured .pr-tier-tagline{color:rgba(255,255,255,.75)}
-        .pr-tier-price{display:flex;align-items:baseline;gap:8px;margin-top:22px;font-size:38px;font-weight:600;letter-spacing:-.02em}
+        .pr-tier-starting{margin-top:22px;color:rgba(255,255,255,.5);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+        .pr-tier-card-featured .pr-tier-starting{color:rgba(255,255,255,.7)}
+        .pr-tier-price{display:flex;align-items:baseline;gap:8px;margin-top:6px;font-size:38px;font-weight:600;letter-spacing:-.02em}
         .pr-tier-price span{color:rgba(255,255,255,.5);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
         .pr-tier-monthly{margin-top:6px;color:rgba(255,255,255,.55);font-size:13px}
         .pr-tier-list{display:flex;flex-direction:column;gap:11px;margin-top:26px;flex:1}
