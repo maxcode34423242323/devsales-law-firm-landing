@@ -367,8 +367,8 @@ export default function PricingPage() {
 
           <div className="pr-pricing-detail">
             {pricingCategories.map((category) => (
-              <motion.div {...reveal} key={category.title} className="pr-pricing-category">
-                <h3>{category.title}</h3>
+              <motion.details {...reveal} key={category.title} className="pr-pricing-category" open>
+                <summary><h3>{category.title}</h3><i /></summary>
                 <div className="pr-pricing-rows">
                   {category.items.map((item) => (
                     <div key={item.name} className="pr-pricing-row">
@@ -385,7 +385,7 @@ export default function PricingPage() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </motion.details>
             ))}
           </div>
 
@@ -679,7 +679,13 @@ export default function PricingPage() {
         .pr-pricing-detail{display:flex;flex-direction:column;gap:50px;margin-top:90px}
         .pr-pricing-cta{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:60px;padding-top:50px;border-top:1px solid rgba(255,255,255,.1);text-align:center}
         .pr-pricing-cta p{color:rgba(255,255,255,.55);font-size:14.5px}
-        .pr-pricing-category h3{font-size:22px;font-weight:600;letter-spacing:-.01em;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+        .pr-pricing-category summary{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12);cursor:pointer;list-style:none}
+        .pr-pricing-category summary::-webkit-details-marker{display:none}
+        .pr-pricing-category h3{font-size:22px;font-weight:600;letter-spacing:-.01em}
+        .pr-pricing-category summary i{position:relative;width:22px;height:22px;flex:0 0 auto;border:1px solid rgba(255,255,255,.3);border-radius:50%}
+        .pr-pricing-category summary i:before,.pr-pricing-category summary i:after{content:"";position:absolute;top:50%;left:50%;width:10px;height:1.6px;background:#fff;transform:translate(-50%,-50%)}
+        .pr-pricing-category summary i:after{transform:translate(-50%,-50%) rotate(90deg);transition:.3s}
+        .pr-pricing-category[open] summary i:after{transform:translate(-50%,-50%) rotate(0deg);opacity:0}
         .pr-pricing-rows{display:flex;flex-direction:column}
         .pr-pricing-row{display:grid;grid-template-columns:1fr auto 120px;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08)}
         .pr-pricing-row-name{font-size:14.5px;font-weight:500}
