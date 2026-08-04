@@ -280,6 +280,28 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="pr-section pr-case-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head"><div><p className="section-kicker">[ Case studies ]</p><h2>Real projects, real outcomes.</h2></div><p>A closer look at two recent builds and what changed after launch.</p></motion.div>
+          <div className="pr-case-grid">
+            <motion.article {...reveal} className="bento-card pr-case-card">
+              <div className="pr-case-logo"><Image src="/images/logo-motocenter.jpg" alt="Motocenter logo" width={110} height={44} className="object-contain" /></div>
+              <h3>Motocenter</h3>
+              <p className="pr-testimonial-industry">Auto Dealership</p>
+              <p className="pr-case-what"><b>What we did:</b> Full custom website rebuild, mobile-first redesign, and integrated lead tracking across every inventory page.</p>
+              <p className="pr-case-result"><b>Result:</b> A clear increase in customer inquiries after launch, with faster load times and a smoother mobile browsing experience across their inventory.</p>
+            </motion.article>
+            <motion.article {...reveal} className="bento-card pr-case-card">
+              <div className="pr-case-logo"><Image src="/images/logo-castello.png" alt="Castello Car Volkswagen Service logo" width={110} height={44} className="object-contain" /></div>
+              <h3>Castello Car Volkswagen Service</h3>
+              <p className="pr-testimonial-industry">Service Center</p>
+              <p className="pr-case-what"><b>What we did:</b> Website redesign, technical SEO foundations, and a streamlined service-booking flow.</p>
+              <p className="pr-case-result"><b>Result:</b> Stronger engagement with the service-booking pages and a more consistent flow of leads reaching the team after launch.</p>
+            </motion.article>
+          </div>
+        </div>
+      </section>
+
       <section className="pr-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head"><div><p className="section-kicker">[ Our commitment ]</p><h2>What working with us actually looks like.</h2></div><p>Here&apos;s what you can count on, whichever track you choose.</p></motion.div>
@@ -507,6 +529,12 @@ export default function PricingPage() {
         .pr-testimonial-industry{margin-top:4px;color:#7628ff;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
         .pr-testimonial-stars{margin-top:14px;font-size:19px;letter-spacing:.15em;color:#f5b400}
         .pr-testimonial-quote{margin-top:16px;color:rgba(17,5,47,.72);font-size:14.5px;line-height:1.65}
+        .pr-case-grid{display:flex;flex-wrap:wrap;gap:18px;margin-top:80px}
+        .pr-case-card{flex:1 1 380px;min-height:auto;padding:34px}
+        .pr-case-logo{position:relative;height:44px;width:130px}
+        .pr-case-card h3{margin-top:20px;font-size:26px;font-weight:500;letter-spacing:-.02em}
+        .pr-case-what,.pr-case-result{margin-top:16px;color:rgba(255,255,255,.62);font-size:15px;line-height:1.65}
+        .pr-case-what b,.pr-case-result b{color:#fff;font-weight:600}
         .pr-faq-grid{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:16px;margin-top:60px}
         .pr-faq{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#160045;transition:.35s}
         .pr-faq[open],.pr-faq:hover{border-color:rgba(156,99,255,.5);background:radial-gradient(circle at 0 0,rgba(119,62,255,.16),transparent 55%),#1a0752}
