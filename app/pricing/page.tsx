@@ -38,7 +38,7 @@ const servicesList: { number: string; title: string; copy: string; icon: string 
   { number: "04", title: "Technical SEO", copy: "Structured, fast, crawlable foundations on every build — ready to rank and ready for ad traffic from day one.", icon: "seo" },
   { number: "05", title: "Conversion Tracking & Analytics", copy: "GA4, GTM, GCLID and UTM tracking wired in from the start, so every lead is attributed correctly.", icon: "tracking" },
   { number: "06", title: "Fast-Launch Growth Sites", copy: "A clean, credible site live in 2–4 weeks for businesses that need to launch fast.", icon: "launch" },
-  { number: "07", title: "WordPress Development", copy: "Custom-designed WordPress builds for teams who want an easy, familiar CMS to manage content themselves — without giving up speed or design quality.", icon: "cms" },
+  { number: "07", title: "Bespoke WordPress & Headless CMS Development", copy: "Hand-coded WordPress builds, not page-builder templates — a familiar CMS for your team to manage content in, without giving up speed or design quality.", icon: "cms" },
   { number: "08", title: "Cross-Device Optimization", copy: "Every build is tested and tuned across desktop, tablet and mobile — consistent speed, layout and experience on any screen.", icon: "devices" },
   { number: "09", title: "Hosting & Managed Cloud Services", copy: "Reliable, monitored hosting so your site stays fast and online — no need to manage servers or renewals yourself.", icon: "cloud" },
   { number: "10", title: "Client Services", copy: "We work with you to maintain your site after it launches, with dedicated support to make sure your business goals are being met.", icon: "support" },
