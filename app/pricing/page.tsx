@@ -290,7 +290,7 @@ export default function PricingPage() {
       <section className="pr-section pr-portfolio-section">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-section-head">
-            <div><p className="section-kicker">[ Portfolio ]</p><h2>The caliber of work we study and build toward.</h2></div>
+            <div><p className="section-kicker">[ Portfolio ]</p><h2>Our  Portfolio </h2></div>
             <p>Real websites in high-value industries we analyze for design quality and conversion structure.</p>
           </motion.div>
 
