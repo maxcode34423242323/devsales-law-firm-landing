@@ -198,6 +198,46 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="pr-section pr-portfolio-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head">
+            <div><p className="section-kicker">[ Portfolio ]</p><h2>The caliber of work we study and build toward.</h2></div>
+            <p>Real websites in high-value industries we analyze for design quality and conversion structure.</p>
+          </motion.div>
+
+          <motion.button
+            {...reveal}
+            type="button"
+            aria-label="Preview Louwman Exclusive website"
+            className="pr-flagship"
+            onClick={() => setActiveReference({
+              category: "Luxury Automotive Dealership",
+              title: "Louwman Exclusive",
+              image: "/images/reference-louwman-exclusive.jpg",
+              url: "https://www.louwmangroup.com/company/louwman-exclusive/",
+              description: "A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.",
+            })}
+          >
+            <div className="pr-flagship-image"><Image src="/images/reference-louwman-exclusive.jpg" alt="Louwman Exclusive dealership" width={1200} height={772} sizes="(max-width: 767px) 100vw, 60vw" quality={72} className="object-cover" /></div>
+            <div className="pr-flagship-copy">
+              <p className="section-kicker">Luxury Automotive Dealership</p>
+              <h3>Louwman Exclusive</h3>
+              <p>A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.</p>
+              <span className="agency-button">Preview ↗</span>
+            </div>
+          </motion.button>
+
+          <div className="pr-portfolio-grid" style={{ marginTop: 34 }}>
+            {premiumReferences.map((item) => (
+              <motion.button {...reveal} type="button" key={item.title} aria-label={`Preview ${item.title} website`} className="pr-portfolio-card" onClick={() => setActiveReference(item)}>
+                <div className="pr-portfolio-image"><Image src={item.image} alt={`${item.title} website design`} fill sizes="(max-width: 767px) 100vw, 340px" quality={68} className="object-cover object-top" /></div>
+                <div className="pr-portfolio-meta"><p>{item.category}</p><h3>{item.title}</h3><i>Preview ↗︎</i></div>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="pr-section pr-intro">
         <div className="pr-container">
           <motion.div {...reveal} className="pr-intro-grid">
@@ -236,40 +276,6 @@ export default function PricingPage() {
             <p>For businesses that need more than a website: content management, integrations, AI-powered lead automation and a visual system built around how customers actually decide.</p>
           </motion.div>
 
-          <motion.button
-            {...reveal}
-            type="button"
-            aria-label="Preview Louwman Exclusive website"
-            className="pr-flagship"
-            onClick={() => setActiveReference({
-              category: "Luxury Automotive Dealership",
-              title: "Louwman Exclusive",
-              image: "/images/reference-louwman-exclusive.jpg",
-              url: "https://www.louwmangroup.com/company/louwman-exclusive/",
-              description: "A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.",
-            })}
-          >
-            <div className="pr-flagship-image"><Image src="/images/reference-louwman-exclusive.jpg" alt="Louwman Exclusive dealership" width={1200} height={772} sizes="(max-width: 767px) 100vw, 60vw" quality={72} className="object-cover" /></div>
-            <div className="pr-flagship-copy">
-              <p className="section-kicker">Luxury Automotive Dealership</p>
-              <h3>Louwman Exclusive</h3>
-              <p>A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.</p>
-              <span className="agency-button">Preview ↗</span>
-            </div>
-          </motion.button>
-
-          <motion.div {...reveal} className="pr-section-head" style={{ marginTop: 90 }}>
-            <div><p className="section-kicker">[ portfolio]</p><h2>The caliber of work we study and build toward.</h2></div>
-            <p>Real websites in high-value industries we analyze for design quality and conversion structure.</p>
-          </motion.div>
-          <div className="pr-portfolio-grid">
-            {premiumReferences.map((item) => (
-              <motion.button {...reveal} type="button" key={item.title} aria-label={`Preview ${item.title} website`} className="pr-portfolio-card" onClick={() => setActiveReference(item)}>
-                <div className="pr-portfolio-image"><Image src={item.image} alt={`${item.title} website design`} fill sizes="(max-width: 767px) 100vw, 340px" quality={68} className="object-cover object-top" /></div>
-                <div className="pr-portfolio-meta"><p>{item.category}</p><h3>{item.title}</h3><i>Preview ↗︎</i></div>
-              </motion.button>
-            ))}
-          </div>
           <motion.div {...reveal} className="pr-investment" onMouseMove={handleSpotlightMove}>
             <div><p className="section-kicker !text-white/65">[ Premium ]</p><h2>Built for brands that <span>don&apos;t do average.</span></h2></div>
             <div><p>Book a short strategy call — we&apos;ll confirm scope, timeline and whether Premium is the right fit for what you need.</p><a href="#get-started" className="mixar-button fill">Book a Strategy Call ↗︎</a></div>
