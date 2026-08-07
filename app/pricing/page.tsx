@@ -329,7 +329,7 @@ export default function PricingPage() {
               description: "A real luxury dealership platform in Utrecht, Netherlands, representing Lexus, McLaren, Morgan and other exclusive brands — the caliber of automotive site we study and build toward.",
             })}
           >
-            <div className="pr-flagship-image"><Image src="/images/reference-louwman-exclusive.jpg" alt="Louwman Exclusive dealership" width={1200} height={772} sizes="(max-width: 767px) 100vw, 60vw" quality={72} className="object-cover" /></div>
+            <div className="pr-flagship-image"><Image src="/images/reference-louwman-exclusive.jpg" alt="Louwman Exclusive luxury automotive dealership website design" width={1200} height={772} sizes="(max-width: 767px) 100vw, 60vw" quality={72} className="object-cover" /></div>
             <div className="pr-flagship-copy">
               <p className="section-kicker">Luxury Automotive Dealership</p>
               <h3>Louwman Exclusive</h3>
