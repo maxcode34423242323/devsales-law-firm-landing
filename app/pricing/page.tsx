@@ -31,18 +31,19 @@ const growthClients: { name: string; industry: string; quote: string; logo?: str
   { name: "Cisauto Group", industry: "Auto Dealership", quote: "DevilSales understood exactly what we needed. Responsive and easy to work with — the final site is polished and loads fast.", logo: "/images/logo-cisauto.webp" },
 ];
 
-const servicesList: { number: string; title: string; copy: string; icon: string }[] = [
+const servicesList: { number: string; title: string; copy: string; icon: string; link?: string }[] = [
   { number: "01", title: "Custom Website Design & Development", copy: "Fully custom-built sites and platforms, not templates — designed and built around how your customers actually decide.", icon: "dev" },
   { number: "02", title: "Website Redesign", copy: "Modernize an outdated site without losing your rankings — SEO-safe migration, faster load times, better conversion.", icon: "redesign" },
-  { number: "03", title: "AI Automation & Lead Qualification", copy: "An AI assistant built into your site that answers questions, qualifies leads and routes them straight to your CRM or phone.", icon: "ai" },
-  { number: "04", title: "Technical SEO", copy: "Structured, fast, crawlable foundations on every build — ready to rank and ready for ad traffic from day one.", icon: "seo" },
-  { number: "05", title: "Conversion Tracking & Analytics", copy: "GA4, GTM, GCLID and UTM tracking wired in from the start, so every lead is attributed correctly.", icon: "tracking" },
-  { number: "06", title: "Fast-Launch Growth Sites", copy: "A clean, credible site live in 2–4 weeks for businesses that need to launch fast.", icon: "launch" },
-  { number: "07", title: "Bespoke WordPress & Headless CMS Development", copy: "Hand-coded WordPress builds, not page-builder templates — a familiar CMS for your team to manage content in, without giving up speed or design quality.", icon: "cms" },
-  { number: "08", title: "Cross-Device Optimization", copy: "Every build is tested and tuned across desktop, tablet and mobile — consistent speed, layout and experience on any screen.", icon: "devices" },
-  { number: "09", title: "Hosting & Managed Cloud Services", copy: "Reliable, monitored hosting so your site stays fast and online — no need to manage servers or renewals yourself.", icon: "cloud" },
-  { number: "10", title: "Client Services", copy: "We work with you to maintain your site after it launches, with dedicated support to make sure your business goals are being met.", icon: "support" },
-  { number: "11", title: "UI/UX Design", copy: "User-centered design — wireframes, prototypes and pixel-perfect interfaces built to turn visitors into leads.", icon: "design" },
+  { number: "03", title: "Technical SEO", copy: "Structured, fast, crawlable foundations on every build — ready to rank and ready for ad traffic from day one.", icon: "seo" },
+  { number: "04", title: "Paid Ads Management (Google & Meta)", copy: "Campaign setup, keyword targeting and ongoing optimization on Google Ads and Meta Ads — send qualified traffic to your new site from day one.", icon: "ads", link: "#launchpad" },
+  { number: "05", title: "AI Automation & Lead Qualification", copy: "An AI assistant built into your site that answers questions, qualifies leads and routes them straight to your CRM or phone.", icon: "ai" },
+  { number: "06", title: "Conversion Tracking & Analytics", copy: "GA4, GTM, GCLID and UTM tracking wired in from the start, so every lead is attributed correctly.", icon: "tracking" },
+  { number: "07", title: "Fast-Launch Growth Sites", copy: "A clean, credible site live in 2–4 weeks for businesses that need to launch fast.", icon: "launch" },
+  { number: "08", title: "Bespoke WordPress & Headless CMS Development", copy: "Hand-coded WordPress builds, not page-builder templates — a familiar CMS for your team to manage content in, without giving up speed or design quality.", icon: "cms" },
+  { number: "09", title: "Cross-Device Optimization", copy: "Every build is tested and tuned across desktop, tablet and mobile — consistent speed, layout and experience on any screen.", icon: "devices" },
+  { number: "10", title: "Hosting & Managed Cloud Services", copy: "Reliable, monitored hosting so your site stays fast and online — no need to manage servers or renewals yourself.", icon: "cloud" },
+  { number: "11", title: "Client Services", copy: "We work with you to maintain your site after it launches, with dedicated support to make sure your business goals are being met.", icon: "support" },
+  { number: "12", title: "UI/UX Design", copy: "User-centered design — wireframes, prototypes and pixel-perfect interfaces built to turn visitors into leads.", icon: "design" },
 ];
 
 const pricingTiers = [
@@ -133,6 +134,14 @@ const pricingCategories: { title: string; items: PricingLineItem[] }[] = [
   },
 ];
 
+const launchpadServices: { title: string; copy: string; bullets?: string[] }[] = [
+  { title: "Omnichannel Ad Setup & Management", copy: "Complete campaign structure, advanced keyword targeting and high-converting ad copy for Google Ads and Meta Ads (Facebook & Instagram), tailored to your niche." },
+  { title: "Google Ads", copy: "So that people don't just find your business, but they find it for the right reasons.", bullets: ["PPC Ads", "LSA Ads"] },
+  { title: "Precision Conversion Tracking", copy: "Direct integration into your new DevilSales website and CRM (HubSpot/Salesforce) — every call, form fill and appointment tracked accurately from day one." },
+  { title: "Data-Driven CRO", copy: "Continuous landing page optimization — we constantly test headlines, buttons and layout so your paid traffic actually converts into revenue." },
+  { title: "Ongoing Optimization", copy: "Weekly bidding adjustments, negative keyword updates and transparent monthly reporting. Ad spend compounds over time instead of burning on autopilot." },
+];
+
 const approachBenefits = [
   ["01", "A site that matches your growth stage", "Whether you need to launch fast or build a real platform, the project is scoped to where your business actually is — not a generic package."],
   ["02", "Built around how customers decide", "Clear structure, focused messaging and calls to action — backed by an optional AI assistant that qualifies leads even when you're offline."],
@@ -173,7 +182,7 @@ export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeReference, setActiveReference] = useState<ReferencePreview | null>(null);
 
-  function handleSpotlightMove(event: React.MouseEvent<HTMLDivElement>) {
+  function handleSpotlightMove(event: React.MouseEvent<HTMLElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
     event.currentTarget.style.setProperty("--mx", `${((event.clientX - rect.left) / rect.width) * 100}%`);
     event.currentTarget.style.setProperty("--my", `${((event.clientY - rect.top) / rect.height) * 100}%`);
@@ -230,13 +239,24 @@ export default function PricingPage() {
             <p>From a brand-new custom platform to a fast professional launch — here&apos;s exactly what we offer.</p>
           </motion.div>
           <div className="pr-benefit-grid pr-services-grid">
-            {servicesList.map((service) => (
-              <motion.article {...reveal} key={service.number} className="bento-card pr-benefit pr-service-card" onMouseMove={handleSpotlightMove}>
-                <div className="pr-service-top"><ServiceIcon type={service.icon} /><span>{service.number}</span></div>
-                <h3>{service.title}</h3>
-                <p>{service.copy}</p>
-              </motion.article>
-            ))}
+            {servicesList.map((service) => {
+              const cardInner = (
+                <>
+                  <div className="pr-service-top"><ServiceIcon type={service.icon} /><span>{service.number}</span></div>
+                  <h3>{service.title}</h3>
+                  <p>{service.copy}</p>
+                </>
+              );
+              return service.link ? (
+                <motion.a {...reveal} key={service.number} href={service.link} className="bento-card pr-benefit pr-service-card pr-service-card-link" onMouseMove={handleSpotlightMove}>
+                  {cardInner}
+                </motion.a>
+              ) : (
+                <motion.article {...reveal} key={service.number} className="bento-card pr-benefit pr-service-card" onMouseMove={handleSpotlightMove}>
+                  {cardInner}
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -393,6 +413,43 @@ export default function PricingPage() {
             <p>Mixing and matching services across tiers? We&apos;ll scope it with you.</p>
             <a href="#get-started" className="mixar-button fill">Build a Custom Package ↗︎</a>
           </div>
+        </div>
+      </section>
+
+      <section id="launchpad" className="pr-section pr-launchpad-section">
+        <div className="pr-container">
+          <motion.div {...reveal} className="pr-section-head">
+            <div><p className="section-kicker">[ Optional Add-On ]</p><h2>The Launchpad Package: Premium Growth from Day One.</h2></div>
+            <p>Once your new site is live, organic SEO takes months to mature. Paid traffic closes that gap — hyper-targeted ad campaigns send qualified, high-ticket B2B leads to your business within days, not months.</p>
+          </motion.div>
+
+          <motion.div {...reveal} className="pr-platform-row">
+            <span className="pr-platform-badge"><GoogleAdsIcon />Google Ads</span>
+            <span className="pr-platform-badge"><MetaAdsIcon />Meta Ads</span>
+            <a href="#get-started" className="mixar-button fill pr-launchpad-cta">Book a Strategy Call ↗︎</a>
+          </motion.div>
+
+          <div className="pr-benefit-grid pr-launchpad-grid">
+            {launchpadServices.map((service) => (
+              <motion.article {...reveal} key={service.title} className="bento-card pr-benefit" onMouseMove={handleSpotlightMove}>
+                <h3>{service.title}</h3>
+                <p>{service.copy}</p>
+                {service.bullets && (
+                  <ul className="pr-launchpad-bullets">
+                    {service.bullets.map((b) => <li key={b}>{b}</li>)}
+                  </ul>
+                )}
+              </motion.article>
+            ))}
+          </div>
+
+          <motion.div {...reveal} className="pr-investment pr-launchpad-price-card" onMouseMove={handleSpotlightMove}>
+            <div><p className="section-kicker !text-white/65">[ Add-on ]</p><h2>Available for any website project.</h2></div>
+            <div>
+              <p>Ad management, tracking and ongoing optimization — layered on top of any package, Starter through Premium.</p>
+              <p className="pr-launchpad-price">$1,500<span>/mo</span></p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -590,6 +647,27 @@ export default function PricingPage() {
         .pr-intro-grid>div:last-child p{color:rgba(255,255,255,.5);font-size:17px;line-height:1.65}
         .pr-benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:80px}
         .pr-services-grid{display:flex;flex-wrap:wrap}
+        .pr-launchpad-section .pr-section-head>p{color:rgba(255,255,255,.72)}
+        .pr-launchpad-section .pr-section-head h2{font-weight:700;letter-spacing:-.045em;background:linear-gradient(100deg,#fff,#e6d9ff 60%,#c4a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .pr-platform-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:34px}
+        .pr-platform-badge{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.05);padding:12px 24px 12px 16px;color:#fff;font-size:15px;font-weight:700}
+        .pr-platform-badge svg{width:30px;height:30px}
+        .pr-launchpad-cta{margin-left:auto}
+        .pr-service-card-link{text-decoration:none;color:inherit;cursor:pointer}
+        .pr-launchpad-grid{display:flex;flex-wrap:wrap;gap:20px}
+        .pr-launchpad-grid .pr-benefit{flex:1 1 380px}
+        .pr-launchpad-bullets{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+        .pr-launchpad-bullets li{list-style:none;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);padding:6px 14px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.8)}
+        .pr-launchpad-grid .pr-benefit{background:rgba(255,255,255,.035);backdrop-filter:blur(6px);border-color:rgba(255,255,255,.05);transition:transform .35s,border-color .35s,background .35s}
+        .pr-launchpad-grid .pr-benefit:hover{transform:translateY(-4px) scale(1.015);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+        .pr-launchpad-grid .pr-benefit h3{margin-top:0;font-size:19.5px;font-weight:700;letter-spacing:-.01em}
+        .pr-launchpad-grid .pr-benefit p{margin-top:14px}
+        .pr-launchpad-price-card{grid-template-columns:1fr auto;align-items:center;padding:72px 64px}
+        .pr-launchpad-price-card>div:last-child{display:flex;align-items:center;gap:36px;max-width:none}
+        .pr-launchpad-price-card>div:last-child>p:first-child{max-width:360px}
+        .pr-investment.pr-launchpad-price-card h2{font-size:clamp(32px,3.4vw,44px)}
+        .pr-investment.pr-launchpad-price-card>div:last-child p.pr-launchpad-price{color:#fff;font-size:38px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
+        .pr-launchpad-price span{color:rgba(255,255,255,.65);font-size:14px;font-weight:500}
         .pr-services-grid .pr-benefit{flex:1 1 320px;min-height:300px;padding:34px}
         .pr-services-grid .pr-benefit h3{margin-top:22px;font-size:34px;line-height:1.15}
         .pr-services-grid .pr-benefit p{margin-top:20px;font-size:16.5px;line-height:1.65;color:rgba(255,255,255,.62)}
@@ -808,6 +886,8 @@ export default function PricingPage() {
           .pr-contact-copy{position:static}
           .pr-process-shell{grid-template-columns:1fr;padding:48px}
           .pr-investment{gap:36px;padding:48px}
+          .pr-launchpad-price-card{grid-template-columns:1fr;padding:48px}
+          .pr-launchpad-price-card>div:last-child{flex-direction:column;align-items:flex-start;gap:20px}
         }
         @media(max-width:767px){
           .pr-container{width:min(100% - 30px,1450px)}
@@ -828,6 +908,8 @@ export default function PricingPage() {
           .pr-testimonial-card{flex:1 1 100%;max-width:100%;padding:28px 24px}
           .pr-investment{border-radius:26px;padding:34px 24px;margin-top:45px}
           .pr-investment h2{font-size:38px}
+          .pr-launchpad-price-card{border-radius:26px;padding:34px 24px;margin-top:45px}
+          .pr-launchpad-cta{margin-left:0}
           .pr-process-shell{width:calc(100% - 30px);border-radius:26px;padding:32px 22px}
           .pr-process-title h2{font-size:40px}
           .pr-process-row{grid-template-columns:38px 1fr 20px;gap:12px}
@@ -846,6 +928,25 @@ export default function PricingPage() {
   );
 }
 
+function GoogleAdsIcon() {
+  return (
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+      <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+      <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z" />
+      <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z" />
+    </svg>
+  );
+}
+
+function MetaAdsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#0081FB" d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z" />
+    </svg>
+  );
+}
+
 function ServiceIcon({ type }: { type: string }) {
   const paths: Record<string, React.ReactNode> = {
     dev: <path d="M8 6 3 12l5 6M16 6l5 6-5 6M14 4l-4 16" />,
@@ -859,6 +960,7 @@ function ServiceIcon({ type }: { type: string }) {
     cloud: <path d="M7 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 16 8.1 4.5 4.5 0 0 1 17.5 17H7Z" />,
     support: <><path d="M4 13a8 8 0 0 1 16 0" /><rect x="3" y="13" width="4" height="6" rx="1.5" /><rect x="17" y="13" width="4" height="6" rx="1.5" /><path d="M20 19a4 4 0 0 1-4 4h-2" /></>,
     design: <><path d="m4 20 1-4L15 6l3 3L8 19l-4 1Z" /><path d="m13 8 3 3" /></>,
+    ads: <><path d="M3 10v4h4l5 4V6l-5 4H3Z" /><path d="M16.5 9a4 4 0 0 1 0 6" /><path d="M19.5 6.5a8 8 0 0 1 0 11" /></>,
   };
   return <span className="pr-service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">{paths[type]}</svg></span>;
 }
