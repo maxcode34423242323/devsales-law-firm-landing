@@ -50,12 +50,12 @@ const pricingTiers = [
   {
     name: "Starter",
     tagline: "Quick launch",
-    oneTime: "$4,600",
+    oneTime: "$3,000",
     monthly: "$189/mo",
     highlights: [
       "Template website (5–8 pages)",
       "Cross-device optimization",
-      "Technical SEO audit",
+      "SEO setup (so Google can find you)",
       "Hosting + managed cloud",
       "Basic maintenance",
     ],
@@ -89,15 +89,17 @@ const pricingTiers = [
   },
 ];
 
-type PricingLineItem = { name: string; price: string; billing: string; note: string; starter: boolean; growth: boolean; premium: boolean };
+type PricingLineItem = { name: string; price: string; billing: string; note: string; starter: boolean; growth: boolean; premium: boolean; addon?: boolean };
 
 const pricingCategories: { title: string; items: PricingLineItem[] }[] = [
   {
     title: "Website & Content",
     items: [
       { name: "Template website (WordPress, pre-built theme)", price: "$2,200", billing: "one-time", note: "5–8 pages", starter: true, growth: false, premium: false },
+      { name: "Bespoke WordPress Development", price: "$6,500", billing: "one-time", note: "Alternative to a fully custom build, on request", starter: false, growth: false, premium: false, addon: true },
       { name: "Custom website (unique design)", price: "$9,000", billing: "one-time", note: "10–20 pages", starter: false, growth: true, premium: true },
-      { name: "Website redesign", price: "$6,000", billing: "one-time", note: "On request, usually an add-on", starter: false, growth: false, premium: false },
+      { name: "Headless CMS / Enterprise Platform", price: "$19,000", billing: "one-time", note: "For complex, high-traffic or multi-brand sites — on request", starter: false, growth: false, premium: false, addon: true },
+      { name: "Website redesign", price: "$6,000", billing: "one-time", note: "On request, usually an add-on", starter: false, growth: false, premium: false, addon: true },
       { name: "UI/UX design (wireframes, prototype)", price: "$2,500", billing: "one-time", note: "Full research + prototype", starter: false, growth: true, premium: true },
       { name: "Cross-device optimization", price: "$900", billing: "one-time", note: "Tested across all screen sizes", starter: true, growth: true, premium: true },
       { name: "Launch copywriting (full site)", price: "$1,200", billing: "one-time", note: "Professional copywriting", starter: false, growth: true, premium: true },
@@ -116,7 +118,7 @@ const pricingCategories: { title: string; items: PricingLineItem[] }[] = [
   {
     title: "SEO & Analytics",
     items: [
-      { name: "Technical SEO audit", price: "$1,200", billing: "one-time", note: "Included in every tier", starter: true, growth: true, premium: true },
+      { name: "Technical SEO audit", price: "$1,200", billing: "one-time", note: "So Google can find and rank your site — included in every tier", starter: true, growth: true, premium: true },
       { name: "SEO retainer, basic", price: "$1,800", billing: "monthly", note: "Single location", starter: false, growth: true, premium: false },
       { name: "SEO retainer, growth (multi-location)", price: "$3,500", billing: "monthly", note: "Multiple locations", starter: false, growth: false, premium: true },
       { name: "Conversion tracking & analytics (GA4)", price: "$600", billing: "one-time", note: "Analytics and attribution setup", starter: false, growth: true, premium: true },
@@ -166,7 +168,7 @@ const processSteps = [
 
 const faqs = [
   ["What's the difference between Premium and Growth?", "Growth projects are focused, single-purpose websites built fast on a proven foundation. Premium projects involve custom platform work — CMS-driven content, integrations, CRM automation, or multi-stage user flows — which takes more strategy and development time."],
-  ["How much does a website actually cost?", "It depends on the package: Starter starts at $4,600, Growth at $13,800, and Premium at $36,300 — see the full breakdown in the Pricing section above. Final cost can shift slightly based on scope, integrations and content, and we'll confirm the exact number before any work begins."],
+  ["How much does a website actually cost?", "It depends on the package: Starter starts at $3,000, Growth at $13,800, and Premium at $36,300 — see the full breakdown in the Pricing section above. Final cost can shift slightly based on scope, integrations and content, and we'll confirm the exact number before any work begins."],
   ["How long does a project take?", "Growth websites typically launch in 2–4 weeks. Premium platforms usually take 6–10 weeks depending on scope and integrations."],
   ["Can you redesign our existing website?", "Yes, at either tier. We can preserve useful content and SEO equity while rebuilding the strategy, visual system and technical foundation."],
   ["Will the website be ready for paid ads?", "Yes. Every project ships with a clear conversion path and form, phone-click and lead tracking prepared for Google Ads and GA4."],
@@ -363,6 +365,11 @@ export default function PricingPage() {
 
       <section id="pricing" className="pr-section pr-pricing-section">
         <div className="pr-container">
+          <motion.div {...reveal} className="pr-urgency-banner">
+            <span className="pr-urgency-status"><i /> Live Status</span>
+            <p>Accepting only 2 more custom development slots for August 2026 to ensure premium quality, high-speed delivery, and dedicated partner-level support.</p>
+          </motion.div>
+
           <motion.div {...reveal} className="pr-section-head">
             <div><p className="section-kicker">[ Pricing ]</p><h2>Choose your package.</h2></div>
             <p>Clear, upfront pricing for every stage of growth — pick a package or mix services to fit your project.</p>
@@ -397,9 +404,15 @@ export default function PricingPage() {
                         <p className="pr-pricing-row-note">{item.note}</p>
                       </div>
                       <div className="pr-pricing-row-tiers">
-                        <span className={item.starter ? "pr-tier-pill on" : "pr-tier-pill"}>S</span>
-                        <span className={item.growth ? "pr-tier-pill on" : "pr-tier-pill"}>G</span>
-                        <span className={item.premium ? "pr-tier-pill on" : "pr-tier-pill"}>P</span>
+                        {item.addon ? (
+                          <span className="pr-addon-badge">Add-on</span>
+                        ) : (
+                          <>
+                            <span className={item.starter ? "pr-tier-pill on" : "pr-tier-pill"}>S</span>
+                            <span className={item.growth ? "pr-tier-pill on" : "pr-tier-pill"}>G</span>
+                            <span className={item.premium ? "pr-tier-pill on" : "pr-tier-pill"}>P</span>
+                          </>
+                        )}
                       </div>
                       <div className="pr-pricing-row-price">{item.price}<span>/{item.billing === "monthly" ? "mo" : "one-time"}</span></div>
                     </div>
@@ -736,6 +749,11 @@ export default function PricingPage() {
         .pr-flagship-note{display:block;margin-top:12px;color:rgba(255,255,255,.28);font-size:10.5px;letter-spacing:.04em}
         .pr-portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
         .pr-portfolio-card{position:relative;display:block;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#17063e;color:inherit;text-decoration:none;transition:.3s;width:100%;text-align:left;font:inherit;cursor:pointer;padding:0}
+        .pr-urgency-banner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 24px;margin-bottom:44px;border:1px solid rgba(255,255,255,.08);border-radius:999px;background:radial-gradient(circle at 15% 50%,rgba(118,40,255,.16),transparent 60%),rgba(255,255,255,.02);padding:14px 28px;text-align:center}
+        .pr-urgency-status{display:inline-flex;flex:0 0 auto;align-items:center;gap:8px;color:rgba(255,255,255,.85);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+        .pr-urgency-status i{position:relative;width:8px;height:8px;border-radius:50%;background:#3ddc73;box-shadow:0 0 0 rgba(61,220,115,.6);animation:pr-pulse 2s infinite}
+        .pr-urgency-banner p{margin:0;color:rgba(255,255,255,.7);font-size:13.5px;line-height:1.5}
+        @keyframes pr-pulse{0%{box-shadow:0 0 0 0 rgba(61,220,115,.55)}70%{box-shadow:0 0 0 8px rgba(61,220,115,0)}100%{box-shadow:0 0 0 0 rgba(61,220,115,0)}}
         .pr-tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
         .pr-tier-card{position:relative;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.12);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));padding:36px 32px;transition:.35s}
         .pr-tier-card:hover{transform:translateY(-6px);border-color:rgba(156,99,255,.5)}
@@ -769,6 +787,7 @@ export default function PricingPage() {
         .pr-pricing-row-name{font-size:14.5px;font-weight:500}
         .pr-pricing-row-note{margin-top:3px;color:rgba(255,255,255,.45);font-size:12px}
         .pr-pricing-row-tiers{display:flex;gap:6px}
+        .pr-addon-badge{display:inline-flex;border-radius:999px;border:1px solid rgba(201,180,255,.4);background:rgba(118,40,255,.15);padding:5px 12px;color:#c9b4ff;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
         .pr-tier-pill{display:grid;width:24px;height:24px;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);color:rgba(255,255,255,.3);font-size:10px;font-weight:700}
         .pr-tier-pill.on{border-color:#9c63ff;background:#7628ff;color:#fff}
         .pr-pricing-row-price{text-align:right;font-size:15px;font-weight:600;white-space:nowrap}
@@ -896,6 +915,7 @@ export default function PricingPage() {
           .pr-top-cta{display:none}
           .pr-menu-button{display:flex}
           .pr-hero{padding:130px 0 70px}
+          .pr-urgency-banner{border-radius:24px;padding:18px 22px;margin-bottom:32px}
           .pr-hero h1{margin-top:28px;font-size:46px;line-height:1}
           .pr-hero-bottom{margin-top:30px}
           .pr-hero-bottom>p{font-size:16px}
